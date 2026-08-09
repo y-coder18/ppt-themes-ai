@@ -1,0 +1,2548 @@
+/* @theme academic */
+
+@import 'uncover';
+
+/* ================================================================
+   Root & CSS Variables
+   ================================================================ */
+
+:root {
+  /* 布局间距：统一控制 :root / section / grid / flex 的元素间隔 */
+  --gap: 24px;
+  /* 紧凑模式间距：应用于 [compact] / :root.compact / section.compact */
+  --gap-compact: 12px;
+
+  /* 基准字号：所有 rem 单位以此为参照，compact 模式覆盖此值即可全局缩放 */
+  font-size: 24px;
+  text-align: left;
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+  position: relative;
+  padding: 80px 30px 10px 30px;
+  letter-spacing: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  line-height: 1.5;
+}
+/* 覆盖 Marp 生成的 section 默认值（gap / font-size 均由主题控制） */
+section {
+  gap: var(--gap);
+  font-size: 1rem;
+}
+
+/* ---- 代码块配色变量（浅色主题，默认） ---- */
+:root {
+  --code-bg: #f6f8fa;
+  --code-fg: #1f2328;
+  --code-border: #d0d7de;
+  --code-inline-bg: #e2e5ea;
+  --code-comment: #6e7781;
+  --code-keyword: #cf222e;
+  --code-entity: #8250df;
+  --code-constant: #0550ae;
+  --code-string: #0a3069;
+  --code-variable: #953800;
+  --code-tag: #116329;
+  --code-storage: #24292f;
+  --code-markup-list: #3b2300;
+  --code-inserted-text: #116329;
+  --code-inserted-bg: #dafbe1;
+  --code-deleted-text: #82071e;
+  --code-deleted-bg: #ffebe9;
+  --code-default: #1f2328;
+}
+
+/* ---- 深色代码主题：通过 code-dark class 切换 ---- */
+/* 使用方式：局部切换在幻灯片开头添加 <!-- _class: code-dark --> */
+:root.code-dark,
+section.code-dark {
+  --code-bg: #1e1e2e;
+  --code-fg: #cdd6f4;
+  --code-border: #313244;
+  --code-inline-bg: #2e3045;
+  --code-keyword: #cba6f7;
+  --code-comment: #6c7086;
+  --code-entity: #89b4fa;
+  --code-constant: #fab387;
+  --code-string: #a6e3a1;
+  --code-variable: #f38ba8;
+  --code-tag: #94e2d5;
+  --code-storage: #cdd6f4;
+  --code-markup-list: #f9e2af;
+  --code-inserted-text: #a6e3a1;
+  --code-inserted-bg: rgba(166, 227, 161, 0.15);
+  --code-deleted-text: #f38ba8;
+  --code-deleted-bg: rgba(243, 139, 168, 0.15);
+  --code-default: #cdd6f4;
+}
+
+
+/* ================================================================
+   Page Chrome — 页眉 / 页尾 / 页码
+   ================================================================ */
+
+/* 页眉 */
+/* 页眉背景 */
+:root header {
+  left: 0;
+  top: 0;
+  padding: 12px 0 12px 30px;
+  width: 100%;
+  background-image: url("../../themes/academic/images/header_bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  text-align: left;
+  color: whitesmoke;
+  font-size: 1.385rem;
+  text-shadow: none;
+  font-weight: bold;
+}
+/* 页眉logo */
+:root header::after {
+  content: '';
+  height: 50px;
+  width: 250px;
+  position: absolute;
+  right: 60px;
+  top: 12px;
+  background-image: url("../../themes/academic/images/logo.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+/* 页码 */
+section::after{
+  background: url("../../themes/academic/images/blue_corner_triangle.svg") !important;
+}
+
+/* 页尾 */
+:root footer {
+  color: #999;
+  bottom: 2px;
+  font-size: 0.808rem;
+  text-align: center;
+}
+:root footer a {
+  color: #ccc;
+  transition: all 0.3s;
+}
+:root footer a:hover {
+  color: #003f88;
+  text-decoration: none;
+}
+
+/* 页码 */
+:root::after {
+  font-size: 0.923rem;
+  font-weight: bold;
+  text-shadow: none;
+  color: #fff;
+  padding: 30px 15px 15px 30px;
+  text-align: right;
+}
+
+/* ================================================================
+   Base Typography — 基础排版
+   ================================================================ */
+
+p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+a {
+  color: #003f88;
+}
+
+/* ---- 四级标题层级 ---- */
+h1 {
+  color: #003f88;
+  font-size: 1.615rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+h2 {
+  color: #003f88;
+  font-size: 1.308rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+h3 {
+  color: #003f88;
+  font-size: 1.077rem;
+  font-weight: 600;
+  margin: 0;
+  padding-left: 14px;
+  position: relative;
+}
+h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  background: #003f88;
+  border-radius: 2px;
+}
+h4 {
+  color: #334155;
+  font-size: 0.923rem;
+  font-weight: 700;
+  margin: 0;
+}
+h5, h6 {
+  color: #003f88;
+  font-size: 1rem;
+  margin: 0;
+}
+blockquote {
+  margin: 0;
+  padding: 16px 24px;
+  background-color: #edf3fa;
+  border-radius: 6px;
+  color: #194692;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* 去掉uncover主题默认的引用框左上右下的两个引号图片 */
+blockquote::before,
+blockquote::after {
+  content: '';
+}
+
+blockquote strong {
+  color: #821521;
+}
+
+/* 默认margin auto会居中 */
+ol, ul {
+  margin: 0;
+  font-size: 1rem;
+}
+
+ol li {
+  line-height: 1.5;
+}
+
+ul li {
+  line-height: 1.5;
+}
+
+/* 高亮标记 */
+mark {
+  background: none;
+  color: #c00000;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 6px 0;
+}
+mark[center] {
+  display: block;
+  text-align: center;
+}
+
+
+/* ================================================================
+   Page Layouts — 页面布局（首页 / 目录 / 感谢 / 内容页 / 横向布局）
+   ================================================================ */
+
+/* 首页 封面 */
+:root.homePage {
+  text-align: center;
+  justify-content: center;
+  padding: 0;
+  color: #eee;
+  position: relative;
+  gap: 24px;
+}
+/* 背景图层 */
+:root.homePage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("../../themes/academic/images/航天.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 20, 50, 0.35);
+  z-index: -2;
+}
+/* 全局渐变遮罩兜底 */
+:root.homePage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,63,136,0.25), rgba(0,20,45,0.55));
+  z-index: -1;
+}
+
+:root.homePage h1 {
+  font-size: 2.462rem;
+  color: #ffffff;
+  background: rgba(0, 63, 136, 0.82);
+  /* 通栏铺满整页宽度 */
+  width: 100%;
+  padding: 26px 0;
+  letter-spacing: 4px;
+  margin: 0;
+}
+:root.homePage h2 {
+  font-size: 1.385rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin: 0;
+}
+:root.homePage p {
+  color: #e2e8f0;
+  font-size: 0.846rem;
+  margin: 0;
+}
+
+/* 目录 */
+:root.contents {
+  text-align: center;
+  color: #fff;
+  padding: 0 0 0 40%;
+  background-color: #003f88;
+}
+:root.contents::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: 40%;
+  height: 110%;
+  background-image: url("../../themes/academic/images/航天小图.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  border-radius: 0 55% 55% 0;
+  opacity: 1;
+  border: 10px solid rgb(40, 113, 196);
+  border-width: 10px 50px 50px 10px;
+}
+:root.contents h2{
+  color: #ffffffdc;
+  position: relative;
+  margin-bottom: 40px;
+}
+:root.contents h2::before {
+  content: 'CONTENTS';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.308rem;
+  opacity: 0.1;
+  z-index: 1;
+}
+:root.contents ul{
+  font-size: 0.885rem;
+  padding-left: 120px;
+}
+:root.contents ul li {
+  color: #fff;
+  line-height: 40px;
+  list-style: none;
+  position: relative;
+}
+:root.contents ul li strong {
+  font-size: 1.923rem;
+  line-height: 60px;
+  background-image:-webkit-linear-gradient(105deg, transparent, #e7efff); 
+	-webkit-background-clip: text; 
+	-webkit-text-fill-color: transparent; 
+	text-shadow: 2px 2px 20px #0000000d;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+/* 感谢 */
+:root.thanksPage {
+  text-align: center;
+  justify-content: center;
+  background: #003f88;
+  color: #eee;
+  padding: 60px 0;
+}
+:root.thanksPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../themes/academic/images/航天2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.9;
+}
+:root.thanksPage h1 {
+  color: #fff;
+  background: #003f88d8;
+  width: 100%;
+  line-height: 100px;
+  font-size: 2.154rem;
+  display: inline-block;
+  padding: 0;
+  border-radius: 8px;
+}
+:root.thanksPage h2 {
+  color: #fff;
+  font-size: 1.231rem;
+}
+
+/* 内容页 */
+:root.contentPage {
+  background: #fff;
+}
+:root.contentPage img {
+  margin: 5px;
+}
+
+
+/* ================================================================
+   Grid & Flex — 网格 / 弹性布局
+   ================================================================ */
+
+/* 网格布局：支持 cols / rows 属性，如 <grid cols="2" rows="2"> */
+grid {
+  display: grid;
+  gap: var(--gap);
+}
+grid[cols="2"] {
+  grid-template-columns: 1fr 1fr;
+}
+grid[cols="3"] {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+grid[cols="4"] {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+grid[rows="2"] {
+  grid-template-rows: 1fr 1fr;
+}
+grid[rows="3"] {
+  grid-template-rows: 1fr 1fr 1fr;
+}
+grid[rows="4"] {
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+/* 紧凑模式：缩小间距和上外边距 */
+grid[compact],
+:root.compact grid,
+section.compact grid {
+  gap: var(--gap-compact);
+}
+
+/* 弹性布局：默认横向，column 切换为纵向 */
+flex {
+  display: flex;
+  gap: var(--gap);
+}
+flex[column] {
+  flex-direction: column;
+}
+/* 横向 flex 的子元素自动撑满 */
+flex:not([column]) > * {
+  flex: 1;
+}
+/* 默认情况下，以下元素保持原始尺寸不拉伸；[auto] 模式下也强制等分 */
+flex:not([column]):not([auto]) > img,
+flex:not([column]):not([auto]) > tree,
+flex:not([column]):not([auto]) > timeline,
+flex:not([column]):not([auto]) > p:has(img) {
+  flex: none;
+}
+/* flex 内标题不设 margin，避免与 gap 叠加导致间距异常 */
+flex > h1, flex > h2, flex > h3,
+flex > h4, flex > h5, flex > h6 {
+  margin: 0;
+}
+/* 紧凑模式：缩小间距 */
+flex[compact],
+:root.compact flex,
+section.compact flex {
+  gap: var(--gap-compact);
+}
+
+/* ================================================================
+   Global Compact — 紧凑模式（幻灯片级）
+   ================================================================ */
+
+:root.compact,
+section.compact {
+  /* 仅改字号和间距，所有 rem 单位和 gap 变量自动响应 */
+  font-size: 22px;  /* 22px / 24px */
+  gap: var(--gap-compact);
+}
+:root.compact ul, :root.compact ol,
+section.compact ul, section.compact ol {
+  margin: 0;
+}
+:root.compact table thead th,
+section.compact table thead th {
+  padding: 6px 8px;
+}
+:root.compact table tbody td,
+section.compact table tbody td {
+  padding: 4px 8px;
+  line-height: 1.4;
+}
+
+/* ================================================================
+   Tables — 表格
+   ================================================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.846rem;
+  color: #334155;
+}
+table thead {
+  background-color: #0a4295;
+  color: #fff;
+  border-bottom: none;
+}
+table thead th {
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.4;
+  border-bottom: none !important;
+}
+section table>tbody>tr>td,
+section table>tbody>tr>th,
+section table>thead>tr>td,
+section table>thead>tr>th{
+  padding: 8px 12px;
+}
+table tbody tr:nth-of-type(2n) {
+  background-color: #f8fafc;
+}
+table tbody td {
+  padding: 7px 12px;
+  line-height: 1.5;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 表格行高亮（用于挑战-策略配对） */
+table tbody tr.row-red {
+  background-color: #fef2f2;
+}
+table tbody tr.row-green {
+  background-color: #f0fdf4;
+}
+
+/* ===== table 颜色变体：表头 + 偶数行 + 分隔线全套适配 ===== */
+/* 蓝色（默认值显式声明） */
+table[blue] thead                       { background-color: #0a4295; }
+table[blue] tbody tr:nth-of-type(2n)    { background-color: #f8fafc; }
+table[blue] tbody td                    { border-bottom-color: #e2e8f0; }
+
+/* 绿色 */
+table[green] thead                      { background-color: #1a5c2a; }
+table[green] tbody tr:nth-of-type(2n)   { background-color: #f0fdf4; }
+table[green] tbody td                   { border-bottom-color: #dcfce7; }
+
+/* 红色 */
+table[red] thead                        { background-color: #a51010; }
+table[red] tbody tr:nth-of-type(2n)     { background-color: #fef2f2; }
+table[red] tbody td                     { border-bottom-color: #fee2e2; }
+
+/* 黄色 */
+table[yellow] thead                     { background-color: #b87a14; }
+table[yellow] tbody tr:nth-of-type(2n)  { background-color: #fdf8ed; }
+table[yellow] tbody td                  { border-bottom-color: #f5ecd7; }
+
+/* 灰色 */
+table[gray] thead                       { background-color: #455a64; }
+table[gray] tbody tr:nth-of-type(2n)    { background-color: #f7f8f9; }
+table[gray] tbody td                    { border-bottom-color: #e8ecef; }
+
+
+/* ================================================================
+   DataTable — 数据表组件（标题栏 + 表格一体化）
+   ================================================================ */
+
+/*
+ * 标题作为表格的标题栏，与表格无缝融合为一张"数据卡片"：
+ *
+ * <datatable>
+ *
+ * ### 去程高铁 · G2117
+ *
+ * | 项目 | 详情 |
+ * |------|------|
+ * | 日期 | 8月2日 08:36 |
+ * | 出发 | 长沙南站 |
+ *
+ * </datatable>
+ *
+ * 颜色变体：datatable[green] / datatable[red] / datatable[yellow] / datatable[gray]
+ * 所有变体自动适配标题栏渐变、表头、斑马纹、边框等全套配色。
+ */
+
+/* ---- 容器：卡片化 + CSS 变量配色枢纽 ---- */
+datatable {
+  /* 默认蓝色主题变量 */
+  --dt-header-start: #0b4a9e;
+  --dt-header-end: #1158b8;
+  --dt-thead-bg: rgba(10, 66, 149, 0.07);
+  --dt-accent-border: rgba(10, 66, 149, 0.35);
+  --dt-border-color: #dce4f0;
+  --dt-accent: rgba(255, 255, 255, 0.25);
+
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 6px 0;
+  border: 1px solid var(--dt-header-start);
+}
+
+/* ---- 标题栏：渐变 + 左侧色条装饰 ---- */
+datatable h1, datatable h2, datatable h3,
+datatable h4, datatable h5, datatable h6 {
+  margin: 0;
+  padding: 14px 20px;
+  background: linear-gradient(160deg, var(--dt-header-start) 0%, var(--dt-header-end) 100%);
+  color: #fff;
+  font-size: 0.846rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: static;
+}
+/* 清除 h3 的蓝色竖条 */
+datatable h3::before {
+  content: none;
+}
+
+datatable table {
+  margin: 0;
+}
+
+/* ---- 表格配色跟随主题 ---- */
+/* 表头淡色底：标题栏是深色渐变，表头用极淡主题色 + 底部色线，既不抢眼又能与数据行区分 */
+datatable table thead {
+  background: var(--dt-thead-bg);
+  color: #334155;
+}
+datatable table thead th {
+  font-weight: bold;
+  border-bottom: 2px solid var(--dt-accent-border) !important;
+}
+datatable table tbody tr:nth-of-type(2n) {
+  background-color: transparent;
+}
+datatable table tbody td {
+  border-bottom-color: var(--dt-border-color) !important;
+}
+
+/* ===== 颜色变体 ===== */
+
+/* 绿色 — 成功/正面数据 */
+datatable[green] {
+  --dt-header-start: #1a5c2a;
+  --dt-header-end: #1f7a36;
+  --dt-thead-bg: rgba(26, 92, 42, 0.06);
+  --dt-accent-border: rgba(26, 92, 42, 0.35);
+  --dt-border-color: #e8ede9;
+  --dt-accent: rgba(255, 255, 255, 0.25);
+}
+
+/* 红色 — 危险/警告数据 */
+datatable[red] {
+  --dt-header-start: #a51010;
+  --dt-header-end: #c00000;
+  --dt-thead-bg: rgba(165, 16, 16, 0.05);
+  --dt-accent-border: rgba(165, 16, 16, 0.35);
+  --dt-border-color: #eee5e5;
+  --dt-accent: rgba(255, 255, 255, 0.25);
+}
+
+/* 黄色 — 注意/强调数据 */
+datatable[yellow] {
+  --dt-header-start: #b87a14;
+  --dt-header-end: #cc8c1a;
+  --dt-thead-bg: rgba(184, 122, 20, 0.06);
+  --dt-accent-border: rgba(184, 122, 20, 0.35);
+  --dt-border-color: #ede9dd;
+  --dt-accent: rgba(255, 255, 255, 0.25);
+}
+
+/* 灰色 — 中性/辅助数据 */
+datatable[gray] {
+  --dt-header-start: #455a64;
+  --dt-header-end: #607d8b;
+  --dt-thead-bg: rgba(69, 90, 100, 0.06);
+  --dt-accent-border: rgba(69, 90, 100, 0.35);
+  --dt-border-color: #e8ecef;
+  --dt-accent: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ===== compact 模式 ===== */
+datatable[compact],
+:root.compact datatable,
+section.compact datatable {
+  margin: 4px 0;
+  border-radius: 6px;
+}
+datatable[compact] h1, datatable[compact] h2, datatable[compact] h3,
+datatable[compact] h4, datatable[compact] h5, datatable[compact] h6,
+:root.compact datatable h1, :root.compact datatable h2, :root.compact datatable h3,
+:root.compact datatable h4, :root.compact datatable h5, :root.compact datatable h6,
+section.compact datatable h1, section.compact datatable h2, section.compact datatable h3,
+section.compact datatable h4, section.compact datatable h5, section.compact datatable h6 {
+  padding: 9px 16px;
+  font-size: 0.731rem;
+}
+datatable[compact] table,
+:root.compact datatable table,
+section.compact datatable table {
+  font-size: 0.654rem;
+}
+datatable[compact] table thead th,
+:root.compact datatable table thead th,
+section.compact datatable table thead th {
+  padding: 7px 14px;
+}
+datatable[compact] table tbody td,
+:root.compact datatable table tbody td,
+section.compact datatable table tbody td {
+  padding: 6px 14px;
+}
+
+
+/* ================================================================
+   Code Blocks & Syntax Highlighting
+   ================================================================ */
+
+/*
+ * uncover 主题将 background 设在 pre>code 上 + 居中 auto-scaling，
+ * 导致代码背景仅铺到文本宽度。以下改为 default 主题的 GitHub 风格：
+ * 背景/边框在 pre 上，配色通过 :root 中 CSS 变量统一控制。
+ */
+
+/* --- 代码块容器 & 内联 code 通用 --- */
+section code {
+  letter-spacing: 0;
+  color: var(--code-default) !important;
+}
+
+/* --- 内联 code --- */
+:not(pre, marp-pre) > code,
+section > code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 72%;
+  white-space: break-spaces;
+  background-color: var(--code-inline-bg);
+  border-radius: 6px;
+  color: inherit;
+}
+
+/* --- 代码块容器（pre / marp-pre） --- */
+marp-pre,
+pre {
+  filter: none;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  margin: 0;
+  padding: 16px;
+  font-size: 85%;
+  line-height: 1.45;
+  --preserve-aspect-ratio: xMinYMid meet;
+  overflow: auto;
+}
+
+/* --- 代码块内 <code>：透明背景，避免叠层 --- */
+section :is(pre, marp-pre) > code {
+  display: block;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  white-space: pre;
+  word-break: normal;
+  overflow: visible;
+  line-height: inherit;
+  border: 0;
+  border-radius: 0;
+}
+
+/* ===== 语法高亮：引用 :root 变量（覆盖 uncover 默认色） ===== */
+section :is(pre, marp-pre) :where(.hljs-comment),
+section :is(pre, marp-pre) :where(.hljs-quote),
+section :is(pre, marp-pre) :where(.hljs-code),
+section :is(pre, marp-pre) :where(.hljs-formula) {
+  color: var(--code-comment);
+}
+
+section :is(pre, marp-pre) :where(.hljs-keyword),
+section :is(pre, marp-pre) :where(.hljs-doctag),
+section :is(pre, marp-pre) :where(.hljs-type),
+section :is(pre, marp-pre) :where(.hljs-template-tag),
+section :is(pre, marp-pre) :where(.hljs-template-variable),
+section :is(pre, marp-pre) :where(.hljs-variable.language_),
+section :is(pre, marp-pre) :where(.hljs-meta .hljs-keyword) {
+  color: var(--code-keyword);
+}
+
+section :is(pre, marp-pre) :where(.hljs-title),
+section :is(pre, marp-pre) :where(.hljs-title.class_),
+section :is(pre, marp-pre) :where(.hljs-title.class_.inherited__),
+section :is(pre, marp-pre) :where(.hljs-title.function_),
+section :is(pre, marp-pre) :where(.hljs-section),
+section :is(pre, marp-pre) :where(.hljs-selector-class),
+section :is(pre, marp-pre) :where(.hljs-selector-id) {
+  color: var(--code-entity);
+}
+
+section :is(pre, marp-pre) :where(.hljs-attr),
+section :is(pre, marp-pre) :where(.hljs-attribute),
+section :is(pre, marp-pre) :where(.hljs-literal),
+section :is(pre, marp-pre) :where(.hljs-meta),
+section :is(pre, marp-pre) :where(.hljs-number),
+section :is(pre, marp-pre) :where(.hljs-operator),
+section :is(pre, marp-pre) :where(.hljs-selector-attr),
+section :is(pre, marp-pre) :where(.hljs-variable) {
+  color: var(--code-constant);
+}
+
+section :is(pre, marp-pre) :where(.hljs-string),
+section :is(pre, marp-pre) :where(.hljs-regexp),
+section :is(pre, marp-pre) :where(.hljs-meta .hljs-string) {
+  color: var(--code-string);
+}
+
+section :is(pre, marp-pre) :where(.hljs-built_in),
+section :is(pre, marp-pre) :where(.hljs-symbol),
+section :is(pre, marp-pre) :where(.hljs-params) {
+  color: var(--code-variable);
+}
+
+section :is(pre, marp-pre) :where(.hljs-name),
+section :is(pre, marp-pre) :where(.hljs-selector-pseudo),
+section :is(pre, marp-pre) :where(.hljs-selector-tag) {
+  color: var(--code-tag);
+}
+
+section :is(pre, marp-pre) :where(.hljs-subst) {
+  color: var(--code-storage);
+}
+
+section :is(pre, marp-pre) :where(.hljs-bullet) {
+  color: var(--code-markup-list);
+}
+
+section :is(pre, marp-pre) :where(.hljs-emphasis) {
+  font-style: italic;
+  color: var(--code-storage);
+}
+
+section :is(pre, marp-pre) :where(.hljs-strong) {
+  font-weight: 700;
+  color: var(--code-storage);
+}
+
+section :is(pre, marp-pre) :where(.hljs-addition) {
+  color: var(--code-inserted-text);
+  background-color: var(--code-inserted-bg);
+}
+
+section :is(pre, marp-pre) :where(.hljs-deletion) {
+  color: var(--code-deleted-text);
+  background-color: var(--code-deleted-bg);
+}
+
+section :is(pre, marp-pre) :where(.hljs-link),
+section :is(pre, marp-pre) :where(.hljs-tag),
+section :is(pre, marp-pre) :where(.hljs-deletion),
+section :is(pre, marp-pre) :where(.hljs-variable) {
+  color: var(--code-variable);
+}
+
+
+/* ================================================================
+   Card — 卡片组件
+   ================================================================ */
+
+/* 卡片积木：可独立使用，也可配合 flex 使用 */
+card {
+  display: flex;
+  padding: 14px 22px;
+  border-radius: 6px;
+  border: 1px solid #003f88;
+  border-left-width: 3px;
+  background: #fff;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+/* 仅重置直接子元素垂直外边距，避免与 gap 叠加 */
+card > * {
+  margin: 0;
+}
+card ul, card ol {
+  padding-inline-start: 20px;
+}
+/* 卡片内标题统一化：不管哪一级标题，都视为卡片标题 */
+card h1, card h2, card h3, card h4, card h5, card h6 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #003f88;
+  margin: -14px -22px 0px -22px;
+  padding: 14px 22px 12px 22px;
+  position: relative;
+  background: #003f880d;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid rgba(0, 63, 136, 0.6);
+}
+
+/* 危险/问题卡片：仅关键元素红色，不过度染色 */
+card[red] {
+  border-color:#c00000;
+}
+card[red] h1, card[red] h2, card[red] h3,
+card[red] h4, card[red] h5, card[red] h6 {
+  color: #c00000;
+  background: rgba(192, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(192, 0, 0, 0.6);
+}
+card[red] blockquote {
+  background: #fdf0f0;
+  border: none;
+  color: #a00000;
+  font-weight: 500;
+}
+
+/* 成功/正面卡片：绿色系，与 danger 形成对比 */
+card[green] {
+  border-color:#006400;
+}
+card[green] h1, card[green] h2, card[green] h3,
+card[green] h4, card[green] h5, card[green] h6 {
+  color: #006400;
+  background: rgba(0, 128, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 100, 0, 0.6)
+}
+card[green] blockquote {
+  background: #eef7ee;
+  border: none;
+  color: #005000;
+  font-weight: 500;
+}
+
+/* 注意/提醒卡片：黄色系，适合注意事项及温和提示 */
+card[yellow] {
+  border-color: #b87a14;
+}
+card[yellow] h1, card[yellow] h2, card[yellow] h3,
+card[yellow] h4, card[yellow] h5, card[yellow] h6 {
+  color: #9b7315;
+  background: rgba(184, 122, 20, 0.06);
+  border-bottom: 1px solid rgba(184, 122, 20, 0.6);
+}
+card[yellow] blockquote {
+  background: #fef9ee;
+  border: none;
+  color: #7a5d10;
+  font-weight: 500;
+}
+
+/* 中性/归档卡片：灰色系，适合辅助信息、备注说明 */
+card[gray] {
+  border-color: #455a64;
+}
+card[gray] h1, card[gray] h2, card[gray] h3,
+card[gray] h4, card[gray] h5, card[gray] h6 {
+  color: #455a64;
+  background: rgba(69, 90, 100, 0.06);
+  border-bottom: 1px solid rgba(69, 90, 100, 0.6);
+}
+card[gray] blockquote {
+  background: #f5f6f7;
+  border: none;
+  color: #3d4a52;
+  font-weight: 500;
+}
+
+/* 紧凑卡片：用于内容密集场景（如并排表格） */
+card[compact],
+:root.compact card,
+section.compact card {
+  padding: 8px 14px 4px;
+}
+card[compact] h1, card[compact] h2, card[compact] h3,
+card[compact] h4, card[compact] h5, card[compact] h6,
+:root.compact card h1, :root.compact card h2, :root.compact card h3,
+:root.compact card h4, :root.compact card h5, :root.compact card h6,
+section.compact card h1, section.compact card h2, section.compact card h3,
+section.compact card h4, section.compact card h5, section.compact card h6 {
+  font-size: 1.05rem;
+  margin: -8px -14px -4px -14px;
+  padding: 7px 14px 5px 14px;
+}
+card[compact] table,
+:root.compact card table,
+section.compact card table {
+  font-size: 0.692rem;
+  margin: 4px 0 2px;
+}
+card[compact] table thead th,
+:root.compact card table thead th,
+section.compact card table thead th {
+  padding: 8px;
+}
+card[compact] table tbody td,
+:root.compact card table tbody td,
+section.compact card table tbody td {
+  padding: 4px 8px;
+  line-height: 1.4;
+}
+card[compact] badge,
+:root.compact card badge,
+section.compact card badge {
+  font-size: 0.5rem;
+  padding: 0px 7px;
+}
+
+/* 卡片内重点结论：干净实色背景块，像高亮标记，不用边框 */
+card blockquote {
+  margin: 0;
+  padding: 12px 16px;
+  background: #eef3fa;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.846rem;
+  color: #002d66;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* 卡片内表格：紧凑排版 */
+card table {
+  margin: 0;
+  width: 100%;
+}
+card table thead th {
+  padding: 8px 10px;
+}
+card table tbody td {
+  padding: 6px 10px;
+}
+card table tbody tr > td:first-child {
+  font-weight: 500;
+}
+card table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* card[green] 内表格：绿色主题 */
+card[green] table thead {
+  background-color: #006400;
+}
+card[green] table tbody tr:nth-of-type(2n) {
+  background-color: #f0fdf4;
+}
+card[green] table tbody td {
+  border-bottom-color: #dcfce7;
+}
+
+/* card[red] 内表格：红色主题 */
+card[red] table thead {
+  background-color: #c00000;
+}
+card[red] table tbody tr:nth-of-type(2n) {
+  background-color: #fef2f2;
+}
+card[red] table tbody td {
+  border-bottom-color: #fee2e2;
+}
+
+/* card[yellow] 内表格：黄色主题 */
+card[yellow] table thead {
+  background-color: #b87a14;
+}
+card[yellow] table tbody tr:nth-of-type(2n) {
+  background-color: #fdf8ed;
+}
+card[yellow] table tbody td {
+  border-bottom-color: #f5ecd7;
+}
+
+/* card[gray] 内表格：灰色主题 */
+card[gray] table thead {
+  background-color: #455a64;
+}
+card[gray] table tbody tr:nth-of-type(2n) {
+  background-color: #f7f8f9;
+}
+card[gray] table tbody td {
+  border-bottom-color: #e8ecef;
+}
+
+
+/* ================================================================
+   Outline — 虚线外框组件
+   ================================================================ */
+
+/* 虚线外框：与 card 结构一致，但用虚线边框 */
+outline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 22px 18px;
+  background: #fff;
+  border: 2px dashed #0061ae;
+}
+outline[compact],
+:root.compact outline,
+section.compact outline {
+  padding: 10px 16px 12px;
+}
+outline[compact] h1, outline[compact] h2, outline[compact] h3,
+outline[compact] h4, outline[compact] h5, outline[compact] h6,
+:root.compact outline h1, :root.compact outline h2, :root.compact outline h3,
+:root.compact outline h4, :root.compact outline h5, :root.compact outline h6,
+section.compact outline h1, section.compact outline h2, section.compact outline h3,
+section.compact outline h4, section.compact outline h5, section.compact outline h6 {
+  font-size: 0.769rem;
+  padding: 3px 12px;
+  margin: 0 0 8px 0;
+}
+
+outline h1, outline h2, outline h3, outline h4, outline h5, outline h6 {
+  display: inline-block;
+  border: none;
+  background: #0061ae;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 4px;
+  font-size: 0.923rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  position: relative;
+}
+outline p, outline ul, outline mark {
+  margin: 0;
+}
+outline ul {
+  padding-inline-start: 30px;
+}
+
+/* 实线变体：标题居中、蓝底白字、与边框无间距 */
+outline[solid] {
+  border-style: solid;
+}
+outline[solid] h1, outline[solid] h2, outline[solid] h3,
+outline[solid] h4, outline[solid] h5, outline[solid] h6 {
+  display: block;
+  text-align: center;
+  border-radius: 0;
+  margin: -14px -22px 14px -22px;
+  padding: 10px 22px;
+}
+
+/* outline 内引用：保留左边框强调 */
+outline blockquote {
+  padding: 8px 14px;
+  border: none;
+  border-left: 4px solid #003f88;
+  background: rgba(0, 63, 136, 0.08);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.846rem;
+  color: #003f88;
+  font-style: normal;
+}
+
+/* ===== outline 颜色变体：边框 + 标题 + blockquote 全套适配 ===== */
+/* 蓝色（默认值显式声明，方便对比修改） */
+outline[blue] {
+  border-color: #0061ae;
+}
+outline[blue] h1, outline[blue] h2, outline[blue] h3,
+outline[blue] h4, outline[blue] h5, outline[blue] h6 {
+  background: #0061ae;
+}
+outline[blue] blockquote {
+  border-left-color: #003f88;
+  background: rgba(0, 63, 136, 0.08);
+  color: #003f88;
+}
+
+/* 绿色 */
+outline[green] {
+  border-color: #1a5c2a;
+}
+outline[green] h1, outline[green] h2, outline[green] h3,
+outline[green] h4, outline[green] h5, outline[green] h6 {
+  background: #1a5c2a;
+}
+outline[green] blockquote {
+  border-left-color: #006400;
+  background: rgba(0, 100, 0, 0.06);
+  color: #005000;
+}
+
+/* 红色 */
+outline[red] {
+  border-color: #a51010;
+}
+outline[red] h1, outline[red] h2, outline[red] h3,
+outline[red] h4, outline[red] h5, outline[red] h6 {
+  background: #a51010;
+}
+outline[red] blockquote {
+  border-left-color: #c00000;
+  background: rgba(192, 0, 0, 0.06);
+  color: #a00000;
+}
+
+/* 黄色 */
+outline[yellow] {
+  border-color: #b87a14;
+}
+outline[yellow] h1, outline[yellow] h2, outline[yellow] h3,
+outline[yellow] h4, outline[yellow] h5, outline[yellow] h6 {
+  background: #b87a14;
+}
+outline[yellow] blockquote {
+  border-left-color: #9b7315;
+  background: rgba(184, 122, 20, 0.06);
+  color: #7a5d10;
+}
+
+/* 灰色 */
+outline[gray] {
+  border-color: #455a64;
+}
+outline[gray] h1, outline[gray] h2, outline[gray] h3,
+outline[gray] h4, outline[gray] h5, outline[gray] h6 {
+  background: #455a64;
+}
+outline[gray] blockquote {
+  border-left-color: #455a64;
+  background: rgba(69, 90, 100, 0.06);
+  color: #3d4a52;
+}
+
+/* ---- Card & Outline 共用重置 ---- */
+
+/* 覆盖 h3::before 的蓝色竖条，卡片/outline 内不需要 */
+card h3::before, outline h3::before {
+  content: none;
+}
+
+/* 卡片/outline 内引用段落无外边距 */
+card blockquote p, outline blockquote p {
+  margin: 0;
+}
+
+/* 移除卡片/outline 内引用的双引号装饰（uncover 主题自带） */
+card blockquote::before,
+card blockquote::after,
+outline blockquote::before,
+outline blockquote::after {
+  content: none;
+}
+
+
+/* ================================================================
+   Badge — 状态标签
+   ================================================================ */
+
+badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.577rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: 0.2em;
+  background: #003f88;
+  color: #fff;
+  text-align: center;
+}
+badge[green] {
+  background: #70ac45;
+}
+badge[yellow] {
+  background: #ec7e31;
+}
+badge[red] {
+  background: #bf0001;
+}
+badge[gray] {
+  background: #607d8b;
+}
+
+
+/* ================================================================
+   Summary — 通栏总结横幅
+   ================================================================ */
+
+summary {
+  background: linear-gradient(180deg, #0f4b9e 0%, #0a408c 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+summary[left] {
+  align-items: flex-start;
+}
+summary[bold] {
+  color: #FFD255;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+summary[white] {
+  color: #ffffff !important;
+}
+summary badge {
+  background: #ffffff;
+  color: #0d4695;
+}
+summary :not(pre, marp-pre) > code,
+summary > code {
+  background: rgba(255, 255, 255, 0.18);
+  color: inherit !important;
+}
+summary strong {
+  color: #FFD255;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+summary badge[green] {
+  background: #36b367;
+  color: #fff;
+}
+summary badge[gray] {
+  background: #69a1bf;
+  color: #fff;
+}
+summary badge[yellow] {
+  background: #d4a017;
+  color: #fff;
+}
+summary badge[red] {
+  background: #e53e3e;
+  color: #fff;
+}
+summary * {
+  margin: 0;
+}
+
+
+/* ================================================================
+   Metric — 指标卡片（KPI / 数字展示）
+   ================================================================ */
+
+metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 22px 22px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #00348b;
+  text-align: center;
+}
+/* 数值：大号加粗，主色调 */
+metric h1, metric h2, metric h3, metric h4, metric h5, metric h6 {
+  font-size: 1.538rem;
+  font-weight: 700;
+  color: #00348b;
+  margin: 0 0 8px 0;
+  padding: 0;
+  background: none !important;
+  border: none;
+  text-align: center;
+  line-height: 1.2;
+}
+metric[compact] h1, metric[compact] h2, metric[compact] h3,
+metric[compact] h4, metric[compact] h5, metric[compact] h6,
+:root.compact metric h1, :root.compact metric h2, :root.compact metric h3,
+:root.compact metric h4, :root.compact metric h5, :root.compact metric h6,
+section.compact metric h1, section.compact metric h2, section.compact metric h3,
+section.compact metric h4, section.compact metric h5, section.compact metric h6 {
+  font-size: 0.923rem;
+}
+/* 去掉 h3 全局左侧蓝色竖条 */
+metric h1::before, metric h2::before, metric h3::before,
+metric h4::before, metric h5::before, metric h6::before {
+  content: none;
+}
+/* 标签文字 */
+metric p {
+  font-size: 0.808rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0 0 2px 0;
+}
+/* metric 内 badge 自动跟随 metric 配色 —— 无需手动指定 badge 颜色 */
+metric badge {
+  margin-top: 8px;
+}
+
+/* --- 蓝色（默认） --- */
+metric badge:not([green]):not([red]):not([yellow]):not([gray]) {
+  background: rgba(0, 63, 136, 0.1);
+  color: #00348b;
+}
+
+/* --- 绿色 --- */
+metric[green] {
+  border-top-color: #195736;
+}
+metric[green] h1, metric[green] h2, metric[green] h3,
+metric[green] h4, metric[green] h5, metric[green] h6 {
+  color: #195736;
+}
+metric[green] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+  background: rgba(0, 122, 138, 0.12);
+  color: #195736;
+}
+
+/* --- 红色 --- */
+metric[red] {
+  border-top-color: #9e0509;
+}
+metric[red] h1, metric[red] h2, metric[red] h3,
+metric[red] h4, metric[red] h5, metric[red] h6 {
+  color: #9e0509;
+}
+metric[red] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+  background: rgba(140, 40, 40, 0.12);
+  color: #9e0509;
+}
+
+/* --- 黄色 --- */
+metric[yellow] {
+  border-top-color: #9b7315;
+}
+metric[yellow] h1, metric[yellow] h2, metric[yellow] h3,
+metric[yellow] h4, metric[yellow] h5, metric[yellow] h6 {
+  color: #9b7315;
+}
+metric[yellow] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+  background: rgba(166, 124, 0, 0.12);
+  color: #9b7315;
+}
+
+/* --- 灰色 --- */
+metric[gray] {
+  border-top-color: #455a64;
+}
+metric[gray] h1, metric[gray] h2, metric[gray] h3,
+metric[gray] h4, metric[gray] h5, metric[gray] h6 {
+  color: #455a64;
+}
+metric[gray] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+  background: rgba(69, 90, 100, 0.1);
+  color: #455a64;
+}
+
+
+/* ================================================================
+   Note — 辅助小字组件（备注 / 数据来源 / 补充说明）
+   ================================================================ */
+
+/*
+ * <note>
+ *
+ * 数据来源：2026 年度内部统计报告
+ *
+ * </note>
+ *
+ * 变体：note[footnote] 顶部分隔线 / note[center] 居中 / 颜色变体
+ */
+note {
+  display: block;
+  font-size: 0.692rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+/* 顶部分隔线 — 常用于幻灯片底部的脚注区域 */
+note[footnote] {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+/* 居中 */
+note[center] {
+  text-align: center;
+}
+/* 颜色变体 */
+note[blue]   { color: #6b8cbf; }
+note[green]  { color: #6a9f46; }
+note[red]    { color: #c45a5a; }
+note[yellow] { color: #b6964b; }
+note[gray]   { color: #94a3b8; }
+
+/* 行内强调：配合 strong 使用 */
+note strong {
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* compact */
+note[compact],
+:root.compact note,
+section.compact note {
+  font-size: 0.577rem;
+  margin: 3px 0;
+}
+note[compact][rule],
+:root.compact note[footnote],
+section.compact note[footnote] {
+  margin-top: 8px;
+  padding-top: 6px;
+}
+
+
+/* ================================================================
+   Compare — 对比组件（before → after）
+   设计思路：before 红色系（旧/问题），after 蓝色系（新/改进），
+   用浮动标签 + 微阴影取代顶部色条，与 metric 组件形成差异。
+   ================================================================ */
+
+compare {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+compare before,
+compare after {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 22px 20px;
+  border-radius: 4px;
+  position: relative;
+}
+/* ---- before 卡片：红色系，左侧留出标签空间 ---- */
+compare before {
+  background: linear-gradient(160deg, #fffafa 0%, #fef5f5 40%, #fdf2f2 100%);
+  border: 1.5px solid #ecc8c8;
+  color: #5a2828;
+  z-index: 1;
+}
+/* ---- after 卡片：蓝色系 ---- */
+compare after {
+  background: linear-gradient(160deg, #fafcff 0%, #f2f7ff 40%, #eef5ff 100%);
+  border: 1.5px solid #c4d6f0;
+  color: #1a3a6b;
+  z-index: 1;
+}
+/* ---- 浮动标签：取代顶部色条，是 compare 独有视觉特征 ---- */
+compare before::before {
+  content: "之前";
+  position: absolute;
+  top: 13px;
+  left: 0px;
+  transform: translateY(-50%);
+  background: #c0392b;
+  color: #ffffff;
+  padding: 3px 14px;
+  border-radius: 3px 0 4px 0;
+  font-size: 0.615rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 2;
+}
+compare after::before {
+  content: "之后";
+  position: absolute;
+  top: 13px;
+  left: 0;
+  transform: translateY(-50%);
+  background: #0d4695;
+  color: #ffffff;
+  padding: 3px 14px;
+  border-radius: 3px 0 4px 0;
+  font-size: 0.615rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 2;
+}
+/* ---- 中间箭头：纯文字，极简处理 ---- */
+compare arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: #90959a;
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 1.154rem;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+/* ---- 标题 ---- */
+compare h1, compare h2, compare h3,
+compare h4, compare h5, compare h6 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.308rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  background: transparent !important;
+  border-bottom: none !important;
+}
+compare before h1, compare before h2, compare before h3,
+compare before h4, compare before h5, compare before h6 {
+  color: #6b2020 !important;
+}
+compare after h1, compare after h2, compare after h3,
+compare after h4, compare after h5, compare after h6 {
+  color: #0a3978 !important;
+}
+/* ---- 引用 / 副标题 ---- */
+compare before > blockquote,
+compare after > blockquote {
+  margin: 0 0 4px 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 0.923rem;
+  font-weight: 500;
+  font-style: normal;
+  opacity: 0.7;
+}
+compare before > blockquote p,
+compare after > blockquote p {
+  margin: 0;
+}
+/* ---- 列表 ---- */
+compare before :is(ul, ol),
+compare after :is(ul, ol) {
+  margin: 4px 0;
+  padding-inline-start: 18px;
+}
+compare before li,
+compare after li {
+  font-size: 0.923rem;
+  line-height: 1.5;
+  margin: 2px 0;
+}
+/* ---- compare 内的 timeline：抵消卡片自身的 padding，避免内边距叠加 ---- */
+compare before timeline,
+compare after timeline {
+  padding-left: 11px;
+}
+/* compare 内 timeline 竖线收尾：避免底部超出最后圆点 */
+compare before timeline::before,
+compare after timeline::before {
+  bottom: 14px;
+}
+compare before timeline[compact]::before,
+compare after timeline[compact]::before,
+:root.compact compare before timeline::before,
+:root.compact compare after timeline::before,
+section.compact compare before timeline::before,
+section.compact compare after timeline::before {
+  bottom: 24px;
+}
+/* ---- compare 内 timeline 颜色自适应（覆盖显式颜色属性） ---- */
+/* before 区域：红色系（竖线 + 圆点 + 标题 + blockquote） */
+compare before timeline::before,
+compare before timeline[blue]::before,
+compare before timeline[red]::before,
+compare before timeline[green]::before,
+compare before timeline[yellow]::before,
+compare before timeline[gray]::before {
+  background: rgba(165, 16, 16, 0.2);
+}
+compare before timeline > :is(ul, ol) > li::before,
+compare before timeline[blue] > :is(ul, ol) > li::before,
+compare before timeline[red] > :is(ul, ol) > li::before,
+compare before timeline[green] > :is(ul, ol) > li::before,
+compare before timeline[yellow] > :is(ul, ol) > li::before,
+compare before timeline[gray] > :is(ul, ol) > li::before {
+  background: #a51010;
+  border-color: #e0b8b8;
+}
+compare before timeline > :is(ul, ol) > li > p:first-of-type,
+compare before timeline[blue] > :is(ul, ol) > li > p:first-of-type,
+compare before timeline[red] > :is(ul, ol) > li > p:first-of-type,
+compare before timeline[green] > :is(ul, ol) > li > p:first-of-type,
+compare before timeline[yellow] > :is(ul, ol) > li > p:first-of-type,
+compare before timeline[gray] > :is(ul, ol) > li > p:first-of-type {
+  color: #c00000;
+}
+compare before timeline > :is(ul, ol) > li > blockquote,
+compare before timeline[blue] > :is(ul, ol) > li > blockquote,
+compare before timeline[red] > :is(ul, ol) > li > blockquote,
+compare before timeline[green] > :is(ul, ol) > li > blockquote,
+compare before timeline[yellow] > :is(ul, ol) > li > blockquote,
+compare before timeline[gray] > :is(ul, ol) > li > blockquote {
+  background: rgba(192, 0, 0, 0.06);
+  border-left-color: #c00000;
+  color: #a00000;
+}
+/* after 区域：蓝色系 */
+compare after timeline::before,
+compare after timeline[blue]::before,
+compare after timeline[red]::before,
+compare after timeline[green]::before,
+compare after timeline[yellow]::before,
+compare after timeline[gray]::before {
+  background: rgba(0, 63, 136, 0.25);
+}
+compare after timeline > :is(ul, ol) > li::before,
+compare after timeline[blue] > :is(ul, ol) > li::before,
+compare after timeline[red] > :is(ul, ol) > li::before,
+compare after timeline[green] > :is(ul, ol) > li::before,
+compare after timeline[yellow] > :is(ul, ol) > li::before,
+compare after timeline[gray] > :is(ul, ol) > li::before {
+  background: #003f88;
+  border-color: #c5d2e3;
+}
+compare after timeline > :is(ul, ol) > li > p:first-of-type,
+compare after timeline[blue] > :is(ul, ol) > li > p:first-of-type,
+compare after timeline[red] > :is(ul, ol) > li > p:first-of-type,
+compare after timeline[green] > :is(ul, ol) > li > p:first-of-type,
+compare after timeline[yellow] > :is(ul, ol) > li > p:first-of-type,
+compare after timeline[gray] > :is(ul, ol) > li > p:first-of-type {
+  color: #003f88;
+}
+compare after timeline > :is(ul, ol) > li > blockquote,
+compare after timeline[blue] > :is(ul, ol) > li > blockquote,
+compare after timeline[red] > :is(ul, ol) > li > blockquote,
+compare after timeline[green] > :is(ul, ol) > li > blockquote,
+compare after timeline[yellow] > :is(ul, ol) > li > blockquote,
+compare after timeline[gray] > :is(ul, ol) > li > blockquote {
+  background: rgba(0, 63, 136, 0.06);
+  border-left-color: #003f88;
+  color: #003f88;
+}
+/* before 列表项：红色圆点 */
+compare before li::marker {
+  color: #c0392b;
+}
+/* after 列表项：蓝色圆点 */
+compare after li::marker {
+  color: #0d4695;
+}
+/* ---- 普通段落 ---- */
+compare before > p,
+compare after > p {
+  font-size: 1.077rem;
+  margin: 2px 0;
+}
+/* ---- 卡片内 summary：替代加粗汇总行，顶部虚线分隔 ---- */
+compare before > summary,
+compare after > summary {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 12px;
+  padding-bottom: 0;
+  border-top: 1px dashed rgba(0,0,0,0.1);
+  background: transparent;
+  font-size: 1.077rem;
+  font-weight: 700;
+  text-align: left;
+}
+compare before > summary {
+  color: #6b2020;
+}
+compare after > summary {
+  color: #0a3978;
+}
+/* ---- center 模式：数值/短内容居中展示 ---- */
+compare[center] before,
+compare[center] after {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+compare[center] before > p,
+compare[center] after > p,
+compare[center] before > blockquote,
+compare[center] after > blockquote,
+compare[center] before > summary,
+compare[center] after > summary {
+  text-align: center;
+}
+/* 清除全局标题多余样式干扰 */
+compare h1::before, compare h2::before, compare h3::before,
+compare h4::before, compare h5::before, compare h6::before {
+  content: none;
+}
+/* 清除 uncover 主题的引号装饰 */
+compare before > blockquote::before,
+compare before > blockquote::after,
+compare after > blockquote::before,
+compare after > blockquote::after {
+  content: none;
+}
+
+
+/* ================================================================
+   Timeline — 时间线组件
+   ================================================================ */
+
+/*
+ * 纯 Markdown 列表写法，每个顶层 li 为一个时间节点：
+ *
+ * <timeline>
+ *
+ * - 阶段一标题
+ *   - 事项 1
+ *   - 事项 2
+ * - 阶段二标题
+ *   - 事项 3
+ *
+ * </timeline>
+ */
+timeline {
+  display: block;
+  margin: 6px 0 6px 4px;
+  position: relative;
+  padding-left: 32px;
+}
+/* 连续竖线 — 从第一个圆点中心到最后一个圆点中心 */
+timeline::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: rgba(0, 63, 136, 0.25);
+}
+/* 重置最外层 ul（Marp 从 Markdown 生成的 <ul>） */
+timeline > :is(ul, ol) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* 顶层 li = 时间线节点容器 */
+timeline > :is(ul, ol) > li {
+  display: block;
+  position: relative;
+  padding: 0 0 24px 0;
+}
+timeline > :is(ul, ol) > li:last-child {
+  padding-bottom: 0;
+}
+/* 圆点标记 — 与标题首行对齐 */
+timeline > :is(ul, ol) > li::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #003f88;
+  border: 3px solid #c5d2e3;
+}
+/* 第一个 p = 节点标题 */
+timeline > :is(ul, ol) > li > p:first-of-type {
+  color: #003f88;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 6px 0;
+}
+/* 后续 p = 正文描述（与嵌套列表样式一致） */
+timeline > :is(ul, ol) > li > p:not(:first-of-type) {
+  font-weight: normal;
+  color: #334155;
+  margin: 2px 0;
+  line-height: 1.5;
+}
+/* 嵌套 ul（详情列表） */
+timeline > :is(ul, ol) > li > ul {
+  padding-inline-start: 20px;
+  margin: 4px 0 0 0;
+  list-style: disc;
+}
+/* 嵌套 li（详情条目） */
+timeline > :is(ul, ol) > li > ul > li {
+  font-weight: normal;
+  color: #334155;
+  line-height: 1.5;
+  margin: 2px 0;
+}
+/* blockquote 用作时间标签 / 副标题 */
+timeline > :is(ul, ol) > li > blockquote {
+  display: block;
+  margin: 4px 0 8px 0;
+  padding: 6px 16px;
+  background: rgba(0, 63, 136, 0.06);
+  border: none;
+  border-left: 3px solid #003f88;
+  border-radius: 0 4px 4px 0;
+  color: #003f88;
+  font-weight: 500;
+  font-style: normal;
+}
+timeline > :is(ul, ol) > li > blockquote p {
+  margin: 0;
+}
+/* 清除 uncover 主题的引号装饰 */
+timeline > :is(ul, ol) > li > blockquote::before,
+timeline > :is(ul, ol) > li > blockquote::after {
+  content: none;
+}
+
+/* ===== timeline 颜色变体：竖线 + 圆点 + 标题 + blockquote 全套适配 ===== */
+/* 蓝色（默认值显式） */
+timeline[blue]::before                             { background: rgba(0, 63, 136, 0.25); }
+timeline[blue] > :is(ul, ol) > li::before                   { background: #003f88; border-color: #c5d2e3; }
+timeline[blue] > :is(ul, ol) > li > p:first-of-type         { color: #003f88; }
+timeline[blue] > :is(ul, ol) > li > blockquote              { background: rgba(0, 63, 136, 0.06); border-left-color: #003f88; color: #003f88; }
+
+/* 绿色 */
+timeline[green]::before                            { background: rgba(26, 92, 42, 0.2); }
+timeline[green] > :is(ul, ol) > li::before                  { background: #1a5c2a; border-color: #b8d4be; }
+timeline[green] > :is(ul, ol) > li > p:first-of-type        { color: #006400; }
+timeline[green] > :is(ul, ol) > li > blockquote             { background: rgba(0, 100, 0, 0.06); border-left-color: #006400; color: #005000; }
+
+/* 红色 */
+timeline[red]::before                              { background: rgba(165, 16, 16, 0.2); }
+timeline[red] > :is(ul, ol) > li::before                    { background: #a51010; border-color: #e0b8b8; }
+timeline[red] > :is(ul, ol) > li > p:first-of-type          { color: #c00000; }
+timeline[red] > :is(ul, ol) > li > blockquote               { background: rgba(192, 0, 0, 0.06); border-left-color: #c00000; color: #a00000; }
+
+/* 黄色 */
+timeline[yellow]::before                           { background: rgba(184, 122, 20, 0.2); }
+timeline[yellow] > :is(ul, ol) > li::before                 { background: #b87a14; border-color: #e0cfaa; }
+timeline[yellow] > :is(ul, ol) > li > p:first-of-type       { color: #9b7315; }
+timeline[yellow] > :is(ul, ol) > li > blockquote            { background: rgba(184, 122, 20, 0.06); border-left-color: #9b7315; color: #7a5d10; }
+
+/* 灰色 */
+timeline[gray]::before                             { background: rgba(69, 90, 100, 0.2); }
+timeline[gray] > :is(ul, ol) > li::before                   { background: #455a64; border-color: #b8c0c4; }
+timeline[gray] > :is(ul, ol) > li > p:first-of-type         { color: #455a64; }
+timeline[gray] > :is(ul, ol) > li > blockquote              { background: rgba(69, 90, 100, 0.06); border-left-color: #455a64; color: #3d4a52; }
+/* 第三层嵌套列表 */
+timeline > :is(ul, ol) > li > ul > li > ul {
+  padding-inline-start: 20px;
+  margin: 4px 0 0 0;
+  list-style: circle;
+}
+timeline > :is(ul, ol) > li > ul > li > ul > li {
+  font-size: 0.692rem;
+  color: #64748b;
+  font-weight: normal;
+  line-height: 1.4;
+  margin: 1px 0;
+}
+
+/* ---- timeline compact：仅缩小间距，字号由 rem 自动缩放 ---- */
+timeline[compact],
+:root.compact timeline,
+section.compact timeline {
+  margin: 4px 0 4px 4px;
+}
+timeline[compact]::before,
+:root.compact timeline::before,
+section.compact timeline::before {
+  top: 10px;
+  bottom: 6px;
+}
+timeline[compact] > :is(ul, ol) > li,
+:root.compact timeline > :is(ul, ol) > li,
+section.compact timeline > :is(ul, ol) > li {
+  padding: 0 0 10px 0;
+}
+timeline[compact] > :is(ul, ol) > li > p:first-of-type,
+:root.compact timeline > :is(ul, ol) > li > p:first-of-type,
+section.compact timeline > :is(ul, ol) > li > p:first-of-type {
+  margin: 0 0 3px 0;
+}
+timeline[compact] > :is(ul, ol) > li > p:not(:first-of-type),
+:root.compact timeline > :is(ul, ol) > li > p:not(:first-of-type),
+section.compact timeline > :is(ul, ol) > li > p:not(:first-of-type) {
+  margin: 1px 0;
+}
+timeline[compact] > :is(ul, ol) > li > ul,
+:root.compact timeline > :is(ul, ol) > li > ul,
+section.compact timeline > :is(ul, ol) > li > ul {
+  margin: 2px 0 0 0;
+}
+timeline[compact] > :is(ul, ol) > li > ul > li,
+:root.compact timeline > :is(ul, ol) > li > ul > li,
+section.compact timeline > :is(ul, ol) > li > ul > li {
+  margin: 1px 0;
+}
+timeline[compact] > :is(ul, ol) > li > blockquote,
+:root.compact timeline > :is(ul, ol) > li > blockquote,
+section.compact timeline > :is(ul, ol) > li > blockquote {
+  margin: 2px 0 4px 0;
+  padding: 4px 12px;
+}
+timeline[compact] > :is(ul, ol) > li > ul > li > ul,
+:root.compact timeline > :is(ul, ol) > li > ul > li > ul,
+section.compact timeline > :is(ul, ol) > li > ul > li > ul {
+  margin: 2px 0 0 0;
+}
+
+/* ================================================================
+   Checklist — 清单组件
+   ================================================================ */
+
+/*
+ * 纯 Markdown 列表写法，每个 li 为一个清单项：
+ *
+ * <checklist>
+ *
+ * - 清单项 1
+ * - 清单项 2
+ * - **重点项** 可以加粗
+ *
+ * </checklist>
+ *
+ * 变体：checklist[blue] / [green] / [red] / [yellow] / [gray] / [done]
+ */
+checklist {
+  display: block;
+}
+checklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+checklist ul li {
+  position: relative;
+  padding: 5px 0 5px 32px;
+  line-height: 1.6;
+  color: #334155;
+}
+/* 虚线从文字区域开始，不覆盖方块图标 */
+checklist ul li::after {
+  content: '';
+  position: absolute;
+  left: 32px;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px dashed #d3d3d4;
+}
+checklist ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #003f88;
+  border-radius: 3px;
+  background: transparent;
+  box-sizing: border-box;
+}
+/* 颜色变体：方框边框颜色跟随语义 */
+checklist[blue] ul li::before   { border-color: #003f88; }
+checklist[green] ul li::before  { border-color: #006400; }
+checklist[red] ul li::before    { border-color: #c00000; }
+checklist[yellow] ul li::before { border-color: #b87a14; }
+checklist[gray] ul li::before   { border-color: #607d8b; }
+/* 卡片颜色适配 */
+card[green] checklist ul li::before {
+  border-color: #006400;
+}
+card[red] checklist ul li::before {
+  border-color: #c00000;
+}
+card[yellow] checklist ul li::before {
+  border-color: #b87a14;
+}
+card[gray] checklist ul li::before {
+  border-color: #607d8b;
+}
+/* 已完成 / 灰色样式：替换方框为 ✓ */
+checklist[done] ul li {
+  color: #94a3b8;
+}
+checklist[done] ul li::before {
+  content: '✓';
+  width: auto;
+  height: auto;
+  border: none;
+  color: #94a3b8;
+  font-weight: 700;
+  top: 5px;
+}
+/* 无分隔线 */
+checklist[plain] ul li {
+  border-bottom: none;
+  padding: 3px 0 3px 32px;
+}
+checklist[plain] ul li::after {
+  content: none;
+}
+/* compact */
+checklist[compact] ul li,
+:root.compact checklist ul li,
+section.compact checklist ul li {
+  padding: 2px 0 2px 32px;
+  font-size: 0.769rem;
+  line-height: 1.5;
+}
+checklist[compact] ul li::before,
+:root.compact checklist ul li::before,
+section.compact checklist ul li::before {
+  top: 10px;
+  width: 16px;
+  height: 16px;
+}
+checklist[compact][done] ul li::before,
+:root.compact checklist[done] ul li::before,
+section.compact checklist[done] ul li::before {
+  width: auto;
+  height: auto;
+  top: 2px;
+}
+
+/* checklist 内的 blockquote 样式更紧凑 */
+checklist ul li blockquote {
+  padding: 5px 10px;
+  margin: 4px 0 4px 4px;
+  font-size: 0.92em;
+}
+
+
+/* ================================================================
+   DList — 描述列表组件（标签 → 内容配对）
+   ================================================================ */
+
+/*
+ * 每个 li 的第一个 <p> 为标签（蓝色药丸），后续 <p> 为描述内容。
+ * 可用于时刻表、属性列表、规格参数、配置项等任何「键-值」配对场景。
+ *
+ * <dlist>
+ *
+ * - 07:00
+ *
+ *   起床闹钟
+ *
+ * - 配色
+ *
+ *   主色 #003f88，辅助绿/红/黄/灰
+ *
+ * - 字体
+ *
+ *   Microsoft YaHei，正文 24px
+ *
+ * </dlist>
+ */
+dlist {
+  display: block;
+  margin: 6px 0;
+}
+dlist > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+dlist > ul > li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+dlist > ul > li:last-child {
+  border-bottom: none;
+}
+/* 标签 */
+dlist > ul > li > p:first-of-type {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background: #205691; /* 主蓝色微调，降低饱和度，和页面顶部标题蓝呼应 */
+  color: #fff;
+  /* ↓ 修改 padding / letter-spacing 时务必同步更新变量的值，label-width 公式依赖它们 ↓ */
+  --lw-padding-h: 12px;        /* 水平方向单侧 padding，label-width 公式中需 ×2 */
+  --lw-letter-spacing: 2px;    /* 字间距，label-width 公式中按字符数累加 */
+  padding: 3px var(--lw-padding-h);
+  border-radius: 4px;
+  font-size: 0.846rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  letter-spacing: var(--lw-letter-spacing);
+}
+/* 事项内容 */
+dlist > ul > li > p:not(:first-of-type) {
+  margin: 0;
+  color: #334155;
+  line-height: 1.5;
+}
+/* 事项中的重点标记 */
+dlist > ul > li > p:not(:first-of-type) strong {
+  color: #c00000;
+}
+
+/*
+ * label-width 属性：按配置的字数统一标签宽度。
+ *
+ * 公式分解（结合 border-box，算出来就是整个标签盒子的精确宽度）：
+ *   N × 1em              字符本身的宽度
+ *   + 单侧 padding × 2    左右 padding
+ *   + N × letter-spacing  每个字符后的字间距
+ *
+ * 公式里的 --lw-padding-h 和 --lw-letter-spacing 定义在
+ * dlist > ul > li > p:first-of-type 规则中，修改时同步更新即可。
+ */
+dlist[label-width] > ul > li > p:first-of-type {
+  --lw-chars: 5;
+  min-width: calc(
+    var(--lw-chars) * 1em
+    + var(--lw-padding-h) * 2
+    + var(--lw-chars) * var(--lw-letter-spacing)
+  );
+}
+dlist[label-width="1"] > ul > li > p:first-of-type  { --lw-chars: 1; }
+dlist[label-width="2"] > ul > li > p:first-of-type  { --lw-chars: 2; }
+dlist[label-width="3"] > ul > li > p:first-of-type  { --lw-chars: 3; }
+dlist[label-width="4"] > ul > li > p:first-of-type  { --lw-chars: 4; }
+dlist[label-width="5"] > ul > li > p:first-of-type  { --lw-chars: 5; }
+dlist[label-width="6"] > ul > li > p:first-of-type  { --lw-chars: 6; }
+dlist[label-width="7"] > ul > li > p:first-of-type  { --lw-chars: 7; }
+dlist[label-width="8"] > ul > li > p:first-of-type  { --lw-chars: 8; }
+dlist[label-width="9"] > ul > li > p:first-of-type  { --lw-chars: 9; }
+dlist[label-width="10"] > ul > li > p:first-of-type { --lw-chars: 10; }
+
+/* dlist 直接颜色变体 — 标签背景跟语义色走 */
+dlist[blue] > ul > li > p:first-of-type   { background: #205691; }
+dlist[green] > ul > li > p:first-of-type  { background: #2a6d49; }
+dlist[red] > ul > li > p:first-of-type    { background: #aa3939; }
+dlist[yellow] > ul > li > p:first-of-type { background: #b87a14; }
+dlist[gray] > ul > li > p:first-of-type   { background: #455a64; }
+
+/* 卡片颜色适配 — card 的颜色属性同时影响内部 dlist */
+card[green] dlist > ul > li > p:first-of-type {
+  background: #2a6d49; /* 灰调墨绿，低饱和，和蓝色兼容 */
+}
+card[red] dlist > ul > li > p:first-of-type {
+  background: #aa3939; /* 暗红，不刺眼 */
+}
+card[yellow] dlist > ul > li > p:first-of-type {
+  background: #b87a14; /* 暖黄褐，和黄色卡片协调 */
+}
+card[gray] dlist > ul > li > p:first-of-type {
+  background: #455a64; /* 灰蓝，和灰色卡片协调 */
+}
+
+/* compact */
+dlist[compact] > ul > li,
+:root.compact dlist > ul > li,
+section.compact dlist > ul > li {
+  padding: 5px 0;
+}
+dlist[compact] > ul > li > p:first-of-type,
+:root.compact dlist > ul > li > p:first-of-type,
+section.compact dlist > ul > li > p:first-of-type {
+  font-size: 0.615rem;
+  padding: 2px 10px;
+}
+dlist[compact] > ul > li > p:not(:first-of-type),
+:root.compact dlist > ul > li > p:not(:first-of-type),
+section.compact dlist > ul > li > p:not(:first-of-type) {
+  font-size: 0.731rem;
+}
+
+/* ================================================================
+   Tree — AST 树形图组件
+   ================================================================ */
+
+tree {
+  display: block;
+  line-height: 1.55;
+}
+tree ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* 子级列表：左侧竖线 + 缩进 */
+tree ul ul {
+  border-left: 2px solid rgba(0, 63, 136, 0.25);
+  margin: 0 0 0 20px;
+  padding-left: 22px;
+}
+/* 所有列表项 */
+tree li {
+  display: block;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  color: #1a1a1a;
+}
+/* 深层节点：逐级缩小变淡，形成视觉层级差 */
+tree ul ul ul > li {
+  font-size: 0.9em;
+  color: #444;
+}
+/* 子级列表项的横向连接线 */
+tree ul ul > li::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 0.75em;
+  width: 20px;
+  height: 2px;
+  background: rgba(0, 63, 136, 0.25);
+}
+
+
+/* ================================================================
+   Flow — 线性流程组件
+   ================================================================ */
+
+/*
+ * <flow now="2">
+ *
+ * - 步骤一
+ * - 步骤二
+ * - 步骤三
+ *
+ * </flow>
+ *
+ * 变体：flow[vertical] 竖向排列 / now="N" 当前节点
+ */
+
+flow {
+  display: block;
+  margin: 12px 0;
+}
+
+/* 默认横向 */
+flow > :is(ol, ul) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 56px;
+}
+
+/* 步骤胶囊（默认：白底蓝边） */
+flow > :is(ol, ul) > li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 12px 24px;
+  background: #fff;
+  color: #003f88;
+  border: 2px solid #003f88;
+  border-radius: 10px;
+  font-size: 0.923rem;
+  font-weight: 600;
+  position: relative;
+}
+
+/* 当前节点：蓝底白字 */
+flow[now="1"] > :is(ol, ul) > li:nth-child(1),
+flow[now="2"] > :is(ol, ul) > li:nth-child(2),
+flow[now="3"] > :is(ol, ul) > li:nth-child(3),
+flow[now="4"] > :is(ol, ul) > li:nth-child(4),
+flow[now="5"] > :is(ol, ul) > li:nth-child(5),
+flow[now="6"] > :is(ol, ul) > li:nth-child(6),
+flow[now="7"] > :is(ol, ul) > li:nth-child(7),
+flow[now="8"] > :is(ol, ul) > li:nth-child(8) {
+  background: #003f88;
+  color: #fff;
+}
+
+/* 当前高亮节点的嵌套内容：适配深蓝背景 */
+/* flow[now="1"] > :is(ol, ul) > li:nth-child(1) blockquote,
+flow[now="2"] > :is(ol, ul) > li:nth-child(2) blockquote,
+flow[now="3"] > :is(ol, ul) > li:nth-child(3) blockquote,
+flow[now="4"] > :is(ol, ul) > li:nth-child(4) blockquote,
+flow[now="5"] > :is(ol, ul) > li:nth-child(5) blockquote,
+flow[now="6"] > :is(ol, ul) > li:nth-child(6) blockquote,
+flow[now="7"] > :is(ol, ul) > li:nth-child(7) blockquote,
+flow[now="8"] > :is(ol, ul) > li:nth-child(8) blockquote {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e0e6f2;
+} */
+flow[now="1"] > :is(ol, ul) > li:nth-child(1) ul > li,
+flow[now="2"] > :is(ol, ul) > li:nth-child(2) ul > li,
+flow[now="3"] > :is(ol, ul) > li:nth-child(3) ul > li,
+flow[now="4"] > :is(ol, ul) > li:nth-child(4) ul > li,
+flow[now="5"] > :is(ol, ul) > li:nth-child(5) ul > li,
+flow[now="6"] > :is(ol, ul) > li:nth-child(6) ul > li,
+flow[now="7"] > :is(ol, ul) > li:nth-child(7) ul > li,
+flow[now="8"] > :is(ol, ul) > li:nth-child(8) ul > li,
+flow[now="1"] > :is(ol, ul) > li:nth-child(1) ol > li,
+flow[now="2"] > :is(ol, ul) > li:nth-child(2) ol > li,
+flow[now="3"] > :is(ol, ul) > li:nth-child(3) ol > li,
+flow[now="4"] > :is(ol, ul) > li:nth-child(4) ol > li,
+flow[now="5"] > :is(ol, ul) > li:nth-child(5) ol > li,
+flow[now="6"] > :is(ol, ul) > li:nth-child(6) ol > li,
+flow[now="7"] > :is(ol, ul) > li:nth-child(7) ol > li,
+flow[now="8"] > :is(ol, ul) > li:nth-child(8) ol > li {
+  color: #d0d8ea;
+}
+
+/* 胶囊内引用块：独立于标题的轻量风格 */
+flow blockquote{
+  padding: 4px 12px;
+}
+flow blockquote p{
+  padding: 0;
+  font-size: 0.8rem !important;
+}
+
+/* 胶囊内嵌套列表 */
+flow > :is(ol, ul) > li ul,
+flow > :is(ol, ul) > li ol {
+  padding-inline-start: 20px;
+  margin: 0;
+  font-size: 0.808rem;
+  line-height: 1.5;
+}
+/* 嵌套列表项：覆盖胶囊标题的粗体蓝色，还原为正文样式 */
+flow > :is(ol, ul) > li ul > li,
+flow > :is(ol, ul) > li ol > li {
+  font-weight: normal;
+  color: #334155;
+  margin: 2px 0;
+}
+
+/* 胶囊内标签：不撑满 */
+flow > :is(ol, ul) > li badge {
+  font-size: 0.615rem;
+  padding: 2px 8px;
+  align-self: center;
+}
+
+/* 步骤间箭头（横向：向右，默认） */
+flow > :is(ol, ul) > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(100% + 2px);
+  top: 50%;
+  width: 40px;
+  height: 24px;
+  background: url("../../themes/academic/images/右箭头.svg") center/contain no-repeat;
+  transform: translate(8px, -50%);
+  opacity: 0.65;
+}
+
+/* 竖向变体 */
+flow[vertical] > :is(ol, ul) {
+  flex-direction: column;
+  align-items: center;
+  gap: 52px;
+}
+
+flow[vertical] > :is(ol, ul) > li {
+  flex: none;
+}
+
+flow[vertical] > :is(ol, ul) > li:not(:last-child)::after {
+  left: 50%;
+  top: auto;
+  bottom: -28px;
+  width: 24px;
+  height: 40px;
+  transform: translate(-50%, 50%) rotate(90deg);
+}
+
+/* ---- flow compact：缩小间距与字号 ---- */
+flow[compact],
+:root.compact flow,
+section.compact flow {
+  margin: 6px 0;
+}
+
+/* 横向紧凑：缩小胶囊间距 */
+flow[compact] > :is(ol, ul),
+:root.compact flow > :is(ol, ul),
+section.compact flow > :is(ol, ul) {
+  gap: 32px;
+}
+
+/* 胶囊本体紧凑 */
+flow[compact] > :is(ol, ul) > li,
+:root.compact flow > :is(ol, ul) > li,
+section.compact flow > :is(ol, ul) > li {
+  padding: 8px 18px;
+  gap: 4px;
+  font-size: 0.808rem;
+}
+
+/* 胶囊内引用块紧凑 */
+flow[compact] > :is(ol, ul) > li blockquote,
+:root.compact flow > :is(ol, ul) > li blockquote,
+section.compact flow > :is(ol, ul) > li blockquote {
+  padding: 4px 10px;
+  font-size: 0.692rem;
+}
+
+/* 胶囊内嵌套列表紧凑 */
+flow[compact] > :is(ol, ul) > li ul,
+flow[compact] > :is(ol, ul) > li ol,
+:root.compact flow > :is(ol, ul) > li ul,
+:root.compact flow > :is(ol, ul) > li ol,
+section.compact flow > :is(ol, ul) > li ul,
+section.compact flow > :is(ol, ul) > li ol {
+  font-size: 0.692rem;
+  padding-inline-start: 18px;
+}
+flow[compact] > :is(ol, ul) > li ul > li,
+flow[compact] > :is(ol, ul) > li ol > li,
+:root.compact flow > :is(ol, ul) > li ul > li,
+:root.compact flow > :is(ol, ul) > li ol > li,
+section.compact flow > :is(ol, ul) > li ul > li,
+section.compact flow > :is(ol, ul) > li ol > li {
+  font-weight: normal;
+  color: #334155;
+}
+
+/* 胶囊内标签紧凑 */
+flow[compact] > :is(ol, ul) > li badge,
+:root.compact flow > :is(ol, ul) > li badge,
+section.compact flow > :is(ol, ul) > li badge {
+  font-size: 0.538rem;
+  padding: 1px 6px;
+}
+
+/* 竖向 + 紧凑：缩小纵向间距 */
+flow[compact][vertical] > :is(ol, ul),
+:root.compact flow[vertical] > :is(ol, ul),
+section.compact flow[vertical] > :is(ol, ul) {
+  gap: 28px;
+}
