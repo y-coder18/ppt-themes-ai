@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 深蓝色三角：右下角直角三角形，左上角透明 -->
+  <path d="M 0 200 L 200 200 L 200 0 Z" fill="#003f8c"/>
+  <!-- 斜边处的浅蓝色装饰条 -->
+  <line x1="0" y1="200" x2="200" y2="0" stroke="#5a8fc9" stroke-width="8" stroke-linecap="butt"/>
+</svg>
