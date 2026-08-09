@@ -1,0 +1,20 @@
+{
+  "name": "marp-ppt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:html": "marp --theme-set themes/academic/index.css --html --allow-local-files resource/二次开发工作汇报/工作汇报PPT.md -o resource/二次开发工作汇报/工作汇报PPT.html",
+    "build:pptx": "marp resource/二次开发工作汇报/工作汇报PPT.md --theme themes/academic/index.css --html --preview --allow-local-files --pptx-editable",
+    "build:all": "npm run build:html && npm run build:pptx",
+    "dev": "marp Examples/分享/AI驱动的PPT生成方案.md --theme themes/academic/index.css --html --preview --allow-local-files",
+    "build": "marp resource/分享/AI驱动的PPT生成方案.md --theme themes/academic/index.css --html --preview --allow-local-files --pptx-editable",
+    "marp": "marp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.5.0"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+nodejs-portable/
+nodejs-portable.zip
+.DS_Store
+Thumbs.db
+*.log
+*.pptx
+*.pdf
+*.html
+PPT/

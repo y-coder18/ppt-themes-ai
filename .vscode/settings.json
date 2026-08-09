@@ -1,0 +1,6 @@
+{
+  "markdown.marp.enableHtml": true,
+  "markdown.marp.themes": [
+    "./themes/academic/index.css",
+  ]
+}
