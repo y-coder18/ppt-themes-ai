@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: academic
-paginate: true
+paginate: false
 ---
 
 <!--
@@ -15,53 +15,217 @@ _class: homePage
 
 ---
 
-<!-- _header: PPT 文字类组件预览 -->
+<!-- _header: Markdown 标准语法 — 标题与文本样式 -->
 
-# 一级主标题 · PPT大标题
+# 一级主标题 · PPT 大标题
+
+正文段落文本，用于 PPT 主体描述，支持常规叙述内容排版，保证页面清爽不拥挤。
 
 ## 二级标题 · 章节标题
 
 ### 三级小标题 · 模块小标题
 
-#### 四级小标题
+#### 四级小标题 · 子模块标题
+
+##### 五级小标题（极少使用）
 
 ---
 
-<!-- _header: PPT 文字类组件预览 -->
+<!--
+_class: text-center
+_header: Markdown 标准语法 — 行内文本样式
+-->
 
-# 正文文本组件
+# 行内文本样式 · CommonMark 标准
 
-正文段落文本，用于PPT主体描述，预设合理行间距，适配幻灯片阅读。支持常规叙述内容排版，保证页面清爽不拥挤。
+**粗体文本 Bold** — `**text**` 双星号
 
-<note>数据来源：示例年度统计报告</note>
+*斜体文本 Italic* — `*text*` 单星号
 
-<note footnote>脚注辅助小字：适用备注、数据来源、补充说明信息。</note>
+**_粗斜体 Bold Italic_** — `***text***` 三星号
+
+`行内代码 Inline Code` — `` `code` `` 反引号
 
 ---
 
-<!-- _header: PPT 文字类组件预览 -->
+<!-- _header: GFM 扩展语法 — 删除线、表格、任务列表 -->
 
-# 条目列表组件
+**删除线：**
 
-有序列表：
+~~删除线 Strikethrough~~ — `~~text~~` 双波浪
+
+**表格：**
+
+| 左对齐 | 居中对齐 | 右对齐 |
+|:-------|:--------:|-------:|
+| 内容 A | 内容 B | 100 |
+| 长文本 | 居中 | 999 |
+
+```markdown
+| 左对齐 | 居中对齐 | 右对齐 |
+|:-------|:--------:|-------:|
+| 内容 A | 内容 B | 100 |
+| 长文本 | 居中 | 999 |
+```
+
+---
+
+<!-- _header: Markdown 标准语法 — 列表系统 -->
+
+# 列表系统
+
+**有序列表：**
 1. 完成项目第一阶段目标
 2. 梳理核心流程方案
 3. 落地试点验证工作
 
-圆点无序列表：
+**无序列表：**
 - 需求调研与收集
 - 方案设计与评审
 - 上线持续迭代优化
 
+**嵌套列表：**
+- 第一层级
+  1. 第二层级有序
+  2. 继续第二层级
+    - 第三层级无序
+    - 又一个第三层级
+- 回到第一层级
+
 ---
 
-<!-- _header: PPT 文字类组件预览 -->
+<!-- _header: Markdown 标准语法 — 引用块 -->
 
-# 高亮文本 / 引用组件
+> **一层引用（核心引述）**：适合放置观点、总结摘要、客户语录、核心结论。悬浮卡片样式，大圆角 + 淡蓝底，是整页的视觉重心。
+>
+> 引用内支持 **加粗**、*斜体*、<u>下划线</u>、~~删除线~~，以及 `行内代码`，保留完整 Markdown 格式。
+>
+>> **二层引用（论证展开）**：白底卡片 + 细边框，用于补充论据、数据支撑或反面观点，与一层形成"框中框"的嵌套关系。
+>>
+>> 适合在核心观点之下展开具体论证，让信息层次一目了然。
+>>
+>>> **三层引用（细节补充）**：淡色底 + 斜体，视觉退居第三位。适合放置引用来源、脚注说明、次要备注等辅助信息。
+>>>
+>>> 三层及以上的内容不再抢占视觉注意力，读者可选择性阅读。
+>>>
+>>>> **四层引用（深层嵌套）**：纯透明底，仅靠缩进和字号区分。极少使用，仅在需要展示多级引用关系时作为兜底。
 
-重点信息可以使用 <mark>行内高亮文本</mark> 进行突出展示。
+---
 
-> 引用框组件：适合放置观点、总结摘要、客户语录、核心结论。
+<!-- _header: Markdown 标准语法 — 代码展示 -->
+
+# 行内代码
+
+使用 `const App = () => {}` 定义 React 组件。
+
+# 代码块
+
+```python
+def fibonacci(n: int) -> int:
+    """计算第 n 个斐波那契数"""
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
+```
+
+```javascript
+const greeting = (name) => {
+  console.log(`Hello, ${name}!`);
+};
+```
+
+---
+
+<!-- _header: KaTeX / Marp 扩展 — 数学公式 -->
+
+# 数学公式 LaTeX
+
+> 数学公式并非标准 Markdown 语法，而是 Marp 内置的 **KaTeX** 渲染支持。
+
+**行内公式（Inline Math）：**
+
+质能方程 $E = mc^2$ 由爱因斯坦提出；圆的面积公式为 $A = \pi r^2$。
+
+**块级公式（Block Math / Display Math）：**
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}
+       \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+$$
+
+$$
+R_{\mathrm{Sun}} = \|\boldsymbol{s}\|
+$$
+
+$$
+E_{\mathrm{Local}}
+= \arcsin\left(-\frac{s_{z,\mathrm{LH}}}{R_{\mathrm{Sun}}}\right)
+$$
+
+---
+
+<!-- _header: Markdown 标准语法 — 链接、图片与分割线 -->
+
+# 链接与图片
+
+**超链接：**
+- 外部链接：[Marp 官方文档](https://marp.app/)
+- 带标题的链接：[GitHub](https://github.com "点击访问 GitHub")
+
+**图片：**
+
+![图片占位](https://placehold.co/600x200/2563eb/white?text=Image+Placeholder)
+
+**分割线 Horizontal Rule：**
+
+内容区域上方
+
+---
+
+内容区域下方
+
+---
+
+<!-- _header: Markdown 补充 — 脚注（部分平台支持）与转义 -->
+
+# HTML 标签（Markdown 内嵌 HTML）
+
+Markdown 允许在文档中直接书写 HTML 标签，以下为常用内联元素：
+
+<mark>高亮文本 &lt;mark&gt;</mark> — 重点信息突出（Academic 主题组件）
+
+<sup>上标</sup> 与 <sub>下标</sub> — `&lt;sup&gt;` / `&lt;sub&gt;`
+
+<kbd>Ctrl</kbd> + <kbd>C</kbd> — 键盘按键 `&lt;kbd&gt;`
+
+> `<mark>` 是你自定义的 Academic 主题组件，实际基于 CSS 样式实现。
+> HTML 标签本身不是 Markdown 语法，但 Markdown 规范允许内嵌 HTML。
+
+# 脚注 Footnotes
+
+Marp 是基于 Markdown 的演示文稿工具[^1]，支持将 Markdown 文件转换为 PPT 和 HTML[^2]。
+
+[^1]: Marp 是一个开源的 Markdown 演示文稿生态系统。
+[^2]: 支持导出为 PDF、PPTX、HTML 等多种格式。
+
+> 脚注 `[^id]` 并非标准 CommonMark 语法，部分 Markdown 渲染器支持，Marp 中可用。
+
+# 特殊字符转义
+
+\*星号不会被解析为斜体\*
+
+\# 井号不会被解析为标题
+
+\` 反引号不会被解析为代码
+
+\> 大于号不会被解析为引用
+
+\\ 反斜杠本身也需要转义
+
+> 转义符 `\` 是标准 Markdown 语法。
 
 ---
 

@@ -194,29 +194,113 @@ h4 {
   font-weight: 700;
   margin: 0;
 }
-h5, h6 {
-  color: #003f88;
-  font-size: 1rem;
+h5 {
+  color: #475569;
+  font-size: 0.846rem;
+  font-weight: 600;
   margin: 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e2e8f0;
+  display: inline-block;
+  letter-spacing: 0.3px;
 }
+h6 {
+  color: #64748b;
+  font-size: 0.769rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+/* ================================================================
+   引用块 — 悬浮卡片体系 · 无边线层级
+   ================================================================ */
+
+/*
+ * 设计理念：去掉所有左边线，用"圆角 + 阴影 + 背景深浅"区分层级。
+ *   一层（核心引述）：大圆角 + 淡蓝底 + 投影 → 像一张浮起来的便签卡片
+ *   二层（论证展开）：白底 + 细全框 + 微投影 → "框中框"的嵌套感
+ *   三层（细节补充）：浅灰蓝底 + 无框 + 斜体 → 退到背景层
+ *   四层+（深层嵌套）：纯透明 + 无装饰 → 仅剩文字层级
+ *
+ *   与 card 组件的差异：card 用左边框（border-left）作为视觉锚点；
+ *   blockquote 完全不用左边线，靠圆角 + 阴影建立独立视觉语言。
+ */
+
+/* ===== 一层：悬浮卡片（无左边线，大圆角 + 投影） ===== */
 blockquote {
   margin: 0;
-  padding: 16px 24px;
-  background-color: #edf3fa;
-  border-radius: 6px;
-  color: #194692;
+  padding: 20px 26px;
+  background: #eaf2fb;
+  border: none;
+  color: #183b5e;
   font-size: 1rem;
-  letter-spacing: 1px;
+  line-height: 1.65;
 }
 
-/* 去掉uncover主题默认的引用框左上右下的两个引号图片 */
+/* ===== 二层：白卡嵌套 — 细全框 + 微投影 ===== */
+blockquote blockquote {
+  margin: 14px 0 0 0;
+  padding: 16px 22px;
+  background: #ffffff;
+  border: 1px solid #dce5f2;
+  border-radius: 8px;
+  color: #334155;
+  font-size: 0.923rem;
+  line-height: 1.55;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== 三层：淡色底 + 斜体退后，无任何边框 ===== */
+blockquote blockquote blockquote {
+  margin: 10px 0 0 0;
+  padding: 12px 18px;
+  background: #f5f8fc;
+  border: none;
+  border-radius: 6px;
+  color: #5a657a;
+  font-size: 0.885rem;
+  font-style: italic;
+  line-height: 1.5;
+  box-shadow: none;
+}
+
+/* ===== 四层+：纯透明，仅靠缩进和字号区分 ===== */
+blockquote blockquote blockquote blockquote {
+  margin: 8px 0 0 0;
+  padding: 6px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #7a8699;
+  font-size: 0.846rem;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+/* 去掉 uncover 主题默认的引用框左上右下的两个引号图片 */
 blockquote::before,
 blockquote::after {
   content: '';
 }
 
+/* ===== 加粗强调：红色递进，与各级背景冷暖协调 ===== */
+/*
+ * L1 主题红（#c00000）：与 mark / card[red] 统一，淡蓝底上鲜明有力
+ * L2 深红（#a51010）：白底上干净利落，对比充分
+ * L3 暗红（#8b3535）：提高绿蓝分量避免棕褐"脏"感，冷灰蓝底上依然清晰
+ * L4 暖灰（#8b6b6b）：延续红色系暖调，不跳变到纯灰，且与正文 #7a8699 拉开差距
+ */
 blockquote strong {
-  color: #821521;
+  color: #c00000;
+}
+blockquote blockquote strong {
+  color: #a51010;
+}
+blockquote blockquote blockquote strong {
+  color: #8b3535;
+}
+blockquote blockquote blockquote blockquote strong {
+  color: #8b6b6b;
 }
 
 /* 默认margin auto会居中 */
@@ -747,9 +831,8 @@ section code {
 /* --- 内联 code --- */
 :not(pre, marp-pre) > code,
 section > code {
-  padding: .2em .4em;
+  padding: .1em .4em;
   margin: 0;
-  font-size: 72%;
   white-space: break-spaces;
   background-color: var(--code-inline-bg);
   border-radius: 6px;
