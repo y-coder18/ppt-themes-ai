@@ -132,11 +132,11 @@ _class: homePage
 这里没有空行，有空行的时候会渲染 `p` 节点
 
 <flex>
-<badge>默认</badge>
-<badge green>已完成</badge>
-<badge yellow>进行中</badge>
-<badge red>已取消</badge>
-<badge gray>已归档</badge>
+<tag>默认</tag>
+<tag green>已完成</tag>
+<tag yellow>进行中</tag>
+<tag red>已取消</tag>
+<tag gray>已归档</tag>
 </flex>
 
 ### 在卡片中使用
@@ -145,13 +145,13 @@ _class: homePage
 
 ## 项目状态一览
 
-当前阶段 <badge yellow>开发中</badge>
+当前阶段 <tag yellow>开发中</tag>
 
-核心模块 <badge green>已完成</badge>
+核心模块 <tag green>已完成</tag>
 
-遗留问题 <badge red>待修复</badge>
+遗留问题 <tag red>待修复</tag>
 
-已归档项 <badge gray>3 项</badge>
+已归档项 <tag gray>3 项</tag>
 
 </card>
 
@@ -233,7 +233,7 @@ _class: compact
 
 月活跃用户数
 
-<badge>↑ 12.5%</badge>
+<tag>↑ 12.5%</tag>
 
 </metric>
 
@@ -243,7 +243,7 @@ _class: compact
 
 服务可用性
 
-<badge>达标</badge>
+<tag>达标</tag>
 
 </metric>
 
@@ -253,7 +253,7 @@ _class: compact
 
 待处理告警
 
-<badge>需关注</badge>
+<tag>需关注</tag>
 
 </metric>
 
@@ -267,7 +267,7 @@ _class: compact
 
 预算执行率
 
-<badge>注意</badge>
+<tag>注意</tag>
 
 </metric>
 
@@ -277,7 +277,7 @@ _class: compact
 
 历史归档数
 
-<badge>已归档</badge>
+<tag>已归档</tag>
 
 </metric>
 
@@ -292,18 +292,18 @@ _class: compact
 核心结论：系统整体运行平稳，已完成全部部署任务。注意：Q3 预算剩余 23%，**请关注支出节奏**。
 
 <flex>
-<badge>已发布</badge>
-<badge green>通过</badge>
-<badge yellow>审核中</badge>
-<badge red>阻塞</badge>
-<badge gray>已归档</badge>
+<tag>已发布</tag>
+<tag green>通过</tag>
+<tag yellow>审核中</tag>
+<tag red>阻塞</tag>
+<tag gray>已归档</tag>
 </flex>
 
 </summary>
 
 <summary>
 
-正文内容同样居中展示，badge 在深蓝背景上自动切换为高亮配色。
+正文内容同样居中展示，tag 在深蓝背景上自动切换为高亮配色。
 
 </summary>
 
@@ -789,6 +789,6 @@ _class: compact
 | Table | blue / green / red / yellow / gray |
 | Timeline | blue / green / red / yellow / gray |
 | Note | 默认 / blue / green / red / yellow / gray / footnote |
-| Summary | bold / white / 内嵌 badge |
+| Summary | bold / white / 内嵌 tag |
 
 </card>

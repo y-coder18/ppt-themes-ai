@@ -1100,9 +1100,9 @@ section.compact card table tbody td {
   padding: 4px 8px;
   line-height: 1.4;
 }
-card[compact] badge,
-:root.compact card badge,
-section.compact card badge {
+card[compact] tag,
+:root.compact card tag,
+section.compact card tag {
   font-size: 0.5rem;
   padding: 0px 7px;
 }
@@ -1352,7 +1352,7 @@ outline blockquote::after {
    Badge — 状态标签
    ================================================================ */
 
-badge {
+tag {
   display: inline-block;
   padding: 3px 10px;
   border-radius: 3px;
@@ -1365,16 +1365,16 @@ badge {
   color: #fff;
   text-align: center;
 }
-badge[green] {
+tag[green] {
   background: #70ac45;
 }
-badge[yellow] {
+tag[yellow] {
   background: #ec7e31;
 }
-badge[red] {
+tag[red] {
   background: #bf0001;
 }
-badge[gray] {
+tag[gray] {
   background: #607d8b;
 }
 
@@ -1403,7 +1403,7 @@ summary[bold] {
 summary[white] {
   color: #ffffff !important;
 }
-summary badge {
+summary tag {
   background: #ffffff;
   color: #0d4695;
 }
@@ -1417,19 +1417,19 @@ summary strong {
   letter-spacing: 1px;
   font-weight: 600;
 }
-summary badge[green] {
+summary tag[green] {
   background: #36b367;
   color: #fff;
 }
-summary badge[gray] {
+summary tag[gray] {
   background: #69a1bf;
   color: #fff;
 }
-summary badge[yellow] {
+summary tag[yellow] {
   background: #d4a017;
   color: #fff;
 }
-summary badge[red] {
+summary tag[red] {
   background: #e53e3e;
   color: #fff;
 }
@@ -1485,13 +1485,13 @@ metric p {
   font-weight: 500;
   margin: 0 0 2px 0;
 }
-/* metric 内 badge 自动跟随 metric 配色 —— 无需手动指定 badge 颜色 */
-metric badge {
+/* metric 内 tag 自动跟随 metric 配色 —— 无需手动指定 tag 颜色 */
+metric tag {
   margin-top: 8px;
 }
 
 /* --- 蓝色（默认） --- */
-metric badge:not([green]):not([red]):not([yellow]):not([gray]) {
+metric tag:not([green]):not([red]):not([yellow]):not([gray]) {
   background: rgba(0, 63, 136, 0.1);
   color: #00348b;
 }
@@ -1504,7 +1504,7 @@ metric[green] h1, metric[green] h2, metric[green] h3,
 metric[green] h4, metric[green] h5, metric[green] h6 {
   color: #195736;
 }
-metric[green] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+metric[green] tag:not([green]):not([red]):not([yellow]):not([gray]) {
   background: rgba(0, 122, 138, 0.12);
   color: #195736;
 }
@@ -1517,7 +1517,7 @@ metric[red] h1, metric[red] h2, metric[red] h3,
 metric[red] h4, metric[red] h5, metric[red] h6 {
   color: #9e0509;
 }
-metric[red] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+metric[red] tag:not([green]):not([red]):not([yellow]):not([gray]) {
   background: rgba(140, 40, 40, 0.12);
   color: #9e0509;
 }
@@ -1530,7 +1530,7 @@ metric[yellow] h1, metric[yellow] h2, metric[yellow] h3,
 metric[yellow] h4, metric[yellow] h5, metric[yellow] h6 {
   color: #9b7315;
 }
-metric[yellow] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+metric[yellow] tag:not([green]):not([red]):not([yellow]):not([gray]) {
   background: rgba(166, 124, 0, 0.12);
   color: #9b7315;
 }
@@ -1543,7 +1543,7 @@ metric[gray] h1, metric[gray] h2, metric[gray] h3,
 metric[gray] h4, metric[gray] h5, metric[gray] h6 {
   color: #455a64;
 }
-metric[gray] badge:not([green]):not([red]):not([yellow]):not([gray]) {
+metric[gray] tag:not([green]):not([red]):not([yellow]):not([gray]) {
   background: rgba(69, 90, 100, 0.1);
   color: #455a64;
 }
@@ -2525,7 +2525,7 @@ flow > :is(ol, ul) > li ol > li {
 }
 
 /* 胶囊内标签：不撑满 */
-flow > :is(ol, ul) > li badge {
+flow > :is(ol, ul) > li tag {
   font-size: 0.615rem;
   padding: 2px 8px;
   align-self: center;
@@ -2616,9 +2616,9 @@ section.compact flow > :is(ol, ul) > li ol > li {
 }
 
 /* 胶囊内标签紧凑 */
-flow[compact] > :is(ol, ul) > li badge,
-:root.compact flow > :is(ol, ul) > li badge,
-section.compact flow > :is(ol, ul) > li badge {
+flow[compact] > :is(ol, ul) > li tag,
+:root.compact flow > :is(ol, ul) > li tag,
+section.compact flow > :is(ol, ul) > li tag {
   font-size: 0.538rem;
   padding: 1px 6px;
 }

@@ -132,7 +132,7 @@ _class: contentPage
 
 <summary bold>
 
-<badge>核心思想</badge> 用写代码的方式写 PPT —— 纯文本、可版本控制、可复用、可自动化
+<tag>核心思想</tag> 用写代码的方式写 PPT —— 纯文本、可版本控制、可复用、可自动化
 
 </summary>
 
@@ -151,7 +151,7 @@ _class: contentPage
 
 Markdown 格式存储
 
-<badge>Git 友好</badge>
+<tag>Git 友好</tag>
 
 </metric>
 
@@ -161,7 +161,7 @@ Markdown 格式存储
 
 每次修改可 diff
 
-<badge>可追溯</badge>
+<tag>可追溯</tag>
 
 </metric>
 
@@ -171,7 +171,7 @@ Markdown 格式存储
 
 HTML / PPTX / PDF
 
-<badge>一键导出</badge>
+<tag>一键导出</tag>
 
 </metric>
 
@@ -254,7 +254,7 @@ _class: contentPage
 
 <summary bold>
 
-<badge>关键转变</badge> 从「画」PPT 到「写」PPT
+<tag>关键转变</tag> 从「画」PPT 到「写」PPT
 
 </summary>
 
@@ -309,7 +309,7 @@ _class: contentPage
 
 12+ 个语义化 HTML 组件，像搭积木一样组合出丰富的幻灯片布局。
 
-`<card>` `<grid>` `<flex>` `<timeline>` `<tree>` `<metric>` `<compare>` `<outline>` `<badge>` `<summary>` `<mark>`
+`<card>` `<grid>` `<flex>` `<timeline>` `<tree>` `<metric>` `<compare>` `<outline>` `<tag>` `<summary>` `<mark>`
 
 </outline>
 
@@ -408,7 +408,7 @@ _class: contentPage
 
 #### 3 列
 
-<badge>cols="3"</badge>
+<tag>cols="3"</tag>
 
 </metric>
 
@@ -416,7 +416,7 @@ _class: contentPage
 
 #### 等宽
 
-<badge>自动</badge>
+<tag>自动</tag>
 
 </metric>
 
@@ -424,7 +424,7 @@ _class: contentPage
 
 #### 对齐
 
-<badge>一致</badge>
+<tag>一致</tag>
 
 </metric>
 
@@ -437,7 +437,7 @@ _class: contentPage
 
 #### 一
 
-<badge>cols="4"</badge>
+<tag>cols="4"</tag>
 
 </metric>
 
@@ -445,7 +445,7 @@ _class: contentPage
 
 #### 行
 
-<badge>四列</badge>
+<tag>四列</tag>
 
 </metric>
 
@@ -453,7 +453,7 @@ _class: contentPage
 
 #### 自动
 
-<badge>等分</badge>
+<tag>等分</tag>
 
 </metric>
 
@@ -461,7 +461,7 @@ _class: contentPage
 
 #### 排列
 
-<badge>整齐</badge>
+<tag>整齐</tag>
 
 </metric>
 
@@ -560,7 +560,7 @@ _class: contentPage
 
 正面信息、成功案例、优势展示。
 
-<badge green>推荐</badge>
+<tag green>推荐</tag>
 
 </card>
 
@@ -627,7 +627,7 @@ _class: contentPage
 
 自定义组件
 
-<badge>丰富</badge>
+<tag>丰富</tag>
 
 </metric>
 
@@ -637,7 +637,7 @@ _class: contentPage
 
 已有完整 PPT
 
-<badge>落地验证</badge>
+<tag>落地验证</tag>
 
 </metric>
 
@@ -647,7 +647,7 @@ _class: contentPage
 
 页面布局类型
 
-<badge>专业</badge>
+<tag>专业</tag>
 
 </metric>
 
@@ -657,7 +657,7 @@ _class: contentPage
 
 效率提升
 
-<badge>显著</badge>
+<tag>显著</tag>
 
 </metric>
 
@@ -676,14 +676,14 @@ _header: 组件生态 — 内联组件
 _class: contentPage
 -->
 
-## badge 行内标签
+## tag 行内标签
 
 <flex>
-<badge>默认蓝</badge>
-<badge green>已完成</badge>
-<badge red>重要</badge>
-<badge yellow>进行中</badge>
-<badge gray>已废弃</badge>
+<tag>默认蓝</tag>
+<tag green>已完成</tag>
+<tag red>重要</tag>
+<tag yellow>进行中</tag>
+<tag gray>已废弃</tag>
 </flex>
 
 五种颜色，适合标记状态、分类、优先级。
@@ -826,7 +826,7 @@ _class: contentPage
     - 布局组件：grid / flex
     - 内容组件：card / outline / metric
     - 流程组件：timeline / compare / tree
-    - 内联组件：badge / summary / mark
+    - 内联组件：tag / summary / mark
   - 工具层
     - AI 辅助生成
     - 构建脚本
@@ -994,7 +994,7 @@ _class: contentPage
 
 网页格式
 
-<badge>在线浏览</badge>
+<tag>在线浏览</tag>
 
 </metric>
 
@@ -1004,7 +1004,7 @@ _class: contentPage
 
 可编辑演示文稿
 
-<badge>Office/WPS</badge>
+<tag>Office/WPS</tag>
 
 </metric>
 
@@ -1014,7 +1014,7 @@ _class: contentPage
 
 静态文档
 
-<badge>打印分发</badge>
+<tag>打印分发</tag>
 
 </metric>
 
@@ -1072,7 +1072,7 @@ _class: contentPage
 
 <summary bold>
 
-<badge>按场景选择</badge> 线上分享用 `HTML`，线下编辑用 `PPTX`，存档分发用 `PDF`
+<tag>按场景选择</tag> 线上分享用 `HTML`，线下编辑用 `PPTX`，存档分发用 `PDF`
 
 </summary>
 
@@ -1115,7 +1115,7 @@ _class: contentPage
 
 <summary bold>
 
-<badge>2 套</badge> 完整 PPT 已落地验证，覆盖工作汇报与技术分享两大场景
+<tag>2 套</tag> 完整 PPT 已落地验证，覆盖工作汇报与技术分享两大场景
 
 </summary>
 
@@ -1233,7 +1233,7 @@ npx marp my-slides.md \
 
 <summary bold>
 
-<badge>不必从零开始</badge> AI 帮你完成 80% 的初稿工作，你只需聚焦内容的打磨与优化
+<tag>不必从零开始</tag> AI 帮你完成 80% 的初稿工作，你只需聚焦内容的打磨与优化
 
 </summary>
 
