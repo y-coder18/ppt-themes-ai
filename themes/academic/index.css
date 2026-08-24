@@ -224,6 +224,9 @@ h6 {
  *
  *   与 card 组件的差异：card 用左边框（border-left）作为视觉锚点；
  *   blockquote 完全不用左边线，靠圆角 + 阴影建立独立视觉语言。
+ *
+ *   例外：card 内的 blockquote 作为"重点结论"块，使用浅色底 + 左侧强调条，
+ *   与卡片左锚边框形成层级呼应（见下方 card blockquote 规则）。
  */
 
 /* ===== 一层：悬浮卡片（无左边线，大圆角 + 投影） ===== */
@@ -247,7 +250,6 @@ blockquote blockquote {
   color: #334155;
   font-size: 0.923rem;
   line-height: 1.55;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 /* ===== 三层：淡色底 + 斜体退后，无任何边框 ===== */
@@ -999,6 +1001,17 @@ card h1, card h2, card h3, card h4, card h5, card h6 {
   border-bottom: 1px solid rgba(0, 63, 136, 0.6);
 }
 
+/* 卡片内重点结论：极浅冷蓝底 + 细左强调条，干净克制的总结块 */
+card blockquote {
+  margin: 0;
+  padding: 4px 12px;
+  background: #f0f6ff;
+  border: none;
+  border-left: 3px solid #003f88;
+  color: #16407c;
+  border-radius: 0;
+}
+
 /* 危险/问题卡片：仅关键元素红色，不过度染色 */
 card[red] {
   border-color:#c00000;
@@ -1010,10 +1023,9 @@ card[red] h4, card[red] h5, card[red] h6 {
   border-bottom: 1px solid rgba(192, 0, 0, 0.6);
 }
 card[red] blockquote {
-  background: #fdf0f0;
-  border: none;
+  background: #fdf2f2;
+  border-color: #c00000;
   color: #a00000;
-  font-weight: 500;
 }
 
 /* 成功/正面卡片：绿色系，与 danger 形成对比 */
@@ -1027,10 +1039,9 @@ card[green] h4, card[green] h5, card[green] h6 {
   border-bottom: 1px solid rgba(0, 100, 0, 0.6)
 }
 card[green] blockquote {
-  background: #eef7ee;
-  border: none;
+  background: #eff7ef;
+  border-left: 3px solid #006400;
   color: #005000;
-  font-weight: 500;
 }
 
 /* 注意/提醒卡片：黄色系，适合注意事项及温和提示 */
@@ -1044,10 +1055,9 @@ card[yellow] h4, card[yellow] h5, card[yellow] h6 {
   border-bottom: 1px solid rgba(184, 122, 20, 0.6);
 }
 card[yellow] blockquote {
-  background: #fef9ee;
-  border: none;
+  background: #fef8ec;
+  border-left: 3px solid #b87a14;
   color: #7a5d10;
-  font-weight: 500;
 }
 
 /* 中性/归档卡片：灰色系，适合辅助信息、备注说明 */
@@ -1061,10 +1071,9 @@ card[gray] h4, card[gray] h5, card[gray] h6 {
   border-bottom: 1px solid rgba(69, 90, 100, 0.6);
 }
 card[gray] blockquote {
-  background: #f5f6f7;
-  border: none;
+  background: #f3f5f7;
+  border-left: 3px solid #455a64;
   color: #3d4a52;
-  font-weight: 500;
 }
 
 /* 紧凑卡片：用于内容密集场景（如并排表格） */
@@ -1105,19 +1114,6 @@ card[compact] tag,
 section.compact card tag {
   font-size: 0.5rem;
   padding: 0px 7px;
-}
-
-/* 卡片内重点结论：干净实色背景块，像高亮标记，不用边框 */
-card blockquote {
-  margin: 0;
-  padding: 12px 16px;
-  background: #eef3fa;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.846rem;
-  color: #002d66;
-  font-weight: 500;
-  font-style: normal;
 }
 
 /* 卡片内表格：紧凑排版 */
