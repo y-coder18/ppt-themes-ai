@@ -401,24 +401,24 @@ mark[center] {
   content: '';
   position: absolute;
   left: -10px;
-  top: -10px;
-  width: 40%;
-  height: 110%;
+  top: 0px;
+  aspect-ratio: 9/16;
+  height: 100%;
   background-image: url("../../themes/academic/images/航天小图.png");
   background-size: auto 100%;
   background-repeat: no-repeat;
+  background-position: center center;
   z-index: -1;
-  border-radius: 0 55% 55% 0;
+  /* border-radius: 0 55% 55% 0; */
   opacity: 1;
-  border: 10px solid rgb(40, 113, 196);
-  border-width: 10px 50px 50px 10px;
+  border-right: 25px solid rgb(40, 113, 196);
 }
 :root.contents h2{
   color: #ffffffdc;
   position: relative;
   margin-bottom: 40px;
 }
-:root.contents h2::before {
+/* :root.contents h2::before {
   content: 'CONTENTS';
   position: absolute;
   bottom: -30px;
@@ -427,7 +427,7 @@ mark[center] {
   font-size: 2.308rem;
   opacity: 0.1;
   z-index: 1;
-}
+} */
 :root.contents ul{
   font-size: 0.885rem;
   padding-left: 120px;
@@ -441,10 +441,11 @@ mark[center] {
 :root.contents ul li strong {
   font-size: 1.923rem;
   line-height: 60px;
-  background-image:-webkit-linear-gradient(105deg, transparent, #e7efff); 
+  /* background-image:-webkit-linear-gradient(105deg, transparent, #e7efff); 
 	-webkit-background-clip: text; 
 	-webkit-text-fill-color: transparent; 
-	text-shadow: 2px 2px 20px #0000000d;
+	text-shadow: 2px 2px 20px #0000000d; */
+  color: #dbe3f2;
   vertical-align: middle;
   margin-right: 20px;
 }
@@ -490,8 +491,147 @@ mark[center] {
 :root.contentPage {
   background: #fff;
 }
-:root.contentPage img {
-  margin: 5px;
+:root img {
+  display: block;
+  margin: auto;
+}
+
+/* ================================================================
+   章节标题页 — 左侧深蓝学术面板 + 右侧白底标题区
+   ================================================================ */
+
+/*
+ * 设计理念：左侧 35% 纯色深蓝面板 + logo 营造学术质感，
+ * 右侧白色区域放置章节标题。
+ *
+ * 用法：
+ *   <!-- _class: chapterPage -->
+ *   ## 章节标题
+ *   ### 副标题或描述
+ *
+ * 章节编号通过手动放置编号元素控制：
+ *   <div class="chapter-num">01</div>
+ */
+
+:root.chapterPage {
+  text-align: left;
+  justify-content: center;
+  background: #fff;
+  color: #003f88;
+  padding: 0 80px 0 calc(35% + 60px);
+  gap: 16px;
+}
+:root.chapterPage header,
+:root.chapterPage footer {
+  display: none;
+}
+
+/* ---- 左侧深蓝面板：纯色 + logo ---- */
+:root.chapterPage::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35%;
+  height: 100%;
+  /* 数字：巨型水印，居中偏上（底部留空给 logo） */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.055);
+  font-size: 6.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 90px;
+  box-sizing: border-box;
+  /* 多层背景 */
+  background:
+    /* logo */
+    url("../../themes/academic/images/logo.svg") no-repeat center bottom 50px / 140px auto,
+    /* 纯色底色 */
+    #003f88;
+}
+
+/* ---- 章节编号手动覆盖（可选） — 渐变文字水印 ---- */
+:root.chapterPage .chapter-num {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35%;
+  text-align: center;
+  font-size: 5.5rem;
+  font-weight: 800;
+  /* background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: #dbe3f2;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+}
+/* 手动编号下方的装饰短横线 */
+/* :root.chapterPage .chapter-num::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  width: 36%;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 25%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 100%);
+} */
+
+/* ---- 向后兼容：.chapter-label（已弃用） ---- */
+:root.chapterPage .chapter-label {
+  display: none;
+}
+
+/* ---- 右侧标题区 ---- */
+
+/* 章节主标题 */
+:root.chapterPage h1 {
+  font-size: 2rem;
+  color: #003f88;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0;
+}
+:root.chapterPage h2 {
+  font-size: 2rem;
+  color: #003f88;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0;
+}
+/* 章节副标题 / 描述 */
+:root.chapterPage h3 {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+}
+:root.chapterPage h3::before {
+  display: none;
+}
+:root.chapterPage p {
+  color: #64748b;
+  font-size: 0.923rem;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
 
