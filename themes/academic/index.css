@@ -1617,6 +1617,15 @@ compare {
 }
 compare before,
 compare after {
+  /* 配色变量：默认值由 before/after 各自赋值，颜色变体覆盖这些变量即可 */
+  --cp-bg-start: #fafcff;
+  --cp-bg-mid: #f2f7ff;
+  --cp-bg-end: #eef5ff;
+  --cp-border: #c4d6f0;
+  --cp-text: #1a3a6b;
+  --cp-accent: #0d4695;
+  --cp-title: #0a3978;
+
   flex: 1;
   align-self: stretch;
   display: flex;
@@ -1626,20 +1635,30 @@ compare after {
   padding: 28px 22px 20px;
   border-radius: 4px;
   position: relative;
+  background: linear-gradient(160deg, var(--cp-bg-start) 0%, var(--cp-bg-mid) 40%, var(--cp-bg-end) 100%);
+  border: 1.5px solid var(--cp-border);
+  color: var(--cp-text);
+  z-index: 1;
 }
-/* ---- before 卡片：红色系，左侧留出标签空间 ---- */
+/* ---- before 默认红色（痛点/旧） ---- */
 compare before {
-  background: linear-gradient(160deg, #fffafa 0%, #fef5f5 40%, #fdf2f2 100%);
-  border: 1.5px solid #ecc8c8;
-  color: #5a2828;
-  z-index: 1;
+  --cp-bg-start: #fffafa;
+  --cp-bg-mid: #fef5f5;
+  --cp-bg-end: #fdf2f2;
+  --cp-border: #ecc8c8;
+  --cp-text: #5a2828;
+  --cp-accent: #c0392b;
+  --cp-title: #6b2020;
 }
-/* ---- after 卡片：蓝色系 ---- */
+/* ---- after 默认蓝色（新/改进） ---- */
 compare after {
-  background: linear-gradient(160deg, #fafcff 0%, #f2f7ff 40%, #eef5ff 100%);
-  border: 1.5px solid #c4d6f0;
-  color: #1a3a6b;
-  z-index: 1;
+  --cp-bg-start: #fafcff;
+  --cp-bg-mid: #f2f7ff;
+  --cp-bg-end: #eef5ff;
+  --cp-border: #c4d6f0;
+  --cp-text: #1a3a6b;
+  --cp-accent: #0d4695;
+  --cp-title: #0a3978;
 }
 /* ---- 浮动标签：取代顶部色条，是 compare 独有视觉特征 ---- */
 compare before::before {
@@ -1648,7 +1667,7 @@ compare before::before {
   top: 13px;
   left: 0px;
   transform: translateY(-50%);
-  background: #c0392b;
+  background: var(--cp-accent);
   color: #ffffff;
   padding: 3px 14px;
   border-radius: 3px 0 4px 0;
@@ -1665,7 +1684,7 @@ compare after::before {
   top: 13px;
   left: 0;
   transform: translateY(-50%);
-  background: #0d4695;
+  background: var(--cp-accent);
   color: #ffffff;
   padding: 3px 14px;
   border-radius: 3px 0 4px 0;
@@ -1675,6 +1694,11 @@ compare after::before {
   line-height: 1.4;
   white-space: nowrap;
   z-index: 2;
+}
+/* 自定义浮动标签文案：通过 badge 传入，如 <before badge="痛点"> */
+compare before[badge]::before,
+compare after[badge]::before {
+  content: attr(badge);
 }
 /* ---- 中间箭头：纯文字，极简处理 ---- */
 compare arrow {
@@ -1703,12 +1727,10 @@ compare h4, compare h5, compare h6 {
   border-bottom: none !important;
 }
 compare before h1, compare before h2, compare before h3,
-compare before h4, compare before h5, compare before h6 {
-  color: #6b2020 !important;
-}
+compare before h4, compare before h5, compare before h6,
 compare after h1, compare after h2, compare after h3,
 compare after h4, compare after h5, compare after h6 {
-  color: #0a3978 !important;
+  color: var(--cp-title) !important;
 }
 /* ---- 引用 / 副标题 ---- */
 compare before > blockquote,
@@ -1830,13 +1852,10 @@ compare after timeline[gray] > :is(ul, ol) > li > blockquote {
   border-left-color: #003f88;
   color: #003f88;
 }
-/* before 列表项：红色圆点 */
-compare before li::marker {
-  color: #c0392b;
-}
-/* after 列表项：蓝色圆点 */
+/* 列表项圆点：跟随卡片 accent 色 */
+compare before li::marker,
 compare after li::marker {
-  color: #0d4695;
+  color: var(--cp-accent);
 }
 /* ---- 普通段落 ---- */
 compare before > p,
@@ -1858,11 +1877,9 @@ compare after > summary {
   font-weight: 700;
   text-align: left;
 }
-compare before > summary {
-  color: #6b2020;
-}
+compare before > summary,
 compare after > summary {
-  color: #0a3978;
+  color: var(--cp-title);
 }
 /* ---- center 模式：数值/短内容居中展示 ---- */
 compare[center] before,
@@ -1892,6 +1909,67 @@ compare after > blockquote::after {
   content: none;
 }
 
+
+/* ---- 颜色变体：before/after 各支持 blue / green / red / yellow / gray ---- */
+compare before[green], compare after[green] {
+  --cp-bg-start: #f7fcf8;
+  --cp-bg-mid: #f0f9f2;
+  --cp-bg-end: #eaf5ee;
+  --cp-border: #b8d9c0;
+  --cp-text: #1a4a2e;
+  --cp-accent: #1a5c2a;
+  --cp-title: #0b4d2a;
+}
+compare before[red], compare after[red] {
+  --cp-bg-start: #fffafa;
+  --cp-bg-mid: #fef5f5;
+  --cp-bg-end: #fdf2f2;
+  --cp-border: #ecc8c8;
+  --cp-text: #5a2828;
+  --cp-accent: #c0392b;
+  --cp-title: #6b2020;
+}
+compare before[yellow], compare after[yellow] {
+  --cp-bg-start: #fffdf7;
+  --cp-bg-mid: #fdf8ec;
+  --cp-bg-end: #faf3df;
+  --cp-border: #e6d5a8;
+  --cp-text: #5a4a1a;
+  --cp-accent: #b87a14;
+  --cp-title: #8a6a1a;
+}
+compare before[gray], compare after[gray] {
+  --cp-bg-start: #fafbfc;
+  --cp-bg-mid: #f4f6f8;
+  --cp-bg-end: #eef1f4;
+  --cp-border: #ccd4dc;
+  --cp-text: #3d4a52;
+  --cp-accent: #607d8b;
+  --cp-title: #455a64;
+}
+compare before[blue], compare after[blue] {
+  --cp-bg-start: #fafcff;
+  --cp-bg-mid: #f2f7ff;
+  --cp-bg-end: #eef5ff;
+  --cp-border: #c4d6f0;
+  --cp-text: #1a3a6b;
+  --cp-accent: #0d4695;
+  --cp-title: #0a3978;
+}
+
+/* ---- 纵向变体：before 在上、after 在下，箭头朝下 ---- */
+compare[vertical] {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+compare[vertical] before,
+compare[vertical] after {
+  flex: none;
+}
+compare[vertical] arrow {
+  padding: 0;
+}
 
 /* ================================================================
    Timeline — 时间线组件
