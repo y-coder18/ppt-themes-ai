@@ -6,8 +6,8 @@
     "build:html": "marp --theme-set themes/academic/index.css --html --allow-local-files resource/二次开发工作汇报/工作汇报PPT.md -o resource/二次开发工作汇报/工作汇报PPT.html",
     "build:pptx": "marp resource/二次开发工作汇报/工作汇报PPT.md --theme themes/academic/index.css --html --preview --allow-local-files --pptx-editable",
     "build:all": "npm run build:html && npm run build:pptx",
-    "dev": "marp themes/academic/academic组件体系.md --theme themes/academic/index.css --html --preview --allow-local-files",
-    "build": "marp PPT/成绩分析/初一1班英语期末成绩分析.md --theme themes/academic/index.css --html --preview --allow-local-files --pptx-editable",
+    "dev": "marp PPT/AI生成PPT宣传/AI生成PPT宣传.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
+    "build": "marp PPT/成绩分析/初一1班英语期末成绩分析.md --theme themes/academic/academic_template.css --html --preview --allow-local-files --pptx-editable",
     "marp": "marp"
   },
   "keywords": [],

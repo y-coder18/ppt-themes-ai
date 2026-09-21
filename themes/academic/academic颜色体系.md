@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: academic
+theme: academic_template
 paginate: true
 ---
 

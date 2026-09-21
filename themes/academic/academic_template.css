@@ -1,4 +1,4 @@
-/* @theme academic */
+/* @theme academic_template */
 
 @import 'uncover';
 
@@ -11,6 +11,19 @@
   --gap: 24px;
   /* 紧凑模式间距：应用于 [compact] / :root.compact / section.compact */
   --gap-compact: 12px;
+
+  /* ---- 品牌 logo：与主题绑定，正文 Markdown 里不用再写 <img> ----
+     基座默认 none，即不放 logo；皮肤里声明 --logo 后页眉 / 章节页 / 封面 / 致谢页统一生效 */
+  --logo: none;
+  /* 封面 / 致谢页的 logo 占位高度，0px = 该页不放 logo（默认不占位，正文里自带 logo 的旧稿不受影响）
+     皮肤里声明 --logo 后，把这两项一起改成需要的高度即可（如 120px / 80px） */
+  --logo-home-h: 0px;
+  --logo-thanks-h: 0px;
+
+  /* ---- 整页背景图：皮肤里改这三个变量即可整体换图 ---- */
+  --home-bg: url("../../themes/academic/images/航天.png");
+  --contents-bg: url("../../themes/academic/images/航天小图.png");
+  --thanks-bg: url("../../themes/academic/images/航天2.png");
 
   /* 基准字号：所有 rem 单位以此为参照，compact 模式覆盖此值即可全局缩放 */
   font-size: 24px;
@@ -105,7 +118,7 @@ section.code-dark {
   position: absolute;
   right: 60px;
   top: 12px;
-  background-image: url("../../themes/academic/images/logo.svg");
+  background-image: var(--logo);
   background-position: right top;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -345,19 +358,25 @@ mark[center] {
   color: #eee;
   position: relative;
   gap: 24px;
-}
-/* 背景图层 */
-:root.homePage::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("../../themes/academic/images/航天.png");
+  /* 整页背景图挂在 section 自身，把 ::before 让给 logo 占位块 */
+  background-image: var(--home-bg);
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   background-color: rgba(0, 20, 50, 0.35);
-  z-index: -2;
+}
+/* logo 占位块：作为弹性项参与居中排版。
+   高度为 0 时把这一项自带的 flex gap 也抵消掉，让不放 logo 的封面保持原版式 */
+:root.homePage::before {
+  content: '';
+  flex: none;
+  height: var(--logo-home-h);
+  margin-bottom: calc(-1 * max(0px, var(--gap) - var(--logo-home-h)));
+  background-image: var(--logo);
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /* 全局渐变遮罩兜底 */
 :root.homePage::after {
@@ -404,7 +423,7 @@ mark[center] {
   top: 0px;
   aspect-ratio: 9/16;
   height: 100%;
-  background-image: url("../../themes/academic/images/航天小图.png");
+  background-image: var(--contents-bg);
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -441,10 +460,6 @@ mark[center] {
 :root.contents ul li strong {
   font-size: 1.923rem;
   line-height: 60px;
-  /* background-image:-webkit-linear-gradient(105deg, transparent, #e7efff); 
-	-webkit-background-clip: text; 
-	-webkit-text-fill-color: transparent; 
-	text-shadow: 2px 2px 20px #0000000d; */
   color: #dbe3f2;
   vertical-align: middle;
   margin-right: 20px;
@@ -454,23 +469,26 @@ mark[center] {
 :root.thanksPage {
   text-align: center;
   justify-content: center;
-  background: #003f88;
   color: #eee;
   padding: 60px 0;
+  /* 背景图移到 section 自身，::before 让给 logo 占位块。
+     首层 10% 深蓝叠加等价于原来的 opacity: 0.9，无需再单独压暗 */
+  background-color: #003f88;
+  background-image: linear-gradient(rgba(0, 63, 136, 0.1), rgba(0, 63, 136, 0.1)), var(--thanks-bg);
+  background-size: 100% 100%, cover;
+  background-position: 0 0, center center;
+  background-repeat: no-repeat, no-repeat;
 }
+/* logo 占位块：同封面，高度 0 时把这一项的 flex gap 一并抵消 */
 :root.thanksPage::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("../../themes/academic/images/航天2.png");
-  background-size: cover;
-  background-position: center center;
+  flex: none;
+  height: var(--logo-thanks-h);
+  margin-bottom: calc(-1 * max(0px, var(--gap) - var(--logo-thanks-h)));
+  background-image: var(--logo);
+  background-size: auto 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 0.9;
 }
 :root.thanksPage h1 {
   color: #fff;
@@ -548,7 +566,7 @@ mark[center] {
   /* 多层背景 */
   background:
     /* logo */
-    url("../../themes/academic/images/logo.svg") no-repeat center bottom 50px / 140px auto,
+    var(--logo) no-repeat center bottom 50px / 140px auto,
     /* 纯色底色 */
     #003f88;
 }
@@ -563,12 +581,6 @@ mark[center] {
   text-align: center;
   font-size: 5.5rem;
   font-weight: 800;
-  /* background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0.04) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
   color: #dbe3f2;
   pointer-events: none;
   z-index: 1;
@@ -577,21 +589,6 @@ mark[center] {
   margin: 0;
   padding: 0;
 }
-/* 手动编号下方的装饰短横线 */
-/* :root.chapterPage .chapter-num::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -20px;
-  transform: translateX(-50%);
-  width: 36%;
-  height: 1.5px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.25) 25%,
-    rgba(255, 255, 255, 0.25) 75%,
-    transparent 100%);
-} */
 
 /* ---- 向后兼容：.chapter-label（已弃用） ---- */
 :root.chapterPage .chapter-label {
@@ -1514,7 +1511,6 @@ tag[red] {
 tag[gray] {
   background: #607d8b;
 }
-
 
 /* ================================================================
    Summary — 通栏总结横幅
@@ -2922,8 +2918,7 @@ feature {
   position: relative;
   overflow: hidden;
   padding: 18px 22px 20px;
-  border: 1px solid #e2e8f0;
-  border-left: 3px solid var(--ft-ink);
+  border: 1px solid #a4adb9;
   border-radius: 4px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
@@ -3056,7 +3051,6 @@ funnel > :is(ul, ol) > li {
   background: var(--fn-1);
   color: #ffffff;
   text-align: center;
-  box-shadow: 0 1px 2px rgba(0, 63, 136, 0.12);
 }
 /* 逐层收窄 + 逐层加深 */
 funnel > :is(ul, ol) > li:nth-child(1) { width: 100%; background: var(--fn-1); }

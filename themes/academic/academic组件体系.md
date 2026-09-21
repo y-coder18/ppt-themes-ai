@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: academic
+theme: academic_template
 paginate: false
 ---
 
@@ -730,7 +730,7 @@ print(circle_area(2.0))  # 12.57
 
 ```
 ---
-theme: academic
+theme: academic_template
 class: code-dark
 ---
 ```
