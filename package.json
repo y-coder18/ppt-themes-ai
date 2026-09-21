@@ -10,6 +10,10 @@
     "build": "npm run build:all",
     "build:git": "marp Examples/分享/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files -o Examples/分享/Git从入门到精通.html",
     "check:git": "node scripts/check-slides.mjs Examples/分享/Git从入门到精通.html Examples/分享/images",
+    "dev:courage": "marp Examples/分享/被讨厌的勇气.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --preview --allow-local-files",
+    "build:courage": "marp Examples/分享/被讨厌的勇气.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files -o Examples/分享/被讨厌的勇气.html",
+    "build:courage:pptx": "marp Examples/分享/被讨厌的勇气.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files --pptx-editable -o Examples/分享/被讨厌的勇气.pptx",
+    "check:courage": "node scripts/check-slides.mjs Examples/分享/被讨厌的勇气.html",
     "marp": "marp"
   },
   "keywords": [],
