@@ -8,6 +8,8 @@
     "build:pptx": "marp Examples/分享/AI驱动的PPT生成方案.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files --pptx-editable",
     "build:all": "npm run build:html && npm run build:pptx",
     "build": "npm run build:all",
+    "build:git": "marp Examples/分享/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files -o Examples/分享/Git从入门到精通.html",
+    "check:git": "node scripts/check-slides.mjs Examples/分享/Git从入门到精通.html Examples/分享/images",
     "marp": "marp"
   },
   "keywords": [],
@@ -15,6 +17,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.5.0"
+    "@marp-team/marp-cli": "^4.5.0",
+    "playwright": "^1.63.0"
   }
 }
