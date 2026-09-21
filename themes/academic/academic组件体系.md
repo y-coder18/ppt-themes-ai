@@ -297,7 +297,6 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}}
 $$
 ```
 
-
 ---
 
 <!-- _header: Markdown 标准语法 — 链接与图片 -->
@@ -340,3 +339,702 @@ Markdown 允许在文档中直接书写 HTML 标签，以下为常用内联元�
 - \# 井号不会被解析为标题 —— `\# 井号不会被解析为标题`
 - \> 大于号不会被解析为引用 —— `\> 大于号不会被解析为引用`
 - \\ 反斜杠本身也需要转义 —— `\\ 反斜杠本身也需要转义`
+
+---
+
+<!-- _header: 主题特色组件 — mark 高亮 -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+行内 <mark>高亮关键词</mark> 强调。
+
+<mark>独立成段的高亮</mark>
+
+<mark center>center：块级居中</mark>
+
+<outline>
+
+- mark 无背景色，仅用主题红加粗强调；
+- 与 `**粗体**` 的区别是粗体随引用层级递进变色，mark 始终保持主题红。
+
+</outline>
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+行内 <mark>高亮关键词</mark> 强调。
+
+<mark>独立成段的高亮</mark>
+<mark center>center：块级居中</mark>
+<outline>
+
+### 组件内嵌套
+
+<mark>外边距归零</mark>
+</outline>
+```
+
+</flex>
+
+</grid>
+
+---
+
+<!-- _header: 主题特色组件 — grid 网格 -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+<grid cols="3" rows="2">
+
+<card>1</card>
+
+<card>2</card>
+
+<card>3</card>
+
+<card>4</card>
+
+<card>5</card>
+
+<card>6</card>
+
+</grid>
+
+## 紧凑布局
+
+<grid cols="3" compact>
+
+<card>1</card>
+
+<card>2</card>
+
+<card>3</card>
+
+</grid>
+
+<outline>
+
+- grid 只负责「按行/列等分排布」，子元素样式由 `<card>` / `<metric>` / `<outline>` 等决定。
+
+- `cols` / `rows` 设置数字，子元素将等分排列。
+
+</outline>
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+<grid cols="3" rows="2">
+<card>1</card>
+<card>2</card>
+<card>3</card>
+<card>4</card>
+<card>5</card>
+<card>6</card>
+</grid>
+```
+
+```markdown
+<grid cols="3" compact>
+<card>1</card>
+<card>2</card>
+<card>3</card>
+</grid>
+```
+
+</flex>
+
+</grid>
+
+---
+
+<!-- _header: 主题特色组件 — flex 弹性 -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+横向 flex 的子元素自动等分撑满，并且自动添加间距。
+
+## 默认横向（一行内排布）
+
+<flex>
+
+<card>块 1</card>
+
+<card>块 2</card>
+
+</flex>
+
+## column 纵向堆叠
+
+<flex column>
+
+<card>块 1</card>
+
+<card>块 2</card>
+
+<card>块 3</card>
+
+</flex>
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+<flex>
+<card>块 1</card>
+<card>块 2</card>
+</flex>
+```
+
+```markdown
+<flex column>
+<card>块 1</card>
+<card>块 2</card>
+<card>块 3</card>
+</flex>
+```
+
+<outline>
+
+- 一行/列内排布，优先使用 `<flex>`。
+
+- 多行多列（多维）使用 `<grid>`。
+
+</outline>
+
+</flex>
+
+</grid>
+
+---
+
+<!-- _header: 主题特色组件 — datatable 数据表（全色系） -->
+
+<grid cols="2" rows="2">
+
+<datatable>
+
+### 默认蓝色
+
+| 参数 | 配置值 |
+|------|--------|
+| CPU | 4 核 2.8 GHz |
+| 网络 | 千兆以太网 |
+
+</datatable>
+
+<datatable green>
+
+### 绿色
+
+| 指标 | 当前值 |
+|------|--------|
+| 磁盘 I/O | 正常 |
+| 网络延迟 | 12ms |
+
+</datatable>
+
+<datatable red>
+
+### 红色
+
+| 告警项 | 状态 |
+|--------|------|
+| 连接池 | 耗尽 |
+| 消息队列 | 积压 |
+
+</datatable>
+
+<datatable yellow>
+
+### 黄色
+
+| 指标 | 当前值 |
+|------|--------|
+| 磁盘使用率 | 82% |
+| 内存使用率 | 78% |
+
+</datatable>
+
+</grid>
+
+<datatable gray>
+
+### 灰色 — 辅助参考数据
+
+| 项目 | 数值 |
+|------|------|
+| 历史均值 | 45% |
+| 同期对比 | +3.2% |
+
+</datatable>
+
+---
+
+<!-- _header: 主题特色组件 — datatable 数据表（写法） -->
+
+<flex>
+
+<flex column>
+
+## 渲染效果
+
+<datatable red>
+
+### 标题即标题栏
+
+| 列 1 | 列 2 |
+|------|------|
+| 数据 | 内容 |
+| 数据 | 内容 |
+| 数据 | 内容 |
+| 数据 | 内容 |
+
+</datatable>
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+<datatable red>
+
+### 标题即标题栏
+
+| 列 1 | 列 2 |
+|------|------|
+| 数据 | 内容 |
+
+</datatable>
+```
+
+</flex>
+
+</flex>
+
+<outline>
+
+- 颜色属性：`blue | green | red | yellow | gray`，默认 `blue`
+- `compact` 可收紧标题栏与单元格。
+
+</outline>
+
+---
+
+<!-- _header: 主题特色组件 — code 代码块（浅色 · 默认） -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+```python
+import math
+
+def circle_area(r: float) -> float:
+    """计算圆的面积"""
+    # 注释 · 关键字 · 字符串 · 数字
+    return math.pi * r ** 2
+
+print(circle_area(2.0))  # 12.57
+```
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+````markdown
+```python
+import math
+
+def circle_area(r: float) -> float:
+    """计算圆的面积"""
+    # 注释 · 关键字 · 字符串 · 数字
+    return math.pi * r ** 2
+
+print(circle_area(2.0))  # 12.57
+```
+````
+
+</flex>
+
+</grid>
+
+- 浅色风格是默认主题，语言标记（python / js / cpp …）触发 highlight.js 语法高亮。
+- 颜色语义：关键字红、字符串蓝、函数紫、数字蓝、注释灰；内联代码与 diff 增删行同用这套变量。
+
+---
+
+<!--
+_header: 主题特色组件 — code 代码块（深色 code-dark）
+_class: code-dark
+-->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+```python
+import math
+
+def circle_area(r: float) -> float:
+    """计算圆的面积"""
+    # 注释 · 关键字 · 字符串 · 数字
+    return math.pi * r ** 2
+
+print(circle_area(2.0))  # 12.57
+```
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+````markdown
+<!-- _class: code-dark -->
+
+```python
+<你的代码>
+```
+````
+
+```
+---
+theme: academic
+class: code-dark
+---
+```
+
+</flex>
+
+</grid>
+
+- **全局**：在文件头部 front matter 加 `class: code-dark`，作用于整份 PPT；
+- **局部**：在幻灯片顶部加 `<!-- _class: code-dark -->`，仅当前页生效。
+
+---
+
+<!-- _header: 主题特色容器组件 — card 卡片（默认 · 结构） -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+<card>
+
+## 默认卡片（蓝色）
+
+适用于信息分组、要点归纳。
+
+- 蓝色边框 + 标题底纹
+- blockquote 用于重点结论
+
+> 这是卡片内的重点结论，浅蓝背景 + 深蓝文字
+
+| 特性 | 说明 |
+|------|------|
+| 边框 | 左侧 3px 加粗 |
+| 标题 | 蓝色底纹 |
+
+</card>
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+<card>
+
+## 默认卡片（蓝色）
+
+- 蓝色边框 + 标题底纹
+- blockquote 用于重点结论
+> 这是卡片内的重点结论
+
+| 特性 | 说明 |
+|------|------|
+| 边框 | 左侧 3px 加粗 |
+
+</card>
+```
+
+</flex>
+
+</grid>
+
+- 任意标题（h1–h6）自动变成带底纹的标题栏
+- 内嵌表格表头/斑马纹等元素随卡片配色。
+
+---
+
+<!-- _header: 主题特色组件 — card 卡片（全色系） -->
+
+<grid cols="2" rows="2">
+
+<card green>
+
+## 绿色 card green
+
+成功、正面、完成类信息。
+
+> 绿底 + 深绿文字
+
+</card>
+
+<card red>
+
+## 红色 card red
+
+危险、警告、问题类信息。
+
+> 红底 + 暗红文字
+
+</card>
+
+<card yellow>
+
+## 黄色 card yellow
+
+注意、提醒、待确认类信息。
+
+> 暖黄底 + 深褐文字
+
+</card>
+
+<card gray>
+
+## 灰色 card gray
+
+中性、归档、辅助说明类信息。
+
+> 灰底 + 深灰文字
+
+</card>
+
+</grid>
+
+- 默认蓝色 + `green | red | yellow | gray`；
+- `compact` 可收紧内边距与表格，适合内容超出需排布密集场景。
+
+---
+
+<!-- _header: 主题特色组件 — outline 外框（默认 · 结构） -->
+
+<grid cols="2">
+
+<flex column>
+
+## 渲染效果
+
+<outline>
+
+### 默认蓝色（虚线外框）
+
+适用于轻量分组，虚线边框 + 蓝底标题。
+
+> 引用文字同样支持蓝色左边框强调
+
+</outline>
+
+- outline 是虚线外框，与 card 结构相同效果不同
+- 任意标题自动变成「蓝底白字」标签
+
+</flex>
+
+<flex column>
+
+## Markdown 源码
+
+```markdown
+<outline>
+
+### 默认蓝色（虚线外框）
+
+适用于轻量分组。
+
+> 引用文字同样支持蓝色左边框强调
+
+</outline>
+```
+
+</flex>
+
+</grid>
+
+---
+
+<!-- _header: 主题特色组件 — outline 外框（全色系 + solid） -->
+
+<grid cols="2" rows="2">
+
+<outline green>
+
+### outline green
+
+> 绿色虚线外框，展示成功/正面信息
+
+</outline>
+
+<outline red>
+
+### outline red
+
+> 红色虚线外框，展示危险/告警信息
+
+</outline>
+
+<outline yellow>
+
+### outline yellow
+
+> 黄色虚线外框，展示注意/提醒信息
+
+</outline>
+
+<outline gray>
+
+### outline gray
+
+> 灰色虚线外框，展示中性/归档信息
+
+</outline>
+
+</grid>
+
+<outline blue solid>
+
+### outline blue solid
+
+实线通栏标题 + 居中，标题从「标签」变为「通栏横幅」。
+
+</outline>
+
+- 颜色属性：`blue | green | red | yellow | gray`，默认 `blue`（虚线）；
+- `solid` 叠加任意颜色变实线，标题从「标签」变「通栏居中」；
+- `compact` 收紧内边距与标题字号。
+
+---
+
+<!-- _header: 主题特色组件 — feature 特性卡 -->
+
+## 渲染效果
+
+<grid cols="3">
+
+<feature num="01">
+
+### 描述成本
+
+客户需要反复讲清楚「想要什么样的风格」
+
+<tag>口头陈述</tag>
+
+</feature>
+
+<feature num="02" green>
+
+### 定制
+
+按用途与受众重新设计每一页
+
+<tag>专属</tag>
+
+</feature>
+
+<feature num="03" yellow>
+
+### 省心
+
+统一视觉体系，成品即可使用
+
+<tag>成品可用</tag>
+
+</feature>
+
+</grid>
+
+- 与 `metric` 的分工：**`metric` 是居中的字词卡，`feature` 是左对齐的要点卡**。并列展示要点、特性、痛点，且每张都要带一句解释时用 `feature`；只想突出一个大号居中关键词或数值时用 `metric`。
+- `num` 渲染右上角的序号水印（`opacity: 0.12` 的淡色大号数字），不写该属性则完全不渲染。
+- 颜色属性：`green | red | yellow | gray`，默认蓝色，同时决定左边框与标题颜色；`compact` 收紧内边距与字号。
+
+---
+
+<!--
+_header: 主题特色组件 — funnel 转化漏斗
+_class: compact
+-->
+
+## 渲染效果
+
+<funnel>
+
+- 兴趣：刷到内容
+
+  - 内容平台
+
+- 信任：看懂案例
+
+  - 完整生成过程
+
+- 行动：发出邀请
+
+  - 把 Word 发给我
+
+</funnel>
+
+- 每层自上而下**逐级收窄、逐级加深**，把「层层转化、逐级收敛」表达出来。
+- 与 `flow` 的分工：`flow` 是等宽的线性步骤，`funnel` 是有纵深感的转化链路——讲投放路径、转化漏斗、筛选流程时用 `funnel`。
+- 颜色属性：`green | red | yellow | gray`，每种颜色配一条由浅入深的色阶；`compact` 收紧层高与间距。
+
+---
+
+<!-- _header: 主题特色组件 — figure 插图 -->
+
+## 渲染效果
+
+<figure>
+
+![h:200px 示例截图](https://placehold.co/600x200/2563eb/white?text=Image+Placeholder)
+
+示例截图
+
+</figure>
+
+- 图片撑满整行，带 1px 细描边与 4px 圆角；下方一行图注居中、小一号、中性灰，排法对齐 Word / 论文插图。
+- 图注里写 `**图 1** 说明文字` 可把图号单独染成主题蓝，不写也照常居中显示。
+- **`<figure>` 标签与内部内容之间必须空行**，否则里面几行会被当成原始 HTML 原样输出，图片不会渲染。
+- `plain` 去掉图片描边，适合截图自带边框或整页大图的场景；`compact` 收紧图片与图注的间距并缩小图注字号。
