@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: academic
+theme: academic_NUDT
 paginate: false
 ---
 
@@ -8,8 +8,6 @@ paginate: false
 _paginate: false
 _class: homePage
 -->
-
-![h:120px](../../themes/academic/images/logo.svg)
 
 # 基于 Marp 的智能演示文稿工作流
 
@@ -849,9 +847,12 @@ GitHub 风格，适合浅色背景的内容页。
 // 异步加载并渲染 PPT
 async function buildPPT(config) {
   const { theme, slides, output } = config;
-  // 应用 Academic 主题
+  // 应用 Academic 主题（基座 + 皮肤，皮肤放最后靠层叠覆盖）
   const engine = new MarpEngine({
-    themeSet: 'themes/academic/index.css',
+    themeSet: [
+      'themes/academic/academic_template.css',
+      'themes/academic/academic_NUDT.css'
+    ],
     html: true
   });
   // 渲染所有幻灯片
@@ -1137,7 +1138,7 @@ _class: contentPage
 ```text
 ---
 marp: true
-theme: academic
+theme: academic_template
 paginate: true
 ---
 # 我的第一页 PPT
@@ -1156,7 +1157,7 @@ paginate: true
 
 ```bash
 npx @marp-team/marp-cli my-slides.md \
-  --theme-set themes/academic/index.css \
+  --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css \
   --html --preview
 ```
 
@@ -1200,12 +1201,12 @@ _class: contentPage
 ```bash
 # 导出 HTML
 npx marp my-slides.md \
-  --theme-set themes/academic/index.css \
+  --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css \
   --html -o output.html
 
 # 导出 PPTX
 npx marp my-slides.md \
-  --theme-set themes/academic/index.css \
+  --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css \
   --html --pptx-editable -o output.pptx
 ```
 
@@ -1342,8 +1343,6 @@ _class: contentPage
 _paginate: false
 _class: thanksPage
 -->
-
-![h:80px](../../themes/academic/images/logo.svg)
 
 # 感谢聆听，欢迎交流
 
