@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: academic
+theme: academic_template
 paginate: true
 ---
 
@@ -783,6 +783,7 @@ _class: compact
 | Badge | 默认 / green / yellow / red / gray |
 | DataTable | 默认 / green / red / yellow / gray |
 | Metric | blue / green / red / yellow / gray |
+| Feature | blue / green / red / yellow / gray |
 | Checklist | blue / green / red / yellow / gray / done |
 | DList | blue / green / red / yellow / gray / card 内自动适配 |
 | Outline | blue / green / red / yellow / gray + solid 可组合 |
@@ -790,5 +791,7 @@ _class: compact
 | Timeline | blue / green / red / yellow / gray |
 | Note | 默认 / blue / green / red / yellow / gray / footnote |
 | Summary | bold / white / 内嵌 tag |
+| Funnel | blue / green / red / yellow / gray |
+| Figure | blue / green / red / yellow / gray + plain |
 
 </card>

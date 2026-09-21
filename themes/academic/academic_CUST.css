@@ -1,0 +1,16 @@
+/* @theme academic_CUST */
+
+@import 'academic_template';
+
+/* 长沙理工大学皮肤：只改下面这几个变量，页面结构由 academic_template 负责。
+   logo 声明后，页眉 / 章节页 / 封面 / 致谢页统一使用，正文 Markdown 里不用再写图片。 */
+:root {
+  --logo: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学_纯白logo.png");
+  /* 封面 / 致谢页的 logo 高度，0px 表示该页不放 logo */
+  --logo-home-h: 120px;
+  --logo-thanks-h: 80px;
+
+  --home-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学.jpg");
+  --contents-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工竖图蓝.png");
+  --thanks-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学.jpg");
+}

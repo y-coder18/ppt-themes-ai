@@ -18,7 +18,7 @@ Marp 的页面指令（`_class`、`_header`、`_paginate` 等）**必须写在 H
 ```markdown
 ---
 marp: true
-theme: academic
+theme: academic_template
 paginate: false
 ---
 
@@ -26,8 +26,6 @@ paginate: false
 _paginate: false
 _class: homePage
 -->
-
-![h:120px](../../themes/academic/images/logo.svg)
 
 # 标题
 
@@ -60,10 +58,19 @@ _header: 页眉文字
 # 标题
 ```
 
-另外，封面页（`homePage`）需要包含 logo 图片：
+**不要写 logo！** logo 已与主题绑定，由主题 CSS 提供。封面页（`homePage`）、致谢页（`thanksPage`）、页眉和章节页的 logo 全部来自主题里的 `--logo` 变量，正文 Markdown 里**不需要也不应该**再写 `![...](logo.png)`——写了会变成两个 logo，页眉和章节页的 logo 也不会跟着换。
 
-```markdown
-![h:120px](../../themes/academic/images/logo.svg)
+换 logo / 换背景图请改皮肤文件（`themes/academic/academic_*.css`），只改变量块即可：
+
+```css
+:root {
+  --logo: url("../../themes/academic/定制皮肤/XXX/XXXlogo.png");
+  --logo-home-h: 120px;    /* 封面 logo 高度，0px = 封面不放 */
+  --logo-thanks-h: 80px;   /* 致谢页 logo 高度，0px = 致谢页不放 */
+  --home-bg: url("...");      /* 封面整页背景图 */
+  --contents-bg: url("...");  /* 目录页左侧竖图 */
+  --thanks-bg: url("...");    /* 致谢页整页背景图 */
+}
 ```
 
 ### 页面类型一览
@@ -182,9 +189,11 @@ PPT 写完后：
 # 实时预览
 npm run dev
 
-# 导出 HTML
-npx marp <file.md> --theme-set themes/academic/index.css --html --allow-local-files -o <output.html>
+# 导出 HTML（基座 + 要用的皮肤，皮肤放最后靠层叠覆盖）
+npx marp <file.md> --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css \
+  --html --allow-local-files -o <output.html>
 
 # 导出 PPTX
-npx marp <file.md> --theme-set themes/academic/index.css --html --pptx-editable -o <output.pptx>
+npx marp <file.md> --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css \
+  --html --pptx-editable -o <output.pptx>
 ```

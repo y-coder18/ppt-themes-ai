@@ -1,4 +1,4 @@
-/* @theme academic */
+/* @theme academic_template */
 
 @import 'uncover';
 
@@ -11,6 +11,19 @@
   --gap: 24px;
   /* 紧凑模式间距：应用于 [compact] / :root.compact / section.compact */
   --gap-compact: 12px;
+
+  /* ---- 品牌 logo：与主题绑定，正文 Markdown 里不用再写 <img> ----
+     基座默认 none，即不放 logo；皮肤里声明 --logo 后页眉 / 章节页 / 封面 / 致谢页统一生效 */
+  --logo: none;
+  /* 封面 / 致谢页的 logo 占位高度，0px = 该页不放 logo（默认不占位，正文里自带 logo 的旧稿不受影响）
+     皮肤里声明 --logo 后，把这两项一起改成需要的高度即可（如 120px / 80px） */
+  --logo-home-h: 0px;
+  --logo-thanks-h: 0px;
+
+  /* ---- 整页背景图：皮肤里改这三个变量即可整体换图 ---- */
+  --home-bg: url("../../themes/academic/images/航天.png");
+  --contents-bg: url("../../themes/academic/images/航天小图.png");
+  --thanks-bg: url("../../themes/academic/images/航天2.png");
 
   /* 基准字号：所有 rem 单位以此为参照，compact 模式覆盖此值即可全局缩放 */
   font-size: 24px;
@@ -105,7 +118,7 @@ section.code-dark {
   position: absolute;
   right: 60px;
   top: 12px;
-  background-image: url("../../themes/academic/images/logo.svg");
+  background-image: var(--logo);
   background-position: right top;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -345,19 +358,25 @@ mark[center] {
   color: #eee;
   position: relative;
   gap: 24px;
-}
-/* 背景图层 */
-:root.homePage::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("../../themes/academic/images/航天.png");
+  /* 整页背景图挂在 section 自身，把 ::before 让给 logo 占位块 */
+  background-image: var(--home-bg);
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   background-color: rgba(0, 20, 50, 0.35);
-  z-index: -2;
+}
+/* logo 占位块：作为弹性项参与居中排版。
+   高度为 0 时把这一项自带的 flex gap 也抵消掉，让不放 logo 的封面保持原版式 */
+:root.homePage::before {
+  content: '';
+  flex: none;
+  height: var(--logo-home-h);
+  margin-bottom: calc(-1 * max(0px, var(--gap) - var(--logo-home-h)));
+  background-image: var(--logo);
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /* 全局渐变遮罩兜底 */
 :root.homePage::after {
@@ -404,7 +423,7 @@ mark[center] {
   top: 0px;
   aspect-ratio: 9/16;
   height: 100%;
-  background-image: url("../../themes/academic/images/航天小图.png");
+  background-image: var(--contents-bg);
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -441,10 +460,6 @@ mark[center] {
 :root.contents ul li strong {
   font-size: 1.923rem;
   line-height: 60px;
-  /* background-image:-webkit-linear-gradient(105deg, transparent, #e7efff); 
-	-webkit-background-clip: text; 
-	-webkit-text-fill-color: transparent; 
-	text-shadow: 2px 2px 20px #0000000d; */
   color: #dbe3f2;
   vertical-align: middle;
   margin-right: 20px;
@@ -454,23 +469,26 @@ mark[center] {
 :root.thanksPage {
   text-align: center;
   justify-content: center;
-  background: #003f88;
   color: #eee;
   padding: 60px 0;
+  /* 背景图移到 section 自身，::before 让给 logo 占位块。
+     首层 10% 深蓝叠加等价于原来的 opacity: 0.9，无需再单独压暗 */
+  background-color: #003f88;
+  background-image: linear-gradient(rgba(0, 63, 136, 0.1), rgba(0, 63, 136, 0.1)), var(--thanks-bg);
+  background-size: 100% 100%, cover;
+  background-position: 0 0, center center;
+  background-repeat: no-repeat, no-repeat;
 }
+/* logo 占位块：同封面，高度 0 时把这一项的 flex gap 一并抵消 */
 :root.thanksPage::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("../../themes/academic/images/航天2.png");
-  background-size: cover;
-  background-position: center center;
+  flex: none;
+  height: var(--logo-thanks-h);
+  margin-bottom: calc(-1 * max(0px, var(--gap) - var(--logo-thanks-h)));
+  background-image: var(--logo);
+  background-size: auto 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 0.9;
 }
 :root.thanksPage h1 {
   color: #fff;
@@ -548,7 +566,7 @@ mark[center] {
   /* 多层背景 */
   background:
     /* logo */
-    url("../../themes/academic/images/logo.svg") no-repeat center bottom 50px / 140px auto,
+    var(--logo) no-repeat center bottom 50px / 140px auto,
     /* 纯色底色 */
     #003f88;
 }
@@ -563,12 +581,6 @@ mark[center] {
   text-align: center;
   font-size: 5.5rem;
   font-weight: 800;
-  /* background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0.04) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
   color: #dbe3f2;
   pointer-events: none;
   z-index: 1;
@@ -577,21 +589,6 @@ mark[center] {
   margin: 0;
   padding: 0;
 }
-/* 手动编号下方的装饰短横线 */
-/* :root.chapterPage .chapter-num::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -20px;
-  transform: translateX(-50%);
-  width: 36%;
-  height: 1.5px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.25) 25%,
-    rgba(255, 255, 255, 0.25) 75%,
-    transparent 100%);
-} */
 
 /* ---- 向后兼容：.chapter-label（已弃用） ---- */
 :root.chapterPage .chapter-label {
@@ -685,7 +682,8 @@ flex:not([column]) > * {
 flex:not([column]):not([auto]) > img,
 flex:not([column]):not([auto]) > tree,
 flex:not([column]):not([auto]) > timeline,
-flex:not([column]):not([auto]) > p:has(img) {
+flex:not([column]):not([auto]) > p:has(img),
+flex:not([column]):not([auto]) > figure {
   flex: none;
 }
 /* flex 内标题不设 margin，避免与 gap 叠加导致间距异常 */
@@ -1141,7 +1139,7 @@ card h1, card h2, card h3, card h4, card h5, card h6 {
   border-bottom: 1px solid rgba(0, 63, 136, 0.6);
 }
 
-/* 卡片内重点结论：极浅冷蓝底 + 细左强调条，干净克制的总结块 */
+/* 卡片内重点/引用内容：极浅冷蓝底 + 细左强调条，干净克制的总结块 */
 card blockquote {
   margin: 0;
   padding: 4px 12px;
@@ -1360,7 +1358,7 @@ outline h1, outline h2, outline h3, outline h4, outline h5, outline h6 {
   margin-bottom: 6px;
   position: relative;
 }
-outline p, outline ul, outline mark {
+outline p, outline ul{
   margin: 0;
 }
 outline ul {
@@ -1513,7 +1511,6 @@ tag[red] {
 tag[gray] {
   background: #607d8b;
 }
-
 
 /* ================================================================
    Summary — 通栏总结横幅
@@ -2887,4 +2884,350 @@ flow[compact][vertical] > :is(ol, ul),
 :root.compact flow[vertical] > :is(ol, ul),
 section.compact flow[vertical] > :is(ol, ul) {
   gap: 28px;
+}
+
+
+/* ================================================================
+   Feature — 特性卡（序号 + 标题 + 释义）
+   ================================================================ */
+
+/*
+ * 与 metric 的分工：metric 是居中的字词卡（数值或关键词），
+ * feature 是左对齐的要点卡（词组 + 释义），承载成段解释。
+ * 并列展示要点 / 特性 / 痛点、且每张都要带一句解释时用 feature。
+ *
+ * <feature num="01">
+ *
+ * ### 描述成本
+ *
+ * 客户需要反复讲清楚「我想要什么样的风格」
+ *
+ * <tag>口头陈述</tag>
+ *
+ * </feature>
+ *
+ * 变体：green / red / yellow / gray / compact
+ */
+
+feature {
+  --ft-ink: #003f88;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  padding: 18px 22px 20px;
+  border: 1px solid #a4adb9;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+feature > * {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+/* 序号水印：右上角大号淡色数字，num 缺省时不渲染 */
+feature::before {
+  content: attr(num);
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--ft-ink);
+  opacity: 0.12;
+  pointer-events: none;
+}
+/* 标题：不分层级，统一为特性名 */
+feature h1, feature h2, feature h3,
+feature h4, feature h5, feature h6 {
+  font-size: 1.077rem;
+  font-weight: 700;
+  color: var(--ft-ink);
+  letter-spacing: 0.5px;
+  display: block;
+  padding: 0;
+  background: none;
+  border: none;
+}
+feature h3::before {
+  content: none;
+}
+feature p {
+  font-size: 0.846rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* 未给 num 时不渲染水印，避免留下一个空的绝对定位盒 */
+feature:not([num])::before {
+  content: none;
+}
+
+/* --- 颜色变体 --- */
+feature[green]  { --ft-ink: #006400; }
+feature[red]    { --ft-ink: #c00000; }
+feature[yellow] { --ft-ink: #b87a14; }
+feature[gray]   { --ft-ink: #455a64; }
+
+/* compact */
+feature[compact],
+:root.compact feature,
+section.compact feature {
+  padding: 12px 15px 14px;
+  gap: 5px;
+}
+feature[compact] h1, feature[compact] h2, feature[compact] h3,
+feature[compact] h4, feature[compact] h5, feature[compact] h6,
+:root.compact feature h1, :root.compact feature h2, :root.compact feature h3,
+:root.compact feature h4, :root.compact feature h5, :root.compact feature h6,
+section.compact feature h1, section.compact feature h2, section.compact feature h3,
+section.compact feature h4, section.compact feature h5, section.compact feature h6 {
+  font-size: 0.923rem;
+}
+feature[compact] p,
+:root.compact feature p,
+section.compact feature p {
+  font-size: 0.769rem;
+}
+feature[compact]::before,
+:root.compact feature::before,
+section.compact feature::before {
+  font-size: 1.9rem;
+  right: 8px;
+}
+
+
+/* ================================================================
+   Funnel — 转化漏斗组件
+   ================================================================ */
+
+/*
+ * 每层自上而下逐级收窄、颜色逐级加深，表达「层层转化、逐级收敛」。
+ * 与 flow 的分工：flow 是等宽的线性步骤，funnel 是有纵深感的转化链路。
+ *
+ * <funnel>
+ *
+ * - 兴趣：刷到内容
+ *
+ *   - 小红书 / 闲鱼刷到选题
+ *
+ * - 信任：看懂案例
+ *
+ *   - 完整生成过程
+ *
+ * </funnel>
+ *
+ * 变体：green / red / yellow / gray / compact
+ */
+
+funnel {
+  --fn-1: #5480ba;
+  --fn-2: #3a6cb0;
+  --fn-3: #1e57a2;
+  --fn-4: #0a4295;
+  --fn-5: #00348b;
+  display: block;
+  margin: 8px 0;
+}
+funnel > :is(ul, ol) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+funnel > :is(ul, ol) > li {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 26px;
+  border-radius: 5px;
+  background: var(--fn-1);
+  color: #ffffff;
+  text-align: center;
+}
+/* 逐层收窄 + 逐层加深 */
+funnel > :is(ul, ol) > li:nth-child(1) { width: 100%; background: var(--fn-1); }
+funnel > :is(ul, ol) > li:nth-child(2) { width: 86%;  background: var(--fn-2); }
+funnel > :is(ul, ol) > li:nth-child(3) { width: 72%;  background: var(--fn-3); }
+funnel > :is(ul, ol) > li:nth-child(4) { width: 58%;  background: var(--fn-4); }
+funnel > :is(ul, ol) > li:nth-child(5),
+funnel > :is(ul, ol) > li:nth-child(n+6) { width: 46%; background: var(--fn-5); }
+funnel > :is(ul, ol) > li:nth-child(n+7) { width: 38%; }
+/* 层内内容 */
+funnel > :is(ul, ol) > li > * {
+  margin: 0;
+}
+funnel > :is(ul, ol) > li > p:first-of-type {
+  font-size: 0.923rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+funnel > :is(ul, ol) > li > p:not(:first-of-type) {
+  font-size: 0.808rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 3px;
+}
+/* 子项：横向并排、居中、无项目符号 */
+funnel > :is(ul, ol) > li > :is(ul, ol) {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 16px;
+  font-size: 0.769rem;
+}
+funnel > :is(ul, ol) > li > :is(ul, ol) > li {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.45;
+  margin: 0;
+}
+/* --- 颜色变体：各自一条由浅入深的蓝色阶 --- */
+funnel[green] {
+  --fn-1: #3f8f4a;
+  --fn-2: #2f7a3c;
+  --fn-3: #1f652e;
+  --fn-4: #105222;
+  --fn-5: #064419;
+}
+funnel[red] {
+  --fn-1: #cf5252;
+  --fn-2: #c03030;
+  --fn-3: #b01818;
+  --fn-4: #a00808;
+  --fn-5: #8f0404;
+}
+funnel[yellow] {
+  --fn-1: #b07a1c;
+  --fn-2: #9c6a12;
+  --fn-3: #885a0b;
+  --fn-4: #754c06;
+  --fn-5: #633f03;
+}
+funnel[gray] {
+  --fn-1: #6b8391;
+  --fn-2: #5a7280;
+  --fn-3: #4a626f;
+  --fn-4: #3d525e;
+  --fn-5: #31434d;
+}
+
+/* compact */
+funnel[compact] > :is(ul, ol),
+:root.compact funnel > :is(ul, ol),
+section.compact funnel > :is(ul, ol) {
+  gap: 6px;
+}
+funnel[compact] > :is(ul, ol) > li,
+:root.compact funnel > :is(ul, ol) > li,
+section.compact funnel > :is(ul, ol) > li {
+  padding: 7px 16px;
+}
+funnel[compact] > :is(ul, ol) > li > p:first-of-type,
+:root.compact funnel > :is(ul, ol) > li > p:first-of-type,
+section.compact funnel > :is(ul, ol) > li > p:first-of-type {
+  font-size: 0.846rem;
+}
+funnel[compact] > :is(ul, ol) > li > p:not(:first-of-type),
+funnel[compact] > :is(ul, ol) > li > :is(ul, ol),
+:root.compact funnel > :is(ul, ol) > li > p:not(:first-of-type),
+:root.compact funnel > :is(ul, ol) > li > :is(ul, ol),
+section.compact funnel > :is(ul, ol) > li > p:not(:first-of-type),
+section.compact funnel > :is(ul, ol) > li > :is(ul, ol) {
+  font-size: 0.731rem;
+}
+
+
+/* ================================================================
+   Figure — 插图（图片 + 图注）
+   ================================================================ */
+
+/*
+ * 一张图配一行图注，排法对齐 Word / 论文插图：
+ * 图片带细描边，图注居中、小一号、中性灰。
+ *
+ * <figure>
+ *
+ * ![示例截图](images/header_bg.png)
+ *
+ * **图 1** 这是一张示例截图
+ *
+ * </figure>
+ *
+ * 注意：<figure> 标签与内部内容之间必须**空行**，
+ * 否则块内那几行会被当作原始 HTML 原样输出，图片不会渲染。
+ *
+ * 变体：plain（图片去描边）/ compact（收紧间距与字号）
+ */
+
+figure {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: stretch;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+figure > * {
+  margin: 0;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+/* 图注：居中、小一号、中性灰，对应 Word 的「图 1 说明」排法 */
+figure p {
+  font-size: 0.808rem;
+  color: #64748b;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+/* 图注里可选的图号标签：**图 1** 说明 */
+figure strong {
+  color: #003f88;
+  font-weight: 600;
+}
+/* 防御：figure 内若写了标题，去掉主题默认的蓝色竖条与缩进 */
+figure h1, figure h2, figure h3,
+figure h4, figure h5, figure h6 {
+  padding: 0;
+  background: none;
+  border: none;
+}
+figure h3::before {
+  content: none;
+}
+
+/* 无描边变体：截图自带边框，或整页大图时使用 */
+figure[plain] img {
+  border: none;
+  border-radius: 0;
+}
+
+/* compact */
+figure[compact],
+:root.compact figure,
+section.compact figure {
+  gap: 7px;
+}
+figure[compact] p,
+:root.compact figure p,
+section.compact figure p {
+  font-size: 0.731rem;
 }
