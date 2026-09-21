@@ -17,6 +17,9 @@
     "dev:monthly": "marp ppt/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
     "build:monthly": "marp ppt/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o ppt/2026年9月研究生月报/2026年9月研究生月报.html",
     "check:monthly": "node scripts/check-slides.mjs ppt/2026年9月研究生月报/2026年9月研究生月报.html ppt/2026年9月研究生月报/media",
+    "dev:xiangfu": "marp ppt/水蒸气蒸馏法提取香附挥发油的工艺优化/水蒸气蒸馏法提取香附挥发油的工艺优化.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
+    "build:xiangfu": "marp ppt/水蒸气蒸馏法提取香附挥发油的工艺优化/水蒸气蒸馏法提取香附挥发油的工艺优化.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o ppt/水蒸气蒸馏法提取香附挥发油的工艺优化/水蒸气蒸馏法提取香附挥发油的工艺优化.html",
+    "check:xiangfu": "node scripts/check-slides.mjs ppt/水蒸气蒸馏法提取香附挥发油的工艺优化/水蒸气蒸馏法提取香附挥发油的工艺优化.html ppt/水蒸气蒸馏法提取香附挥发油的工艺优化/media",
     "marp": "marp"
   },
   "keywords": [],
