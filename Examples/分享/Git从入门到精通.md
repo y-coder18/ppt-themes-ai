@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: academic_NUDT
+theme: academic_CUST
 paginate: false
 ---
 
@@ -59,11 +59,11 @@ _class: contentPage
 
 ### 命名灾难
 
-`论文_最终版.docx`
+论文_最终版.docx
 
-`论文_最终版2.docx`
+论文_最终版2.docx
 
-`论文_最终版_真的最终版.docx`
+论文_最终版_真的最终版.docx
 
 </card>
 
