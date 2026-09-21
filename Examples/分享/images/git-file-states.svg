@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 340" width="1220" height="340" role="img" aria-label="文件四种状态及其转换：未跟踪或已修改经 git add 变为已暂存，已暂存经 git commit 变为未修改，未修改经编辑变为已修改、经 git rm 回到未跟踪">
+  <defs>
+    <marker id="fs-blue" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#0b4a9e"/>
+    </marker>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; font-size:13px; fill:#0b4a9e; }
+      .en { font-family: Arial,Helvetica,sans-serif; font-size:11px; fill:#94a3b8; letter-spacing:1.2px; }
+      .nt { font-size:19px; font-weight:700; }
+      .cm { font-size:13px; fill:#0b4a9e; }
+    </style>
+  </defs>
+
+  <g class="tt" text-anchor="middle">
+    <!-- 未跟踪（灰） -->
+    <rect x="50" y="56" width="200" height="68" rx="10" fill="#f7f8f9" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="150" y="88" class="nt" fill="#455a64">未跟踪</text>
+    <text x="150" y="105" class="en">UNTRACKED</text>
+
+    <!-- 已暂存（绿：准备好被提交） -->
+    <rect x="510" y="56" width="200" height="68" rx="10" fill="#f0f9f2" stroke="#b8d9c0" stroke-width="2"/>
+    <text x="610" y="88" class="nt" fill="#1a5c2a">已暂存</text>
+    <text x="610" y="105" class="en">STAGED</text>
+
+    <!-- 未修改（蓝：与上次提交一致） -->
+    <rect x="970" y="56" width="200" height="68" rx="10" fill="#f5f9ff" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="1070" y="88" class="nt" fill="#003f88">未修改</text>
+    <text x="1070" y="105" class="en">UNMODIFIED</text>
+
+    <!-- 已修改（黄：改动尚未暂存） -->
+    <rect x="510" y="251" width="200" height="68" rx="10" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="2"/>
+    <text x="610" y="283" class="nt" fill="#b87a14">已修改</text>
+    <text x="610" y="300" class="en">MODIFIED</text>
+
+    <!-- 未跟踪 / 已修改 → 已暂存 -->
+    <line x1="250" y1="90" x2="500" y2="90" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fs-blue)"/>
+    <text x="375" y="76" class="mm">git add</text>
+
+    <line x1="610" y1="251" x2="610" y2="126" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fs-blue)"/>
+    <text x="624" y="192" class="mm" text-anchor="start">git add</text>
+
+    <!-- 已暂存 → 未修改 -->
+    <line x1="710" y1="90" x2="960" y2="90" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fs-blue)"/>
+    <text x="835" y="76" class="mm">git commit</text>
+
+    <!-- 未修改 → 已修改（编辑） -->
+    <path d="M 1070 124 V 275 Q 1070 285 1060 285 H 712"
+          fill="none" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fs-blue)"/>
+    <rect x="856" y="265" width="68" height="20" fill="#ffffff"/>
+    <text x="890" y="279" class="tt cm">编辑文件</text>
+
+    <!-- 未修改 → 未跟踪（git rm） -->
+    <path d="M 1070 56 V 40 Q 1070 30 1060 30 H 160 Q 150 30 150 40 V 54"
+          fill="none" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fs-blue)"/>
+    <rect x="577" y="20" width="66" height="20" fill="#ffffff"/>
+    <text x="610" y="35" class="mm">git rm</text>
+  </g>
+</svg>

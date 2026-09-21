@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 320" width="1220" height="320" role="img" aria-label="reset 三种模式对照：soft 移动 HEAD 但保留暂存区与工作区；mixed 重置暂存区、保留工作区；hard 连工作区一起丢弃">
+  <defs>
+    <linearGradient id="rm-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b4a9e"/>
+      <stop offset="1" stop-color="#1158b8"/>
+    </linearGradient>
+    <linearGradient id="rm-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a51010"/>
+      <stop offset="1" stop-color="#c00000"/>
+    </linearGradient>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; }
+      .hd { font-size:17px; font-weight:700; fill:#003f88; }
+      .sb { font-size:13px; fill:#64748b; }
+      .mh { font-family: Consolas,'Courier New',monospace; font-size:15px; font-weight:700; fill:#ffffff; }
+      .rl { font-size:15px; fill:#334155; }
+      .ck { font-size:14px; font-weight:700; }
+      .cm { font-size:13px; fill:#334155; }
+    </style>
+  </defs>
+
+  <g class="tt">
+    <text x="0" y="32" class="hd">撤销最近一次提交（git reset HEAD~1）：三个区域各自被怎么处理</text>
+    <text x="0" y="56" class="sb">命令末尾不带路径时，reset 会移动 HEAD；暂存区与工作区是否跟着清空，由模式决定</text>
+
+    <!-- 模式表头 -->
+    <rect x="200" y="80" width="320" height="42" rx="8" fill="url(#rm-blue)"/>
+    <text x="360" y="108" class="mm mh" text-anchor="middle">git reset --soft</text>
+    <rect x="550" y="80" width="320" height="42" rx="8" fill="url(#rm-blue)"/>
+    <text x="710" y="108" class="mm mh" text-anchor="middle">git reset --mixed</text>
+    <rect x="900" y="80" width="320" height="42" rx="8" fill="url(#rm-red)"/>
+    <text x="1060" y="108" class="mm mh" text-anchor="middle">git reset --hard</text>
+
+    <text x="360" y="142" class="sb" text-anchor="middle">想重新提交</text>
+    <text x="710" y="142" class="sb" text-anchor="middle">默认值 · 想重挑文件</text>
+    <text x="1060" y="142" class="sb" text-anchor="middle">彻底放弃改动</text>
+
+    <!-- 第一行：HEAD -->
+    <text x="0" y="179" class="rl">HEAD（分支指针）</text>
+    <rect x="290" y="159" width="140" height="30" rx="15" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+    <text x="360" y="179" class="ck" fill="#003f88" text-anchor="middle">重置</text>
+    <rect x="640" y="159" width="140" height="30" rx="15" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+    <text x="710" y="179" class="ck" fill="#003f88" text-anchor="middle">重置</text>
+    <rect x="990" y="159" width="140" height="30" rx="15" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+    <text x="1060" y="179" class="ck" fill="#003f88" text-anchor="middle">重置</text>
+
+    <!-- 第二行：暂存区 -->
+    <text x="0" y="227" class="rl">暂存区</text>
+    <rect x="290" y="207" width="140" height="30" rx="15" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+    <text x="360" y="227" class="ck" fill="#1a5c2a" text-anchor="middle">保留</text>
+    <rect x="640" y="207" width="140" height="30" rx="15" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+    <text x="710" y="227" class="ck" fill="#003f88" text-anchor="middle">重置</text>
+    <rect x="990" y="207" width="140" height="30" rx="15" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+    <text x="1060" y="227" class="ck" fill="#003f88" text-anchor="middle">重置</text>
+
+    <!-- 第三行：工作区 -->
+    <text x="0" y="275" class="rl">工作区</text>
+    <rect x="290" y="255" width="140" height="30" rx="15" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+    <text x="360" y="275" class="ck" fill="#1a5c2a" text-anchor="middle">保留</text>
+    <rect x="640" y="255" width="140" height="30" rx="15" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+    <text x="710" y="275" class="ck" fill="#1a5c2a" text-anchor="middle">保留</text>
+    <rect x="990" y="255" width="140" height="30" rx="15" fill="#fdf2f2" stroke="#ecc8c8" stroke-width="1.5"/>
+    <text x="1060" y="275" class="ck" fill="#a51010" text-anchor="middle">丢弃（不可恢复）</text>
+
+    <!-- 对应命令 -->
+    <line x1="0" y1="294" x2="1220" y2="294" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="360" y="314" class="mm cm" text-anchor="middle">git reset --soft HEAD~1</text>
+    <text x="710" y="314" class="mm cm" text-anchor="middle">git reset HEAD~1</text>
+    <text x="1060" y="314" class="mm cm" text-anchor="middle">git reset --hard HEAD~1</text>
+  </g>
+</svg>

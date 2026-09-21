@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 400" width="1220" height="400" role="img" aria-label="快进合并只需把 main 指针前移到 D，不产生新提交；三方合并以共同祖先 B 为基础，生成合并提交 M，保留分支拓扑">
+  <defs>
+    <marker id="mf-blue" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#0b4a9e"/>
+    </marker>
+    <marker id="mf-amber" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#b87a14"/>
+    </marker>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; }
+      .pt { font-size:19px; font-weight:700; }
+      .ps { font-size:12.5px; fill:#64748b; }
+      .cl { font-size:14px; font-weight:700; fill:#ffffff; }
+      .tag { font-family: Consolas,'Courier New',monospace; font-size:13px; font-weight:700; }
+      .cap { font-size:11px; fill:#94a3b8; }
+      .note { font-size:13px; fill:#334155; }
+    </style>
+  </defs>
+
+  <g class="tt" text-anchor="middle">
+    <!-- ================= 左：快进合并 ================= -->
+    <rect x="0" y="0" width="560" height="340" rx="12" fill="#f7fafe" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="24" y="44" class="pt" fill="#003f88" text-anchor="start">快进合并 Fast-forward</text>
+    <text x="24" y="68" class="ps" text-anchor="start">目标分支自分支点起没有任何新提交</text>
+
+    <line x1="90" y1="165" x2="180" y2="165" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="220" y1="165" x2="440" y2="165" stroke="#1a5c2a" stroke-width="2"/>
+    <circle cx="70" cy="165" r="20" fill="#0b4a9e"/>
+    <text x="70" y="170" class="mm cl">A</text>
+    <circle cx="200" cy="165" r="20" fill="#0b4a9e"/>
+    <text x="200" y="170" class="mm cl">B</text>
+    <circle cx="330" cy="165" r="20" fill="#1a5c2a"/>
+    <text x="330" y="170" class="mm cl">C</text>
+    <circle cx="460" cy="165" r="20" fill="#1a5c2a"/>
+    <text x="460" y="170" class="mm cl">D</text>
+
+    <path d="M 200 143 C 250 80 410 80 460 143" fill="none" stroke="#0b4a9e" stroke-width="2" marker-end="url(#mf-blue)"/>
+    <text x="330" y="84" font-size="12.5" fill="#0b4a9e">main 指针直接前移</text>
+
+    <rect x="166" y="212" width="68" height="26" rx="13" fill="#f7fafe" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="200" y="230" class="tag" fill="#94a3b8">main</text>
+    <text x="200" y="258" class="cap">合并前</text>
+
+    <rect x="426" y="212" width="68" height="26" rx="13" fill="#0b4a9e"/>
+    <text x="460" y="230" class="tag" fill="#ffffff">main</text>
+    <text x="460" y="258" class="cap">合并后</text>
+
+    <text x="280" y="300" class="note">历史是一条直线，干净利落</text>
+    <text x="280" y="324" font-size="12" fill="#64748b">但看不出「这里曾开过一个分支」</text>
+
+    <!-- ================= 右：三方合并 ================= -->
+    <rect x="660" y="0" width="560" height="340" rx="12" fill="#f7fafe" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="684" y="44" class="pt" fill="#003f88" text-anchor="start">三方合并 Three-way Merge</text>
+    <text x="684" y="68" class="ps" text-anchor="start">两个分支各自都有新提交，产生了分叉</text>
+
+    <!-- 共同祖先 B -->
+    <circle cx="830" cy="165" r="30" fill="none" stroke="#b87a14" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="830" y="118" font-size="12" fill="#b87a14">共同祖先</text>
+
+    <!-- 合并提交 M -->
+    <circle cx="1100" cy="165" r="20" fill="none" stroke="#b87a14" stroke-width="5"/>
+    <text x="1100" y="118" font-size="12" fill="#b87a14">合并提交</text>
+
+    <line x1="740" y1="165" x2="810" y2="165" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="850" y1="165" x2="920" y2="165" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="960" y1="165" x2="1080" y2="165" stroke="#0b4a9e" stroke-width="2"/>
+
+    <circle cx="720" cy="165" r="20" fill="#0b4a9e"/>
+    <text x="720" y="170" class="mm cl">A</text>
+    <circle cx="830" cy="165" r="20" fill="#0b4a9e"/>
+    <text x="830" y="170" class="mm cl">B</text>
+    <circle cx="940" cy="165" r="20" fill="#0b4a9e"/>
+    <text x="940" y="170" class="mm cl">C</text>
+    <circle cx="1100" cy="165" r="14" fill="#b87a14"/>
+    <text x="1100" y="170" class="mm cl">M</text>
+
+    <circle cx="880" cy="250" r="20" fill="#1a5c2a"/>
+    <text x="880" y="255" class="mm cl">D</text>
+    <circle cx="990" cy="250" r="20" fill="#1a5c2a"/>
+    <text x="990" y="255" class="mm cl">E</text>
+
+    <path d="M 838 180 C 848 220 852 250 860 250" fill="none" stroke="#1a5c2a" stroke-width="2"/>
+    <path d="M 1009 250 C 1050 244 1050 186 1083 173" fill="none" stroke="#1a5c2a" stroke-width="2"/>
+
+    <rect x="1067" y="192" width="66" height="26" rx="13" fill="#0b4a9e"/>
+    <text x="1100" y="210" class="tag" fill="#ffffff">main</text>
+
+    <rect x="950" y="275" width="80" height="26" rx="13" fill="#1a5c2a"/>
+    <text x="990" y="293" class="tag" fill="#ffffff">feature</text>
+
+    <text x="790" y="308" class="note">以共同祖先为基础，合并双方改动</text>
+    <text x="790" y="330" font-size="12" fill="#64748b">生成合并提交，保留分支拓扑</text>
+
+    <!-- ================= 底部结论 ================= -->
+    <rect x="0" y="356" width="1220" height="44" rx="10" fill="#f2f7ff" stroke="#c4d6f0" stroke-width="1.5"/>
+    <text x="610" y="384" font-size="15" fill="#003f88">快进不产生新提交；三方合并产生一个合并提交，因此「什么时候合并进来的」一目了然</text>
+  </g>
+</svg>

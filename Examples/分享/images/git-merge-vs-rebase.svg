@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 400" width="1220" height="400" role="img" aria-label="merge 用一个合并提交连接两条历史并保留分支拓扑；rebase 把 feature 的提交逐个摘下来重接在 main 之后，原提交被丢弃，哈希被改写">
+  <defs>
+    <marker id="mr-amber" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#b87a14"/>
+    </marker>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; }
+      .pt { font-size:19px; font-weight:700; }
+      .ps { font-size:12.5px; fill:#64748b; }
+      .cl { font-size:14px; font-weight:700; fill:#ffffff; }
+      .csm { font-size:12px; font-weight:700; fill:#ffffff; }
+      .tag { font-family: Consolas,'Courier New',monospace; font-size:13px; font-weight:700; }
+      .gh { font-size:14px; font-weight:700; fill:#94a3b8; }
+    </style>
+  </defs>
+
+  <g class="tt" text-anchor="middle">
+    <!-- ================= 左：merge ================= -->
+    <rect x="0" y="0" width="560" height="340" rx="12" fill="#f7fafe" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="24" y="44" class="pt" fill="#003f88" text-anchor="start">git merge 合并</text>
+    <text x="24" y="74" class="ps" text-anchor="start">用一个合并提交把两条历史连接起来</text>
+    <text x="24" y="96" class="ps" text-anchor="start">保留真实的分支拓扑，代价是历史图有交叉</text>
+
+    <line x1="90" y1="180" x2="170" y2="180" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="210" y1="180" x2="290" y2="180" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="330" y1="180" x2="450" y2="180" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="270" y1="285" x2="350" y2="285" stroke="#1a5c2a" stroke-width="2"/>
+
+    <path d="M 200 198 C 214 250 216 285 230 285" fill="none" stroke="#1a5c2a" stroke-width="2"/>
+    <path d="M 390 285 C 425 278 425 210 451 188" fill="none" stroke="#1a5c2a" stroke-width="2"/>
+
+    <circle cx="70" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="70" y="185" class="mm cl">A</text>
+    <circle cx="190" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="190" y="185" class="mm cl">B</text>
+    <circle cx="310" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="310" y="185" class="mm cl">C</text>
+    <circle cx="250" cy="285" r="20" fill="#1a5c2a"/>
+    <text x="250" y="290" class="mm cl">D</text>
+    <circle cx="370" cy="285" r="20" fill="#1a5c2a"/>
+    <text x="370" y="290" class="mm cl">E</text>
+    <circle cx="470" cy="180" r="16" fill="#b87a14"/>
+    <text x="470" y="185" class="mm csm">M</text>
+    <text x="470" y="148" font-size="11.5" fill="#b87a14">合并提交</text>
+
+    <rect x="437" y="212" width="66" height="26" rx="13" fill="#0b4a9e"/>
+    <text x="470" y="230" class="tag" fill="#ffffff">main</text>
+
+    <rect x="334" y="307" width="80" height="26" rx="13" fill="#1a5c2a"/>
+    <text x="374" y="325" class="tag" fill="#ffffff">feature</text>
+
+    <!-- ================= 右：rebase ================= -->
+    <rect x="660" y="0" width="560" height="340" rx="12" fill="#f7fafe" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="684" y="44" class="pt" fill="#003f88" text-anchor="start">git rebase 变基</text>
+    <text x="684" y="74" class="ps" text-anchor="start">把提交逐个摘下来，重新接到目标分支之后</text>
+    <text x="684" y="96" class="ps" text-anchor="start">历史拉成一条直线，代价是哈希被改写</text>
+
+    <!-- 原始（被丢弃）的提交 -->
+    <path d="M 825 198 C 845 255 850 290 860 290" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 4"/>
+    <line x1="900" y1="290" x2="960" y2="290" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+    <circle cx="880" cy="290" r="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="880" y="295" class="mm gh">D</text>
+    <circle cx="980" cy="290" r="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="980" y="295" class="mm gh">E</text>
+    <text x="930" y="322" font-size="11.5" fill="#94a3b8">虚线 = 被丢弃的原提交</text>
+
+    <!-- 重新接上的提交 -->
+    <line x1="730" y1="180" x2="795" y2="180" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="835" y1="180" x2="900" y2="180" stroke="#0b4a9e" stroke-width="2"/>
+    <line x1="940" y1="180" x2="1005" y2="180" stroke="#1a5c2a" stroke-width="2"/>
+    <line x1="1045" y1="180" x2="1110" y2="180" stroke="#1a5c2a" stroke-width="2"/>
+
+    <circle cx="710" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="710" y="185" class="mm cl">A</text>
+    <circle cx="815" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="815" y="185" class="mm cl">B</text>
+    <circle cx="920" cy="180" r="20" fill="#0b4a9e"/>
+    <text x="920" y="185" class="mm cl">C</text>
+    <circle cx="1025" cy="180" r="20" fill="#1a5c2a"/>
+    <text x="1025" y="185" class="mm cl">D'</text>
+    <circle cx="1130" cy="180" r="20" fill="#1a5c2a"/>
+    <text x="1130" y="185" class="mm cl">E'</text>
+
+    <path d="M 994 276 C 1072 268 1078 212 1111 189" fill="none" stroke="#b87a14" stroke-width="2" marker-end="url(#mr-amber)"/>
+    <text x="1090" y="247" font-size="11.5" fill="#b87a14" text-anchor="start">重放</text>
+
+    <rect x="887" y="212" width="66" height="26" rx="13" fill="#0b4a9e"/>
+    <text x="920" y="230" class="tag" fill="#ffffff">main</text>
+    <rect x="1090" y="212" width="80" height="26" rx="13" fill="#1a5c2a"/>
+    <text x="1130" y="230" class="tag" fill="#ffffff">feature</text>
+
+    <!-- ================= 底部结论 ================= -->
+    <rect x="0" y="356" width="1220" height="44" rx="10" fill="#f2f7ff" stroke="#c4d6f0" stroke-width="1.5"/>
+    <text x="610" y="384" font-size="15" fill="#003f88">选型：共享分支用 merge 保留真实拓扑；只有尚未推送的本地提交，才适合用 rebase 拉直历史</text>
+  </g>
+</svg>

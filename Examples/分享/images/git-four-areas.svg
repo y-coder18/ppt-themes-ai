@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 350" width="1220" height="350" role="img" aria-label="Git 四个区域与数据流向：工作区经 add 到暂存区，经 commit 到本地仓库，经 push 到远程仓库；反向分别是 restore staged、reset hard、pull">
+  <defs>
+    <marker id="fa-blue" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#0b4a9e"/>
+    </marker>
+    <marker id="fa-gray" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#94a3b8"/>
+    </marker>
+    <marker id="fa-red" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#c00000"/>
+    </marker>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; font-size:14px; }
+      .en { font-family: Arial,Helvetica,sans-serif; font-size:12px; fill:#94a3b8; letter-spacing:1.4px; }
+      .desc { font-size:14px; fill:#64748b; }
+      .bttl { font-size:23px; font-weight:700; }
+      .fl { font-size:14px; fill:#0b4a9e; }
+      .rl { font-size:14px; fill:#64748b; }
+      .rl-red { font-size:14px; fill:#c00000; }
+    </style>
+  </defs>
+
+  <g class="tt" text-anchor="middle">
+    <!-- 工作区（蓝） -->
+    <rect x="45" y="25" width="200" height="150" rx="12" fill="#f5f9ff" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="145" y="83" class="bttl" fill="#003f88">工作区</text>
+    <text x="145" y="125" class="desc">你正在编辑的文件</text>
+    <text x="145" y="157" class="en">WORKING</text>
+
+    <!-- 暂存区（黄：Git 与其他 VCS 的最大差异） -->
+    <rect x="355" y="25" width="200" height="150" rx="12" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="2"/>
+    <text x="455" y="83" class="bttl" fill="#b87a14">暂存区</text>
+    <text x="455" y="125" class="desc">本次要提交的内容</text>
+    <text x="455" y="157" class="en">STAGING</text>
+
+    <!-- 本地仓库（蓝） -->
+    <rect x="665" y="25" width="200" height="150" rx="12" fill="#f5f9ff" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="765" y="83" class="bttl" fill="#003f88">本地仓库</text>
+    <text x="765" y="125" class="desc">已提交的历史</text>
+    <text x="765" y="157" class="en">LOCAL</text>
+
+    <!-- 远程仓库（蓝） -->
+    <rect x="975" y="25" width="200" height="150" rx="12" fill="#f5f9ff" stroke="#c4d6f0" stroke-width="2"/>
+    <text x="1075" y="83" class="bttl" fill="#003f88">远程仓库</text>
+    <text x="1075" y="125" class="desc">团队共享的副本</text>
+    <text x="1075" y="157" class="en">REMOTE</text>
+
+    <!-- 正向：add / commit / push -->
+    <line x1="249" y1="100" x2="349" y2="100" stroke="#0b4a9e" stroke-width="2.5" marker-end="url(#fa-blue)"/>
+    <text x="300" y="80" class="mm fl">git add</text>
+
+    <line x1="559" y1="100" x2="659" y2="100" stroke="#0b4a9e" stroke-width="2.5" marker-end="url(#fa-blue)"/>
+    <text x="610" y="80" class="mm fl">git commit</text>
+
+    <line x1="869" y1="100" x2="969" y2="100" stroke="#0b4a9e" stroke-width="2.5" marker-end="url(#fa-blue)"/>
+    <text x="920" y="80" class="mm fl">git push</text>
+  </g>
+
+  <!-- 反向：reset hard（危险操作，红色虚线） -->
+  <path d="M 805 175 V 230 Q 805 240 795 240 H 195 Q 185 240 185 230 V 176"
+        fill="none" stroke="#c00000" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#fa-red)"/>
+  <rect x="424" y="220" width="142" height="26" fill="#ffffff"/>
+  <text x="495" y="234" class="tt mm rl-red" text-anchor="middle">git reset --hard</text>
+
+  <!-- 反向：restore staged -->
+  <path d="M 415 175 V 300 Q 415 310 405 310 H 115 Q 105 310 105 300 V 176"
+        fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#fa-gray)"/>
+  <rect x="181" y="291" width="176" height="26" fill="#ffffff"/>
+  <text x="269" y="305" class="tt mm rl" text-anchor="middle">git restore --staged</text>
+
+  <!-- 反向：pull -->
+  <path d="M 1075 175 V 300 Q 1075 310 1065 310 H 735 Q 725 310 725 300 V 176"
+        fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#fa-gray)"/>
+  <rect x="863" y="291" width="75" height="26" fill="#ffffff"/>
+  <text x="901" y="305" class="tt mm rl" text-anchor="middle">git pull</text>
+
+  <!-- 接线点 -->
+  <g>
+    <circle cx="105" cy="175" r="3" fill="#94a3b8"/>
+    <circle cx="185" cy="175" r="3" fill="#c00000"/>
+    <circle cx="415" cy="175" r="3" fill="#94a3b8"/>
+    <circle cx="725" cy="175" r="3" fill="#94a3b8"/>
+    <circle cx="805" cy="175" r="3" fill="#c00000"/>
+    <circle cx="1075" cy="175" r="3" fill="#94a3b8"/>
+  </g>
+</svg>

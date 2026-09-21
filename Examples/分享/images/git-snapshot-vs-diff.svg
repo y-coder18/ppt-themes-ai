@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 270" width="1220" height="270" role="img" aria-label="误解是只存差异，需逐个重放补丁；实际是每次提交存完整快照，12 个文件格子只对应 5 个对象，未修改的文件复用同一份">
+  <defs>
+    <marker id="sd-amber" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#b87a14"/>
+    </marker>
+    <marker id="sd-amber2" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" viewBox="0 0 10 10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#b87a14"/>
+    </marker>
+    <style>
+      .tt { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif; }
+      .mm { font-family: Consolas,'Courier New',monospace; }
+      .pt { font-size:19px; font-weight:700; }
+      .ps { font-size:12.5px; fill:#64748b; }
+      .mid { font-size:15px; fill:#003f88; }
+    </style>
+  </defs>
+
+  <g class="tt">
+    <!-- ============ 左：误解（差异链） ============ -->
+    <rect x="0" y="0" width="560" height="216" rx="12" fill="#fffdf7" stroke="#e6d5a8" stroke-width="2"/>
+    <text x="24" y="38" class="pt" fill="#b87a14">误解：只存差异（diff）</text>
+    <text x="24" y="60" class="ps">每次提交只记录相对上一版的增删</text>
+
+    <g text-anchor="middle">
+      <rect x="50" y="76" width="88" height="50" rx="6" fill="#ffffff" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="94" y="98" class="mm" font-size="15" font-weight="700" fill="#b87a14">C1</text>
+      <text x="94" y="116" class="mm" font-size="12" fill="#64748b">+3</text>
+
+      <rect x="174" y="76" width="88" height="50" rx="6" fill="#ffffff" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="218" y="98" class="mm" font-size="15" font-weight="700" fill="#b87a14">C2</text>
+      <text x="218" y="116" class="mm" font-size="12" fill="#64748b">−1</text>
+
+      <rect x="298" y="76" width="88" height="50" rx="6" fill="#ffffff" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="342" y="98" class="mm" font-size="15" font-weight="700" fill="#b87a14">C3</text>
+      <text x="342" y="116" class="mm" font-size="12" fill="#64748b">+5</text>
+
+      <rect x="422" y="76" width="88" height="50" rx="6" fill="#ffffff" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="466" y="98" class="mm" font-size="15" font-weight="700" fill="#b87a14">C4</text>
+      <text x="466" y="116" class="mm" font-size="12" fill="#64748b">+2</text>
+    </g>
+
+    <line x1="142" y1="101" x2="170" y2="101" stroke="#b87a14" stroke-width="1.5" marker-end="url(#sd-amber2)"/>
+    <line x1="266" y1="101" x2="294" y2="101" stroke="#b87a14" stroke-width="1.5" marker-end="url(#sd-amber2)"/>
+    <line x1="390" y1="101" x2="418" y2="101" stroke="#b87a14" stroke-width="1.5" marker-end="url(#sd-amber2)"/>
+
+    <line x1="280" y1="126" x2="280" y2="152" stroke="#b87a14" stroke-width="1.5" marker-end="url(#sd-amber)"/>
+    <text x="292" y="145" font-size="12" fill="#b87a14">逐个重放</text>
+
+    <rect x="110" y="162" width="340" height="36" rx="8" fill="#ffffff" stroke="#e6d5a8" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="280" y="186" font-size="14" fill="#334155" text-anchor="middle">得到 v4 需重放 4 个补丁</text>
+
+    <!-- ============ 中间 VS ============ -->
+    <circle cx="610" cy="108" r="19" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="610" y="113" font-size="13" font-weight="700" fill="#64748b" text-anchor="middle">VS</text>
+
+    <!-- ============ 右：实际（完整快照） ============ -->
+    <rect x="660" y="0" width="560" height="216" rx="12" fill="#f7fcf8" stroke="#b8d9c0" stroke-width="2"/>
+    <text x="684" y="38" class="pt" fill="#1a5c2a">实际：存完整快照</text>
+    <text x="684" y="60" class="ps">未修改的文件复用同一对象，全仓库只存一份</text>
+
+    <g class="mm" text-anchor="middle">
+      <text x="793" y="80" font-size="12" fill="#64748b">v1</text>
+      <text x="909" y="80" font-size="12" fill="#64748b">v2</text>
+      <text x="1025" y="80" font-size="12" fill="#64748b">v3</text>
+      <text x="1141" y="80" font-size="12" fill="#64748b">v4</text>
+
+      <!-- a.js：内容变过一次 → a#1 / a#2 -->
+      <rect x="744" y="90" width="98" height="30" rx="6" fill="#e8f1fd" stroke="#a8c8ee" stroke-width="1.5"/>
+      <text x="793" y="110" font-size="12.5" fill="#003f88">a#1</text>
+      <rect x="860" y="90" width="98" height="30" rx="6" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+      <text x="909" y="110" font-size="12.5" fill="#1a5c2a">a#2</text>
+      <rect x="976" y="90" width="98" height="30" rx="6" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+      <text x="1025" y="110" font-size="12.5" fill="#1a5c2a">a#2</text>
+      <rect x="1092" y="90" width="98" height="30" rx="6" fill="#eaf5ee" stroke="#b8d9c0" stroke-width="1.5"/>
+      <text x="1141" y="110" font-size="12.5" fill="#1a5c2a">a#2</text>
+
+      <!-- b.js：从未修改 → 四个版本共用 b#1 -->
+      <rect x="744" y="124" width="98" height="30" rx="6" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="793" y="144" font-size="12.5" fill="#b87a14">b#1</text>
+      <rect x="860" y="124" width="98" height="30" rx="6" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="909" y="144" font-size="12.5" fill="#b87a14">b#1</text>
+      <rect x="976" y="124" width="98" height="30" rx="6" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="1025" y="144" font-size="12.5" fill="#b87a14">b#1</text>
+      <rect x="1092" y="124" width="98" height="30" rx="6" fill="#fdf8ec" stroke="#e6d5a8" stroke-width="1.5"/>
+      <text x="1141" y="144" font-size="12.5" fill="#b87a14">b#1</text>
+
+      <!-- c.js：内容变过一次 → c#1 / c#2 -->
+      <rect x="744" y="158" width="98" height="30" rx="6" fill="#f2f4f6" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="793" y="178" font-size="12.5" fill="#455a64">c#1</text>
+      <rect x="860" y="158" width="98" height="30" rx="6" fill="#f2f4f6" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="909" y="178" font-size="12.5" fill="#455a64">c#1</text>
+      <rect x="976" y="158" width="98" height="30" rx="6" fill="#fdf2f2" stroke="#ecc8c8" stroke-width="1.5"/>
+      <text x="1025" y="178" font-size="12.5" fill="#a51010">c#2</text>
+      <rect x="1092" y="158" width="98" height="30" rx="6" fill="#fdf2f2" stroke="#ecc8c8" stroke-width="1.5"/>
+      <text x="1141" y="178" font-size="12.5" fill="#a51010">c#2</text>
+    </g>
+
+    <text x="684" y="110" font-size="13" fill="#334155">a.js</text>
+    <text x="684" y="144" font-size="13" fill="#334155">b.js</text>
+    <text x="684" y="178" font-size="13" fill="#334155">c.js</text>
+    <text x="940" y="208" font-size="12" fill="#1a5c2a" text-anchor="middle">12 个格子只对应 5 个对象（颜色相同 = 同一个对象，只存一份）</text>
+
+    <!-- ============ 底部结论 ============ -->
+    <rect x="0" y="228" width="1220" height="42" rx="10" fill="#f2f7ff" stroke="#c4d6f0" stroke-width="1.5"/>
+    <text x="610" y="255" class="mid" text-anchor="middle">两个直接后果：检出任意版本同样快；每个提交自包含，checkout 即可得到当时的完整项目状态</text>
+  </g>
+</svg>
