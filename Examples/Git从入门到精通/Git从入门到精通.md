@@ -497,7 +497,7 @@ _class: contentPage
 
 <figure>
 
-![Git 四个区域与数据流向](images/git-four-areas.svg)
+![Git 四个区域与数据流向](media/git-four-areas.svg)
 
 **图 1** 四个区域，以及它们之间的搬运工
 
@@ -626,7 +626,7 @@ _class: contentPage
 
 <figure>
 
-![差异链与完整快照的对比](images/git-snapshot-vs-diff.svg)
+![差异链与完整快照的对比](media/git-snapshot-vs-diff.svg)
 
 </figure>
 
@@ -744,7 +744,7 @@ _class: contentPage
 
 <figure>
 
-![文件四种状态及其转换](images/git-file-states.svg)
+![文件四种状态及其转换](media/git-file-states.svg)
 
 **图 2** 四种状态，以及它们之间的转换
 
@@ -980,7 +980,7 @@ _class: contentPage
 
 <figure>
 
-![快进合并与三方合并的分支拓扑](images/git-merge-ff-vs-threeway.svg)
+![快进合并与三方合并的分支拓扑](media/git-merge-ff-vs-threeway.svg)
 
 **图 3** 两种合并方式的分支拓扑
 
@@ -1085,7 +1085,7 @@ _class: contentPage
 
 <figure>
 
-![merge 与 rebase 的历史拓扑对比](images/git-merge-vs-rebase.svg)
+![merge 与 rebase 的历史拓扑对比](media/git-merge-vs-rebase.svg)
 
 **图 4** merge 保留分支拓扑，rebase 把提交重接到目标分支之后
 
@@ -1459,7 +1459,7 @@ _class: contentPage
 
 <figure>
 
-![reset 三种模式对照](images/git-reset-modes.svg)
+![reset 三种模式对照](media/git-reset-modes.svg)
 
 **图 5** 一张图看懂 `--soft` / `--mixed` / `--hard`
 
