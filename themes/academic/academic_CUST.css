@@ -4,7 +4,8 @@
 
 /* 长沙理工大学皮肤：
    ① 变量——logo 声明后，页眉 / 章节页 / 封面 / 致谢页统一使用，正文 Markdown 里不用再写图片；
-   ② 本校专属的一版线条封面 homePageCUST（底部信息行用基座的 iconitem 组件），见文件下半部分。
+   ② 本校专属的两版线条页：线条封面 homePageCUST（左对齐）与线条致谢页 thanksPageCUST（居中），
+      底部信息行都用基座的 iconitem 组件，见文件下半部分。
    页面结构由 academic_template 负责，换学校照抄一份改变量即可。 */
 :root {
   --logo: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学_纯白logo.png");
@@ -16,59 +17,57 @@
   --contents-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工竖图.png");
   --thanks-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工图书馆.png");
 
-  /* ---- 线条封面（homePageCUST）专用素材 ---- */
-  /* 顶部白底上的彩色 logo，与该页深色页面上用的 --logo 不同 */
+  /* ---- 线条页（homePageCUST / thanksPageCUST）专用素材 ---- */
+  /* 顶部白底上的彩色 logo，与该页深色页面上用的 --logo 不同。两版线条页共用 */
   --home-logo: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工彩色logo.png");
-  /* 蓝带左侧的白色线条主视觉 */
+  /* 蓝带左侧的白色线条主视觉，只有线条封面用 */
   --home-art: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/白色线条装饰主视觉.png");
-  /* 蓝带右下角的云朵装饰 */
+  /* 蓝带右下角的云朵装饰，只有线条封面用 */
   --home-cloud: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/云朵装饰.png");
+
+  /* 蓝带下缘正中向下的三角指示，两版线条页共用。
+     用 conic-gradient 画：扇形以圆心为尖，所以要尖朝下（设计图里它是上宽下尖），
+     圆心就得放在底边中点，取 315°–45° 这 90° 的朝上扇形，画出来即上宽下尖的小三角。
+     注意别用 ::after 画——section::after 被 Marp 的页码和基座的角标占用 */
+  --line-tri: conic-gradient(from 315deg at 50% 100%, #003f88 0 90deg, transparent 90deg);
 }
 
 
 /* ================================================================
-   线条封面 — homePageCUST
-   版式对应 定制皮肤/CUST_长沙理工大学/封面设计图.png（基准 1280×720）：
+   线条页公共骨架 — homePageCUST（封面）/ thanksPageCUST（致谢页）
+   版式对应 定制皮肤/CUST_长沙理工大学/ 下的 封面设计图.png、另一种封面.png（基准 1280×720）：
      · 顶部白底：居中的彩色 logo
-     · 中部通栏深蓝带（y 227–486）：左侧白色线条主视觉，右侧标题 + 分隔线 + 副标题，
-       右下角云朵装饰（贴右边缘裁切），蓝带下缘正中一个向下的三角指示
-     · 底部白底：封面信息行（<flex> 包若干 <iconitem>）
-   用法：
-     <!-- _class: homePageCUST -->
-     # 标题
-     ## 副标题（一行）
-     <flex center>
-     <iconitem icon="话筒">汇报人：×××</iconitem>
-     </flex>
+     · 中部通栏深蓝带（y 227 起、259px 高）：标题 + 分隔线 + 副标题
+     · 蓝带下缘正中一个向下的三角指示
+     · 底部白底：信息行（<flex> 包若干 <iconitem>）
+   两页的差别只在蓝带里：封面标题左对齐、另有线条主视觉与云朵，致谢页整体居中、只有文字。
    素材全在变量里，换学校只改上面 :root 的 --home-logo / --home-art / --home-cloud
    ================================================================ */
 
-:root.homePageCUST {
+/* 蓝带 + 三角指示：两页共用。封面在下面再覆盖一层，补上云朵与线条主视觉 */
+:root.homePageCUST,
+:root.thanksPageCUST {
   padding: 0;
   gap: 0;
-  text-align: left;
   color: #003f88;
   background-color: #fff;
-  /* 四层背景，先写的在上层：云朵 / 线条主视觉 / 蓝带下缘的三角指示 / 通栏深蓝带。
-     三角用 conic-gradient 画：扇形以圆心为尖，所以要尖朝下（设计图里它是上宽下尖），
-     圆心就得放在底边中点，取 315°–45° 这 90° 的朝上扇形，画出来即上宽下尖的小三角。
-     注意别用 ::after 画——section::after 被 Marp 的页码和基座的角标占用 */
   background-image:
-    var(--home-cloud),
-    var(--home-art),
-    conic-gradient(from 315deg at 50% 100%, #003f88 0 90deg, transparent 90deg),
+    var(--line-tri),
     linear-gradient(#003f88, #003f88);
   background-repeat: no-repeat;
-  background-position: 1101px 291px, 45px 230px, 608px 486px, 0 227px;
-  background-size: auto 195px, auto 260px, 30px 15px, 100% 259px;
+  background-position: 608px 486px, 0 227px;
+  background-size: 30px 15px, 100% 259px;
 }
-/* 封面不放页眉页脚 */
+/* 线条页都不放页眉页脚 */
 :root.homePageCUST header,
-:root.homePageCUST footer {
+:root.homePageCUST footer,
+:root.thanksPageCUST header,
+:root.thanksPageCUST footer {
   display: none;
 }
 /* 顶部彩色 logo（素材自带留白，134px 高即原始尺寸） */
-:root.homePageCUST::before {
+:root.homePageCUST::before,
+:root.thanksPageCUST::before {
   content: '';
   position: absolute;
   left: 0;
@@ -79,6 +78,27 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
+}
+
+/* ---- 线条封面：标题靠左，蓝带左侧叠线条主视觉、右下角叠云朵（贴右边缘裁切） ----
+   用法：
+     <!-- _class: homePageCUST -->
+     # 标题
+     ## 副标题（一行）
+     <flex center>
+     <iconitem icon="话筒">汇报人：×××</iconitem>
+     </flex>
+   ------------------------------------------------------------------ */
+:root.homePageCUST {
+  text-align: left;
+  /* 四层背景，先写的在上层：云朵 / 线条主视觉 / 蓝带下缘的三角指示 / 通栏深蓝带 */
+  background-image:
+    var(--home-cloud),
+    var(--home-art),
+    var(--line-tri),
+    linear-gradient(#003f88, #003f88);
+  background-position: 1101px 291px, 45px 230px, 608px 486px, 0 227px;
+  background-size: auto 195px, auto 260px, 30px 15px, 100% 259px;
 }
 /* 标题：白字左对齐，宽度自适应文字 */
 :root.homePageCUST h1 {
@@ -122,6 +142,74 @@
 /* 封面信息行：本页只负责钉位置和间距，条目本身的样式在基座的 iconitem 组件里。
    这里钉的是本页的 flex——封面页就放这一个 flex 行，别在这页再加第二个 */
 :root.homePageCUST flex {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 582px;
+  gap: 106px;
+}
+
+
+/* ================================================================
+   线条致谢页 — thanksPageCUST
+   版式对应 定制皮肤/CUST_长沙理工大学/另一种封面.png（基准 1280×720）：
+   与线条封面共用上面那副骨架（logo / 蓝带 / 三角指示 / 信息行位置都一样），
+   只是蓝带里去掉线条主视觉与云朵，标题、分隔线、副标题连同底部信息行一律居中。
+   分隔线是定长的一条居中横线（比标题宽），不跟标题等宽——这是跟封面的一处差别。
+   标题字号也比封面小一号（2rem vs 2.65rem），照设计图来。
+   用法：
+     <!-- _class: thanksPageCUST -->
+     # 标题
+     ## 副标题（一行）
+     <flex center>
+     <iconitem icon="话筒">汇报人：×××</iconitem>
+     </flex>
+   ================================================================ */
+
+/* 标题：白字居中，通栏盒 + text-align 居中（::after 的 50% 因此就是页面中线） */
+:root.thanksPageCUST {
+  text-align: center;
+}
+:root.thanksPageCUST h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 300px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+/* 标题下的分隔线：定长 624px 居中 */
+:root.thanksPageCUST h1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 16px);
+  width: 624px;
+  height: 3px;
+  margin-left: -312px;
+  background: #fff;
+}
+/* 副标题 */
+:root.thanksPageCUST h2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 388px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+/* 信息行：位置和间距与封面一致，靠 flex[center] 居中；同样只放这一行 */
+:root.thanksPageCUST flex {
   position: absolute;
   left: 0;
   right: 0;
