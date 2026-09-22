@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 400" width="1220" height="400" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+  <defs>
+    <marker id="dimArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0.5 L9,4.5 L0,8.5 Z" fill="#0b4a9e"/>
+    </marker>
+  </defs>
+
+  <!-- 水域与河床 -->
+  <rect x="0" y="270" width="1220" height="46" fill="#e8f1fa"/>
+  <rect x="0" y="313" width="1220" height="8" fill="#d7e4f2"/>
+
+  <!-- 桥台 -->
+  <rect x="42" y="105" width="18" height="140" fill="#cbd8e8" stroke="#0b4a9e" stroke-width="2"/>
+  <rect x="1160" y="105" width="18" height="140" fill="#cbd8e8" stroke="#0b4a9e" stroke-width="2"/>
+
+  <!-- 主梁：边跨 85m + 主跨 160m + 边跨 85m，墩顶设 9.5m 梁高，跨中 4.2m -->
+  <path d="M 60,100 L 1160,100 L 1160,118 Q 1018,116 877,132 Q 744,114 610,114 Q 476,114 343,132 Q 201,116 60,118 Z"
+        fill="#dbe6f3" stroke="#003f88" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- 桥墩 -->
+  <rect x="336.3" y="132" width="14" height="163" fill="#cbd8e8" stroke="#003f88" stroke-width="2"/>
+  <rect x="869.7" y="132" width="14" height="163" fill="#cbd8e8" stroke="#003f88" stroke-width="2"/>
+
+  <!-- 常水位 -->
+  <line x1="0" y1="270" x2="1220" y2="270" stroke="#5b8fc7" stroke-width="2"/>
+  <text x="1188" y="263" font-size="15" fill="#5b8fc7" text-anchor="end">常水位</text>
+
+  <!-- 跨径标注 -->
+  <line x1="60" y1="38" x2="60" y2="52" stroke="#0b4a9e" stroke-width="1.5"/>
+  <line x1="343" y1="38" x2="343" y2="52" stroke="#0b4a9e" stroke-width="1.5"/>
+  <line x1="877" y1="38" x2="877" y2="52" stroke="#0b4a9e" stroke-width="1.5"/>
+  <line x1="1160" y1="38" x2="1160" y2="52" stroke="#0b4a9e" stroke-width="1.5"/>
+  <line x1="60" y1="44" x2="343" y2="44" stroke="#0b4a9e" stroke-width="1.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="343" y1="44" x2="877" y2="44" stroke="#0b4a9e" stroke-width="1.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="877" y1="44" x2="1160" y2="44" stroke="#0b4a9e" stroke-width="1.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <text x="201" y="34" font-size="15" fill="#0b4a9e" text-anchor="middle">85 m</text>
+  <text x="610" y="34" font-size="15" fill="#0b4a9e" text-anchor="middle">160 m</text>
+  <text x="1018" y="34" font-size="15" fill="#0b4a9e" text-anchor="middle">85 m</text>
+
+  <!-- 测点断面标记 -->
+  <rect x="195.7" y="90" width="12" height="12" fill="#003f88"/>
+  <text x="213.7" y="90" font-size="15" fill="#0b4a9e">1</text>
+  <rect x="470.7" y="90" width="12" height="12" fill="#003f88"/>
+  <text x="488.7" y="90" font-size="15" fill="#0b4a9e">2</text>
+  <rect x="604" y="90" width="12" height="12" fill="#003f88"/>
+  <text x="622" y="90" font-size="15" fill="#0b4a9e">3</text>
+  <rect x="737.3" y="90" width="12" height="12" fill="#003f88"/>
+  <text x="755.3" y="90" font-size="15" fill="#0b4a9e">4</text>
+
+  <!-- 识别损伤位置 -->
+  <polygon points="468.7,124 476.7,136 484.7,124" fill="#c00000"/>
+  <text x="476.7" y="156" font-size="15" fill="#c00000" text-anchor="middle">识别损伤位置（K1+160）</text>
+
+  <!-- 墩号与里程 -->
+  <text x="343" y="340" font-size="15" fill="#334155" text-anchor="middle">P1 · K1+120</text>
+  <text x="610" y="340" font-size="15" fill="#334155" text-anchor="middle">主跨跨中 · K1+200</text>
+  <text x="877" y="340" font-size="15" fill="#334155" text-anchor="middle">P2 · K1+280</text>
+
+  <!-- 图例 -->
+  <rect x="100" y="366" width="13" height="13" fill="#003f88"/>
+  <text x="122" y="377" font-size="15" fill="#334155">测点断面（共 4 处）</text>
+  <polygon points="367,379 380,366 393,379" fill="#c00000"/>
+  <text x="406" y="377" font-size="15" fill="#334155">识别损伤位置（主跨 L/4 断面，与断面 2 重合）</text>
+
+</svg>

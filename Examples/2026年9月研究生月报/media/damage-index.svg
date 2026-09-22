@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 400" width="1220" height="400" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+  <!-- 横向网格 -->
+  <line x1="110" y1="118" x2="1160" y2="118" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="110" y1="166" x2="1160" y2="166" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="110" y1="214" x2="1160" y2="214" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="110" y1="262" x2="1160" y2="262" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- 墩位参考线 -->
+  <line x1="380" y1="70" x2="380" y2="310" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="890" y1="70" x2="890" y2="310" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="380" y="60" font-size="14" fill="#94a3b8" text-anchor="middle">P1 墩</text>
+  <text x="890" y="60" font-size="14" fill="#94a3b8" text-anchor="middle">P2 墩</text>
+
+  <!-- 坐标轴 -->
+  <line x1="110" y1="60" x2="110" y2="310" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="110" y1="310" x2="1160" y2="310" stroke="#94a3b8" stroke-width="2"/>
+
+  <text x="110" y="48" font-size="14" fill="#64748b">归一化损伤指标</text>
+  <text x="100" y="123" font-size="14" fill="#64748b" text-anchor="end">0.8</text>
+  <text x="100" y="171" font-size="14" fill="#64748b" text-anchor="end">0.6</text>
+  <text x="100" y="219" font-size="14" fill="#64748b" text-anchor="end">0.4</text>
+  <text x="100" y="267" font-size="14" fill="#64748b" text-anchor="end">0.2</text>
+  <text x="100" y="315" font-size="14" fill="#64748b" text-anchor="end">0</text>
+
+  <text x="110" y="332" font-size="14" fill="#64748b" text-anchor="middle">K1+035</text>
+  <text x="380" y="332" font-size="14" fill="#64748b" text-anchor="middle">K1+120</text>
+  <text x="635" y="332" font-size="14" fill="#64748b" text-anchor="middle">K1+200</text>
+  <text x="890" y="332" font-size="14" fill="#64748b" text-anchor="middle">K1+280</text>
+  <text x="1160" y="332" font-size="14" fill="#64748b" text-anchor="middle">K1+365</text>
+  <text x="110" y="356" font-size="13" fill="#94a3b8">桥位里程</text>
+
+  <!-- 损伤判定阈值 -->
+  <line x1="110" y1="190" x2="1160" y2="190" stroke="#c00000" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1016" y="164" width="134" height="24" fill="#ffffff"/>
+  <text x="1145" y="182" font-size="14" fill="#c00000" text-anchor="end">损伤判定阈值 0.50</text>
+
+  <!-- 小波包能量曲率差指标沿桥长分布 -->
+  <polyline points="110.0,295.6 141.8,293.2 173.6,298.0 205.5,290.8 237.3,295.6 269.1,288.4 300.9,293.2 332.7,295.6 364.5,290.8 396.4,286.0 428.2,288.4 460.0,281.2 475.9,266.8 491.8,238.0 499.8,185.2 507.7,103.6 515.7,178.0 523.6,228.4 539.5,264.4 555.5,278.8 587.3,283.6 619.1,288.4 650.9,290.8 682.7,286.0 714.5,281.2 746.4,276.4 762.3,262.0 778.2,245.2 794.1,228.4 809.9,247.6 825.9,266.8 841.8,278.8 873.6,283.6 905.5,288.4 937.3,286.0 969.1,290.8 1000.9,288.4 1032.7,293.2 1064.5,290.8 1096.4,295.6 1128.2,293.2 1160.0,295.6"
+            fill="none" stroke="#003f88" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- 次峰标注 -->
+  <rect x="712" y="198" width="164" height="21" fill="#ffffff"/>
+  <text x="794" y="214" font-size="14" fill="#334155" text-anchor="middle">次峰 0.34</text>
+  <circle cx="794.1" cy="228.4" r="7" fill="#0b4a9e"/>
+
+  <!-- 主峰标注 -->
+  <text x="507.7" y="82" font-size="14" fill="#334155" text-anchor="middle">K1+160　指标 0.86</text>
+  <circle cx="507.7" cy="103.6" r="9" fill="#c00000"/>
+  <circle cx="507.7" cy="103.6" r="4" fill="#ffffff"/>
+
+</svg>
