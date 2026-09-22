@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 62" width="1216" height="62" role="img" aria-label="六个并排的人，每人被一圈虚线包住，虚线代表各自的边界，彼此相邻而不相交">
+  <defs>
+    <!-- 一个「人」的最小画法：实心圆是头、一道弧是肩。fill / stroke 写在 def 里，
+         不让外面的 <use> 去覆盖，否则描边的肩会被 stroke:none 抹掉 -->
+    <g id="cvPerson">
+      <circle cx="0" cy="-10" r="7" fill="#003f88" stroke="none"/>
+      <path d="M -14,18 A 14,14 0 0 1 14,18" fill="none" stroke="#003f88"
+            stroke-width="2.4" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- 课题分离：每个人周围都有一圈虚线——那是他自己的边界（课题）。
+       虚线彼此相邻而不相交：不干涉别人，也不被别人干涉。
+       实心的人是「谁承担结果」，虚线是「谁的课题」。 -->
+
+  <g stroke="#8fb5e0" stroke-width="1.8" stroke-dasharray="7 7" fill="none">
+    <circle cx="100"  cy="31" r="28"/>
+    <circle cx="303"  cy="31" r="28"/>
+    <circle cx="506"  cy="31" r="28"/>
+    <circle cx="710"  cy="31" r="28"/>
+    <circle cx="913"  cy="31" r="28"/>
+    <circle cx="1116" cy="31" r="28"/>
+  </g>
+
+  <use href="#cvPerson" transform="translate(100,31)"/>
+  <use href="#cvPerson" transform="translate(303,31)"/>
+  <use href="#cvPerson" transform="translate(506,31)"/>
+  <use href="#cvPerson" transform="translate(710,31)"/>
+  <use href="#cvPerson" transform="translate(913,31)"/>
+  <use href="#cvPerson" transform="translate(1116,31)"/>
+</svg>

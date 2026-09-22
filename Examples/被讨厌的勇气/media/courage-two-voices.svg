@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 86" width="1216" height="86" role="img" aria-label="线描的哲人与青年相对而坐，各自有一段发言，中间是一条双向虚线箭头，表示反问把问题推回给对方">
+  <defs>
+    <marker id="cvArrR" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="10" refY="5.5" orient="auto">
+      <path d="M0,0 L10,5.5 L0,11 Z" fill="#94a3b8"/>
+    </marker>
+    <marker id="cvArrL" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="1" refY="5.5" orient="auto">
+      <path d="M10,0 L1,5.5 L10,11 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- 左：哲人（蓝，笃定） -->
+  <g fill="none" stroke="#003f88" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="120" cy="30" r="14"/>
+    <path d="M 92,82 A 28,28 0 0 1 148,82"/>
+    <!-- 发言气泡 + 指向人物的小尖角 -->
+    <rect x="180" y="16" width="150" height="44" rx="10"/>
+    <path d="M 180,44 L 158,32 L 180,24"/>
+    <path d="M 200,30 H 300" stroke-width="1.6"/>
+    <path d="M 200,42 H 260" stroke-width="1.6"/>
+  </g>
+
+  <!-- 右：青年（红，激动） -->
+  <g fill="none" stroke="#c00000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="1096" cy="30" r="14"/>
+    <path d="M 1068,82 A 28,28 0 0 1 1124,82"/>
+    <rect x="886" y="16" width="150" height="44" rx="10"/>
+    <path d="M 1036,44 L 1058,32 L 1036,24"/>
+    <path d="M 906,30 H 1006" stroke-width="1.6"/>
+    <path d="M 906,42 H 966" stroke-width="1.6"/>
+  </g>
+
+  <!-- 中：反问——问题被原封不动地推回，所以箭头是双向的 -->
+  <line x1="360" y1="38" x2="856" y2="38" stroke="#94a3b8" stroke-width="2"
+        stroke-dasharray="7 6" marker-start="url(#cvArrL)" marker-end="url(#cvArrR)"/>
+</svg>
