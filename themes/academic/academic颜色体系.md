@@ -223,7 +223,7 @@ _class: compact
 
 ---
 
-<!-- _header: Metric 指标卡片 -->
+<!-- _header: Metric 居中卡片 -->
 
 <flex>
 
@@ -669,7 +669,7 @@ v2.0 → v3.0
 
 ---
 
-<!-- _header: Tree 树形图 -->
+<!-- _header: Tree 树形图 — 层级与节点标记 -->
 
 <tree>
 
@@ -680,11 +680,73 @@ v2.0 → v3.0
     - `function App()`
     - BlockStatement
       - ReturnStatement
-        - JSXElement `<div>`
+        - **JSXElement** `<div>`
+
+    > 四层嵌套后连接线自动变淡，避免深层枝叶抢视线
+
   - ExportDeclaration
-    - `export default App`
 
 </tree>
+
+---
+
+<!-- _header: Tree 树形图 — 全色系 -->
+
+<flex auto>
+
+<tree blue>
+
+- 蓝色（默认）
+  - 节点 A
+    - 叶子 1
+    - 叶子 2
+  - 节点 B
+
+</tree>
+
+<tree green>
+
+- 绿色
+  - 节点 A
+    - 叶子 1
+    - 叶子 2
+  - 节点 B
+
+</tree>
+
+<tree red>
+
+- 红色
+  - 节点 A
+    - 叶子 1
+    - 叶子 2
+  - 节点 B
+
+</tree>
+
+</flex>
+
+<flex auto>
+
+<tree yellow>
+
+- 黄色
+  - 节点 A
+    - 叶子 1
+  - 节点 B
+
+</tree>
+
+<tree gray>
+
+- 灰色
+  - 节点 A
+    - 叶子 1
+  - 节点 B
+
+</tree>
+
+</flex>
 
 ---
 
@@ -771,7 +833,10 @@ _class: compact
 
 ---
 
-<!-- _header: 全部颜色变体速查 -->
+<!-- 
+_header: 全部颜色变体速查
+_class: compact
+-->
 
 <card>
 
@@ -789,6 +854,7 @@ _class: compact
 | Outline | blue / green / red / yellow / gray + solid 可组合 |
 | Table | blue / green / red / yellow / gray |
 | Timeline | blue / green / red / yellow / gray |
+| Tree | blue / green / red / yellow / gray |
 | Note | 默认 / blue / green / red / yellow / gray / footnote |
 | Summary | bold / white / 内嵌 tag |
 | Funnel | blue / green / red / yellow / gray |
