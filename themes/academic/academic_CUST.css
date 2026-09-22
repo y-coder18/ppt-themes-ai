@@ -15,7 +15,7 @@
 
   --home-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学.jpg");
   --contents-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工竖图.png");
-  --thanks-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工图书馆.png");
+  --thanks-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/感谢页背景.png");
 
   /* ---- 线条页（homePageCUST / thanksPageCUST）专用素材 ---- */
   /* 顶部白底上的彩色 logo，与该页深色页面上用的 --logo 不同。两版线条页共用 */
@@ -215,4 +215,3 @@
   right: 0;
   top: 582px;
   gap: 106px;
-}
