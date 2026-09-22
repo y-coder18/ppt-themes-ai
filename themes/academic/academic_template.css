@@ -436,6 +436,7 @@ mark[center] {
   color: #ffffffdc;
   position: relative;
   margin-bottom: 40px;
+  font-size: 2.308rem;
 }
 /* :root.contents h2::before {
   content: 'CONTENTS';
@@ -674,16 +675,32 @@ flex {
 flex[column] {
   flex-direction: column;
 }
+/* 横向居中：默认子元素从左边排起，加 center 后整组居中 */
+flex[center] {
+  justify-content: center;
+}
+/* 一行放不下时折行。不写这一项时 flex 会硬挤在一行里溢出 */
+flex[wrap] {
+  flex-wrap: wrap;
+}
 /* 横向 flex 的子元素自动撑满 */
 flex:not([column]) > * {
   flex: 1;
 }
-/* 默认情况下，以下元素保持原始尺寸不拉伸；[auto] 模式下也强制等分 */
+/* 默认情况下，以下元素保持原始尺寸不拉伸；[auto] 模式下也强制等分。
+   iconitem 也在此列：图标条目按内容宽度排，而不是被拉成等宽 */
 flex:not([column]):not([auto]) > img,
 flex:not([column]):not([auto]) > tree,
 flex:not([column]):not([auto]) > timeline,
 flex:not([column]):not([auto]) > p:has(img),
-flex:not([column]):not([auto]) > figure {
+flex:not([column]):not([auto]) > figure,
+flex:not([column]):not([auto]) > iconitem {
+  flex: none;
+}
+/* 条目之间留空行写时，Markdown 会把每个 <iconitem> 包进一个 <p>，
+   这时 flex 的子项是 p 而不是 iconitem——把 p 收缩成内容宽度，
+   图标条目才不会被 flex:1 拉成各自半行（p 的 margin 基座已经清零） */
+flex:not([column]):not([auto]) > p:has(> iconitem) {
   flex: none;
 }
 /* flex 内标题不设 margin，避免与 gap 叠加导致间距异常 */
@@ -3453,4 +3470,107 @@ figure[compact] p,
 :root.compact figure p,
 section.compact figure p {
   font-size: 0.731rem;
+}
+
+/* ================================================================
+   IconItem — 图标条目组件（圆底图标 + 文字）
+   一个条目 = 左边一个圆底图标，右边一段文字。它只负责自己这一条怎么排，
+   不负责摆放：要横排几条、怎么对齐，用外面的 flex / grid 决定。
+   用法：
+     <flex center>
+
+     <iconitem icon="话筒">汇报人：×××</iconitem>
+
+     <iconitem icon="人员">指导教师：××× 教授</iconitem>
+
+     </flex>
+   icon 属性填 images/icon/ 下的素材名（不带 .svg），现在收录的见下面的图标表；
+   不写 icon 就只有文字、没有圆底图标；写了但没收录的名字，圆底占位仍在、图标不画。
+   文字颜色不写死，跟着所在页面走（封面深色页上是浅色字，内容页上是深色字）。
+   变体：plain / large / small / compact
+   ================================================================ */
+
+iconitem {
+  display: flex;
+  align-items: center;
+  gap: var(--iconitem-gap);
+  white-space: nowrap;
+  /* 组件内变量：变体只覆盖这几个值，不往 :root 里堆 */
+  --iconitem-size: 45px;   /* 圆底直径 */
+  --iconitem-glyph: 30px;  /* 图标直径（圆底内缩一圈） */
+  --iconitem-gap: 22px;    /* 圆底与文字的距离 */
+  --iconitem-bg: #003f88;  /* 圆底底色 */
+  --iconitem-src: none;    /* 图标素材，由下面的图标表按名字给 */
+}
+
+/* 圆底 + 图标：一个伪元素画完，bg-color 是圆底，bg-image 是图标。
+   只有写了 icon 属性的条目才有这个伪元素，不写就纯文字、没有圆底。
+   图标名写了但不在图标表里时，--iconitem-src 保持 none → 只剩一个空圆底。
+
+   注意：这里用 background-image 而不是 CSS mask 染色。
+   mask 能让写死 fill=#FFFFFF 的素材改成任意颜色，但 Chromium 不允许从 file://
+   加载 mask 资源——直接双击打开构建好的 html 时，图标会全部消失（实测 PNG、SVG
+   蒙版都渲染为空）。background-image 没有这个限制，所以取它。 */
+iconitem[icon]::before {
+  content: '';
+  flex: none;
+  width: var(--iconitem-size);
+  height: var(--iconitem-size);
+  border-radius: 50%;
+  background-color: var(--iconitem-bg);
+  background-image: var(--iconitem-src);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: var(--iconitem-glyph) auto;
+}
+
+/* ---- 图标表：一个图标一行。往 images/icon/ 里丢一个新 svg，在这里补一行即可 ---- */
+iconitem[icon="话筒"]     { --iconitem-src: url("../../themes/academic/images/icon/话筒.svg"); }
+iconitem[icon="人员"]     { --iconitem-src: url("../../themes/academic/images/icon/人员.svg"); }
+iconitem[icon="等待"]     { --iconitem-src: url("../../themes/academic/images/icon/等待.svg"); }
+iconitem[icon="耳机"]     { --iconitem-src: url("../../themes/academic/images/icon/耳机.svg"); }
+iconitem[icon="教育"]     { --iconitem-src: url("../../themes/academic/images/icon/教育.svg"); }
+iconitem[icon="链接"]     { --iconitem-src: url("../../themes/academic/images/icon/链接.svg"); }
+iconitem[icon="列表"]     { --iconitem-src: url("../../themes/academic/images/icon/列表.svg"); }
+iconitem[icon="列表分类"] { --iconitem-src: url("../../themes/academic/images/icon/列表分类.svg"); }
+iconitem[icon="灵感"]     { --iconitem-src: url("../../themes/academic/images/icon/灵感.svg"); }
+iconitem[icon="闹钟"]     { --iconitem-src: url("../../themes/academic/images/icon/闹钟.svg"); }
+iconitem[icon="日历"]     { --iconitem-src: url("../../themes/academic/images/icon/日历.svg"); }
+iconitem[icon="时钟"]     { --iconitem-src: url("../../themes/academic/images/icon/时钟.svg"); }
+iconitem[icon="网格分类"] { --iconitem-src: url("../../themes/academic/images/icon/网格分类.svg"); }
+iconitem[icon="位置"]     { --iconitem-src: url("../../themes/academic/images/icon/位置.svg"); }
+iconitem[icon="文件夹"]   { --iconitem-src: url("../../themes/academic/images/icon/文件夹.svg"); }
+iconitem[icon="显示器"]   { --iconitem-src: url("../../themes/academic/images/icon/显示器.svg"); }
+iconitem[icon="消息"]     { --iconitem-src: url("../../themes/academic/images/icon/消息.svg"); }
+iconitem[icon="直播"]     { --iconitem-src: url("../../themes/academic/images/icon/直播.svg"); }
+
+/* ---- 变体 ---- */
+/* 去圆底：圆底那块占位仍然留着（只是透明），否则图标会和文字叠在一起。
+   注意素材本身是白色图标，去圆底后仍是白图标——所以 [plain] 只能用在深色页面上，
+   浅色页面上等于看不见。要浅色页面上的裸图标，得另配一套深色素材 */
+iconitem[plain] {
+  --iconitem-bg: transparent;
+}
+iconitem[large] {
+  --iconitem-size: 60px;
+  --iconitem-glyph: 40px;
+  --iconitem-gap: 28px;
+  font-size: 1.15rem;
+}
+iconitem[small] {
+  --iconitem-size: 32px;
+  --iconitem-glyph: 22px;
+  --iconitem-gap: 16px;
+  font-size: 0.85rem;
+}
+
+/* compact：尺寸都走组件内变量，所以三态只改 iconitem 自身，
+   不必像 card / feature 那样把伪元素也展开成三份 */
+iconitem[compact],
+:root.compact iconitem,
+section.compact iconitem {
+  --iconitem-size: 32px;
+  --iconitem-glyph: 22px;
+  --iconitem-gap: 16px;
+  font-size: 0.85rem;
 }

@@ -1086,3 +1086,61 @@ _class: compact
 - 图注样式与全文其它 `figure` 一致，不必再手工写 `<note center>` 绕开。
 - 不写 `auto` 时 `figure img { width: 100% }` 会跟 Marp 的尺寸**叠加**：Marp 把尺寸写成行内 `style="height:380px"`，优先级高于样式表、覆盖不掉，于是高度锁死、宽度撑满，方图会被横向拉伸。
 - `auto` 要配 `w:` / `h:` 一起用；不写尺寸指令时图片按原始像素渲染，可能超出容器。
+
+---
+
+<!-- _header: 主题特色组件 — iconitem 图标条目 -->
+
+## 渲染效果
+
+<flex center>
+
+<iconitem icon="话筒">汇报人：×××</iconitem>
+
+<iconitem icon="人员">指导教师：××× 教授</iconitem>
+
+</flex>
+
+<flex>
+
+<iconitem large icon="日历">large</iconitem>
+
+<iconitem icon="时钟">默认</iconitem>
+
+<iconitem small icon="闹钟">small</iconitem>
+
+</flex>
+
+<summary>
+
+<flex center>
+
+<iconitem plain icon="灵感">plain 去圆底：白图标，只在深色底上成立</iconitem>
+
+</flex>
+
+</summary>
+
+- 一个 `iconitem` = 左边一个圆底图标 + 右边一段文字，**只管自己这一条怎么排**；要横排几条、怎么对齐，外面套 `flex` / `grid` 决定。
+- `icon` 属性填素材名（不带 `.svg`），现收录 18 个：`话筒` `人员` `日历` `位置` `链接` `时钟` `闹钟` `教育` `灵感` `文件夹` `列表` `列表分类` `网格分类` `显示器` `消息` `直播` `耳机` `等待`；不写 `icon` 就只有文字、没有圆底图标。
+- 变体：`large` / `small` 改尺寸、`plain` 去圆底、`compact` 紧凑。
+
+---
+
+<!-- _header: 主题特色组件 — iconitem 图标条目（写法） -->
+
+## Markdown 源码
+
+```markdown
+<flex center>
+
+<iconitem icon="话筒">汇报人：×××</iconitem>
+
+<iconitem icon="人员">指导教师：××× 教授</iconitem>
+
+</flex>
+```
+
+- 变体写在标签里：`<iconitem large icon="日历">`、`<iconitem plain icon="灵感">`。另外还有 `small` 与 `compact`。
+- 条目之间**要空行隔开**（如上面那样），几个条目才不会挤进同一个段落里纵向堆叠；标签与文字写在同一行没问题，基座会把包住它的 `<p>` 收缩成内容宽度。
+- 一行放不下时给外面的 `flex` 加 `wrap`（`<flex wrap center>`）折行，否则会硬挤在一行里溢出。

@@ -22,12 +22,12 @@
 | 层 | 内容 | 说明 |
 |---|---|---|
 | 第一层：Academic 主题基座 | `themes/academic/academic_template.css` | 统一的专业视觉风格：深蓝主色 `#003f88`、中文适配、封面/目录/章节/内容/致谢 5 种页面布局、页眉页脚页码、代码块双主题 |
-| 第二层：组件库 | `themes/academic/academic_template.css`（与基座同文件） | 15+ 个语义化 HTML 组件：`card` `grid` `flex` `timeline` `tree` `metric` `compare` `outline` `tag` `summary` `mark` `note` `checklist` `dlist` `flow` `datatable` 等，**全部样式定义在 CSS 中**，像搭积木一样组合出丰富的布局。各组件的用法与效果演示见 `themes/academic/academic组件体系.md`（该文件只是展示 PPT，组件本身由 CSS 提供） |
+| 第二层：组件库 | `themes/academic/academic_template.css`（与基座同文件） | 15+ 个语义化 HTML 组件：`card` `grid` `flex` `timeline` `tree` `metric` `compare` `outline` `tag` `summary` `mark` `note` `checklist` `dlist` `flow` `datatable` `iconitem` 等，**全部样式定义在 CSS 中**，像搭积木一样组合出丰富的布局。各组件的用法与效果演示见 `themes/academic/academic组件体系.md`（该文件只是展示 PPT，组件本身由 CSS 提供） |
 | 第三层：AI 工作流 | `.claude/skills/ppt-generator/SKILL.md` | 把 AI 接入写作流程：描述需求 → AI 按规范生成 Markdown → Marp 渲染 → 多格式输出。AI 自动使用组件和主题，产出即符合规范 |
 
 配套能力：
 
-- **皮肤（换肤不改内容）**：`academic_CUST.css`（长沙理工大学）、`academic_NUDT.css`（国防科技大学）只覆盖 CSS 变量——logo、封面 / 目录 / 致谢页背景图，页面结构仍由基座负责。品牌资源放 `themes/academic/定制皮肤/<品牌>/`，新增皮肤照抄一份改几个变量即可
+- **皮肤（换肤不改内容）**：`academic_CUST.css`（长沙理工大学）、`academic_NUDT.css`（国防科技大学）主要覆盖 CSS 变量——logo、封面 / 目录 / 致谢页背景图，页面结构仍由基座负责。品牌资源放 `themes/academic/定制皮肤/<品牌>/`，新增皮肤照抄一份改几个变量即可。长沙理工大学皮肤还额外带了一版线条封面 `homePageCUST`，是皮肤专属的页面类，另一个皮肤里没有。圆底图标条目 `iconitem`（`<iconitem icon="话筒">汇报人：×××</iconitem>`）是基座的原子组件，任何皮肤、任何页面都能用，图标素材（18 个白色线条图形）也是基座自带的，往 `themes/academic/images/icon/` 丢一个新 svg 就能用
 - **多格式输出**：HTML（在线浏览）/ PPTX（可继续编辑）/ PDF
 - **Git 原生版本管理**：Markdown 源码可 diff、可合并、可回滚
 - **排版自检**：`scripts/check-slides.mjs` 逐页量版面溢出、插图渲染尺寸与 SVG 图内文字压字压线
