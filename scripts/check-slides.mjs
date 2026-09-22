@@ -94,7 +94,8 @@ if (filters.length) {
 console.log('\n=== 插图渲染尺寸 ===\n');
 const imgs = await page.evaluate(() =>
   [...document.querySelectorAll('section img')]
-    .filter((im) => im.getAttribute('src')?.includes('images/'))
+    // 例稿的插图目录可能叫 media/ 也可能叫 images/，两种都认，免得改了目录名就静默漏检
+    .filter((im) => /(?:^|\/)(?:media|images)\//.test(im.getAttribute('src') || ''))
     .map((im) => {
       const sec = im.closest('section');
       const r = im.getBoundingClientRect();
