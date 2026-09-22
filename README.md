@@ -27,7 +27,7 @@
 
 配套能力：
 
-- **皮肤（换肤不改内容）**：`academic_CUST.css`（长沙理工大学）、`academic_NUDT.css`（国防科技大学）主要覆盖 CSS 变量——logo、封面 / 目录 / 致谢页背景图，页面结构仍由基座负责。品牌资源放 `themes/academic/定制皮肤/<品牌>/`，新增皮肤照抄一份改几个变量即可。长沙理工大学皮肤还额外带了一版线条封面 `homePageCUST`，是皮肤专属的页面类，另一个皮肤里没有。圆底图标条目 `iconitem`（`<iconitem icon="话筒">汇报人：×××</iconitem>`）是基座的原子组件，任何皮肤、任何页面都能用，图标素材（18 个白色线条图形）也是基座自带的，往 `themes/academic/images/icon/` 丢一个新 svg 就能用
+- **皮肤（换肤不改内容）**：`academic_CUST.css`（长沙理工大学）、`academic_NUDT.css`（国防科技大学）主要覆盖 CSS 变量——logo、封面 / 目录 / 致谢页背景图，页面结构仍由基座负责。品牌资源放 `themes/academic/定制皮肤/<品牌>/`，新增皮肤照抄一份改几个变量即可。长沙理工大学皮肤还额外带了两版线条页 `homePageCUST`（封面，标题左对齐）、`thanksPageCUST`（结尾页，整体居中），是皮肤专属的页面类，另一个皮肤里没有。圆底图标条目 `iconitem`（`<iconitem icon="话筒">汇报人：×××</iconitem>`）是基座的原子组件，任何皮肤、任何页面都能用，图标素材（18 个白色线条图形）也是基座自带的，往 `themes/academic/images/icon/` 丢一个新 svg 就能用
 - **多格式输出**：HTML（在线浏览）/ PPTX（可继续编辑）/ PDF
 - **Git 原生版本管理**：Markdown 源码可 diff、可合并、可回滚
 - **排版自检**：`scripts/check-slides.mjs` 逐页量版面溢出、插图渲染尺寸与 SVG 图内文字压字压线
