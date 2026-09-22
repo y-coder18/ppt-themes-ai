@@ -1335,6 +1335,183 @@ card[gray] table tbody td {
 
 
 /* ================================================================
+   Entry — 图文条目组件（一侧图片，一侧标题与说明）
+   ================================================================ */
+
+/*
+ * 一条「图文条目」：一侧是图，一侧是标题 + 说明。
+ * 人和物通用——人像（照片 + 姓名 + 生平）、书籍（封面 + 书名 + 简介）、
+ * 概念（示意图 + 名称 + 解释）、产品（截图 + 名称 + 说明）都装得下。
+ *
+ * <entry>
+ *
+ * ![插图说明](media/xxx.jpg)
+ *
+ * ### 条目标题
+ *
+ * #### 副标题行（生卒年 / 作者 / 版本号这类元信息，可选）
+ *
+ * 正文说明……
+ *
+ * </entry>
+ *
+ * 注意：<entry> 标签与内部内容之间必须**空行**，否则里面几行会被当作
+ * 原始 HTML 原样输出，图片不会渲染。
+ * 图片上也**不要再写 w: / h: 尺寸指令**——Marp 把它写成行内 style，
+ * 优先级高于样式表，会把定死的图框撑坏。
+ *
+ * 图片会被收进一个**定死的框**并 object-fit: cover，所以不同长宽比的
+ * 原图并排时尺寸完全一致——这正是它比 card 更适合放照片的地方。
+ * 代价是图会被裁：方图放进宽框裁上下，宽图放进窄框裁左右，靠
+ * object-position 决定留哪一段。
+ *
+ * ⚠ 两个坑，改这个组件前先看：
+ *
+ * 1. Marp 会给独立成行的图片套一层 <p>，图片是这层 <p> 的子元素。
+ *    所以跟图有关的选择器都要写成 entry > p:first-child img，
+ *    不能简写成 entry img——那样漏掉的是「壳」而不是图，图片所在的
+ *    <p> 会被当成普通文本丢进右侧文字列，图则被 :root img 的
+ *    margin:auto 居中，整个布局散掉。
+ * 2. :root img { margin: auto } 的特异度是 (0,1,1)，组件里要压掉它
+ *    得写到 (0,1,3) 以上（带一个伪类 + 两个元素即可）。这也是下面
+ *    选择器写这么长的原因，不是随手堆的。
+ *
+ * 变体：
+ *   [wide]    横框 16:10，放书影 / 截图 / 横幅图；默认竖框 4:5，放人像
+ *   [reverse] 图放右侧（强调条一并翻到右边）
+ *   [green|red|yellow|gray] 换强调色，与 card / feature 同色系
+ *   [compact] 收紧内边距与字号
+ */
+
+entry {
+  --et-ink: #003f88;
+  --et-img-w: 104px;
+  --et-img-h: 130px;
+  display: grid;
+  grid-template-columns: var(--et-img-w) 1fr;
+  grid-template-rows: auto auto 1fr;
+  column-gap: 16px;
+  row-gap: 3px;
+  align-items: start;
+  padding: 14px 18px;
+  border: 1px solid var(--et-ink);
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* 图框：Marp 套出来的那层 <p> 就是图的容器，占满左列、跨掉所有文字行 */
+entry > p:first-child {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin: 0;
+}
+entry > p:first-child img {
+  display: block;
+  width: var(--et-img-w);
+  height: var(--et-img-h);
+  object-fit: cover;
+  object-position: center 12%;
+  border-radius: 4px;
+  margin: 0;
+}
+
+/* 文字列：标题、副标题行、正文依次往下排 */
+entry > :not(p:first-child) {
+  grid-column: 2;
+  margin: 0;
+}
+entry p {
+  font-size: 0.846rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+/*
+ * 标题：任意级标题都当条目标题。
+ * 字号比 card / feature 的 1.1rem 大一档，取 h2 的 1.308rem——
+ * 它们俩的标题下面有一条通栏底纹在撑视觉重量，entry 的标题是裸的，
+ * 同样的字号会被右边的副标题行和正文压住，看着不像标题。
+ */
+entry h1, entry h2, entry h3,
+entry h4, entry h5, entry h6 {
+  font-size: 1.308rem;
+  font-weight: 700;
+  color: var(--et-ink);
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  padding: 0;
+  background: none;
+  border: none;
+}
+/* 覆盖 h3::before 的蓝色竖条，entry 自带左侧强调边，不需要再来一条 */
+entry h3::before {
+  content: none;
+}
+
+/*
+ * 副标题行：跟着标题的**第二个标题**降级成小一号的中性灰。
+ * 用 var(--et-ink) 之外的颜色，所以必须比上面的标题规则更特异——
+ * 这里 (0,0,3) 对 (0,0,2)，靠特异性取胜，跟源码顺序无关。
+ * 颜色变体只改 --et-ink 变量、不直接写 color，也就不会插进来抢。
+ */
+entry > :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 0.769rem;
+  font-weight: 400;
+  color: #64748b;
+  letter-spacing: 0.2px;
+}
+
+/* 横框：书影 / 截图 / 横幅图 */
+entry[wide] {
+  --et-img-w: 168px;
+  --et-img-h: 105px;
+}
+
+/* 图放右侧：强调边一并翻到右边 */
+entry[reverse] {
+  grid-template-columns: 1fr var(--et-img-w);
+  border-left-width: 1px;
+  border-right-width: 3px;
+}
+entry[reverse] > p:first-child {
+  grid-column: 2;
+}
+entry[reverse] > :not(p:first-child) {
+  grid-column: 1;
+}
+
+/* --- 颜色变体：只改变量，标题与边框一起跟着走 --- */
+entry[green]  { --et-ink: #006400; }
+entry[red]    { --et-ink: #c00000; }
+entry[yellow] { --et-ink: #b87a14; }
+entry[gray]   { --et-ink: #455a64; }
+
+/* compact */
+entry[compact],
+:root.compact entry,
+section.compact entry {
+  --et-img-w: 88px;
+  --et-img-h: 110px;
+  padding: 8px 14px 6px;
+  column-gap: 12px;
+}
+entry[compact] h1, entry[compact] h2, entry[compact] h3,
+entry[compact] h4, entry[compact] h5, entry[compact] h6,
+:root.compact entry h1, :root.compact entry h2, :root.compact entry h3,
+:root.compact entry h4, :root.compact entry h5, :root.compact entry h6,
+section.compact entry h1, section.compact entry h2, section.compact entry h3,
+section.compact entry h4, section.compact entry h5, section.compact entry h6 {
+  font-size: 0.923rem;
+}
+entry[compact] p,
+:root.compact entry p,
+section.compact entry p {
+  font-size: 0.769rem;
+}
+
+
+/* ================================================================
    Outline — 虚线外框组件
    ================================================================ */
 

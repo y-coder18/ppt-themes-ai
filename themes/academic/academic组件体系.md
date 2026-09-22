@@ -1144,3 +1144,98 @@ _class: compact
 - 变体写在标签里：`<iconitem large icon="日历">`、`<iconitem plain icon="灵感">`。另外还有 `small` 与 `compact`。
 - 条目之间**要空行隔开**（如上面那样），几个条目才不会挤进同一个段落里纵向堆叠；标签与文字写在同一行没问题，基座会把包住它的 `<p>` 收缩成内容宽度。
 - 一行放不下时给外面的 `flex` 加 `wrap`（`<flex wrap center>`）折行，否则会硬挤在一行里溢出。
+
+---
+
+<!-- _header: 主题特色组件 — entry 图文条目 -->
+
+## 渲染效果
+
+<grid cols="2">
+
+<entry>
+
+![示例人像](https://placehold.co/400x500/2563eb/white?text=Portrait)
+
+### 竖框 entry
+
+#### 104×130 · 放人像 / 立轴
+
+不同长宽比的原图并排时尺寸完全一致——图片被收进定死的框里。
+
+</entry>
+
+<entry wide green>
+
+![示例书影](https://placehold.co/800x500/059669/white?text=Cover)
+
+### 横框 entry[wide]
+
+#### 168×105 · 放书影 / 截图 / 横幅
+
+横构图用宽框。同一排的几张要用同一种框，否则又会对不齐。
+
+</entry>
+
+</grid>
+
+- 一侧图片、一侧标题与说明，人和物通用：人像、书影、界面截图、概念示意图都装得下。
+- 图片一律 `object-fit: cover` 收进**定死的框**，所以几张长宽比差很多的原图并排时，渲染尺寸完全一致——这正是它比 `card` 更适合放照片的地方：`card` 里的图按自身比例缩放，1280×1741 和 572×641 并排会一大一小。
+- 副标题行：标题下面**紧挨着的第二个标题**自动降级成小一号的中性灰（上面例子里的 `####`），用来放生卒年 / 作者 / 版本号这类元信息；不写也不影响。
+
+---
+
+<!-- _header: 主题特色组件 — entry 图文条目（变体） -->
+
+## 渲染效果
+
+<grid cols="2">
+
+<entry reverse gray>
+
+![示例](https://placehold.co/400x500/475569/white?text=Reverse)
+
+### reverse 图放右侧
+
+#### 强调边一并翻到右边
+
+</entry>
+
+<entry compact red>
+
+![示例](https://placehold.co/400x500/dc2626/white?text=Compact)
+
+### compact 收紧
+
+#### 内边距与字号同步缩小
+
+</entry>
+
+</grid>
+
+- `[reverse]` 把图放到右侧，左侧的强调边一并翻到右边——适合与相邻条目做左右交错。
+- `[compact]` 图框收到 88×110，内边距与字号同步缩小，用于内容偏密的页面。
+- `[green]` `[red]` `[yellow]` `[gray]` 只换强调色（边框 + 标题），与 `card` / `feature` 同色系。
+
+---
+
+<!-- _header: 主题特色组件 — entry 图文条目（写法） -->
+
+## Markdown 源码
+
+```markdown
+<entry>
+
+![插图说明](media/xxx.jpg)
+
+### 条目标题
+
+#### 副标题行（可选）
+
+正文说明……
+
+</entry>
+```
+
+- **图片上不要写 `w:` / `h:` 尺寸指令**：Marp 把它写成行内 `style`，优先级高于样式表，会把定死的图框撑坏。
+- `<entry>` 标签与内部内容之间**必须空行**（与 `<figure>` 一样），否则里面几行会被当作原始 HTML 原样输出，图片不会渲染。

@@ -22,7 +22,7 @@
 | 层 | 内容 | 说明 |
 |---|---|---|
 | 第一层：Academic 主题基座 | `themes/academic/academic_template.css` | 统一的专业视觉风格：深蓝主色 `#003f88`、中文适配、封面/目录/章节/内容/致谢 5 种页面布局、页眉页脚页码、代码块双主题 |
-| 第二层：组件库 | `themes/academic/academic_template.css`（与基座同文件） | 15+ 个语义化 HTML 组件：`card` `grid` `flex` `timeline` `tree` `metric` `compare` `outline` `tag` `summary` `mark` `note` `checklist` `dlist` `flow` `datatable` `iconitem` 等，**全部样式定义在 CSS 中**，像搭积木一样组合出丰富的布局。各组件的用法与效果演示见 `themes/academic/academic组件体系.md`（该文件只是展示 PPT，组件本身由 CSS 提供） |
+| 第二层：组件库 | `themes/academic/academic_template.css`（与基座同文件） | 15+ 个语义化 HTML 组件：`card` `grid` `flex` `entry` `timeline` `tree` `metric` `compare` `outline` `tag` `summary` `mark` `note` `checklist` `dlist` `flow` `datatable` `iconitem` 等，**全部样式定义在 CSS 中**，像搭积木一样组合出丰富的布局。各组件的用法与效果演示见 `themes/academic/academic组件体系.md`（该文件只是展示 PPT，组件本身由 CSS 提供） |
 | 第三层：AI 工作流 | `.claude/skills/ppt-generator/SKILL.md` | 把 AI 接入写作流程：描述需求 → AI 按规范生成 Markdown → Marp 渲染 → 多格式输出。AI 自动使用组件和主题，产出即符合规范 |
 
 配套能力：
