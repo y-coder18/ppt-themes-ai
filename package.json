@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "marp Examples/Git从入门到精通/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --preview --allow-local-files",
+    "dev": "marp Examples/Git从入门到精通/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
     "build:html": "marp Examples/AI驱动的PPT生成方案/AI驱动的PPT生成方案.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files",
     "build:pptx": "marp Examples/AI驱动的PPT生成方案/AI驱动的PPT生成方案.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files --pptx-editable",
     "build:all": "npm run build:html && npm run build:pptx",
     "build": "npm run build:all",
-    "build:git": "marp Examples/Git从入门到精通/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_NUDT.css --html --allow-local-files -o Examples/Git从入门到精通/Git从入门到精通.html",
+    "build:git": "marp Examples/Git从入门到精通/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o Examples/Git从入门到精通/Git从入门到精通.html",
     "check:git": "node scripts/check-slides.mjs Examples/Git从入门到精通/Git从入门到精通.html Examples/Git从入门到精通/media",
     "marp": "marp"
   },
