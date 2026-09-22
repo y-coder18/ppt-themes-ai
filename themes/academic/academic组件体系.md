@@ -1095,7 +1095,7 @@ _class: compact
 
 <flex center>
 
-<iconitem icon="话筒">汇报人：×××</iconitem>
+<iconitem icon="话筒">汇报人：XXX</iconitem>
 
 <iconitem icon="人员">指导教师：××× 教授</iconitem>
 
@@ -1134,7 +1134,7 @@ _class: compact
 ```markdown
 <flex center>
 
-<iconitem icon="话筒">汇报人：×××</iconitem>
+<iconitem icon="话筒">汇报人：XXX</iconitem>
 
 <iconitem icon="人员">指导教师：××× 教授</iconitem>
 
@@ -1147,86 +1147,128 @@ _class: compact
 
 ---
 
-<!-- _header: 主题特色组件 — entry 图文条目 -->
+<!-- _header: 主题特色组件 — imginfo 图文条目 -->
 
 ## 渲染效果
 
 <grid cols="2">
 
-<entry>
+<imginfo>
 
-![示例人像](https://placehold.co/400x500/2563eb/white?text=Portrait)
+<flex>
 
-### 竖框 entry
+![h:180px 示例人像](https://placehold.co/400x500/2563eb/white?text=Portrait)
 
-#### 104×130 · 放人像 / 立轴
+<flex column>
 
-不同长宽比的原图并排时尺寸完全一致——图片被收进定死的框里。
+### imginfo 图文条目
 
-</entry>
+#### 一个人 / 一本书 / 一个概念
 
-<entry wide green>
+一侧图片、一侧标题与说明。人和物通用：人像、书影、截图都装得下。
 
-![示例书影](https://placehold.co/800x500/059669/white?text=Cover)
+> 一句话结论写在这里
 
-### 横框 entry[wide]
+</flex>
 
-#### 168×105 · 放书影 / 截图 / 横幅
+</flex>
 
-横构图用宽框。同一排的几张要用同一种框，否则又会对不齐。
+</imginfo>
 
-</entry>
+<imginfo green>
+
+<flex column>
+
+![h:180px 示例书影](https://placehold.co/800x500/059669/white?text=Cover)
+
+### 换 flex column 就竖着排
+
+#### 图在上、文在下
+
+左边那张左右分栏，这张上下堆叠，都只是把 `<flex>` 写成了不同方向。
+
+</flex>
+
+</imginfo>
 
 </grid>
 
-- 一侧图片、一侧标题与说明，人和物通用：人像、书影、界面截图、概念示意图都装得下。
-- 图片一律 `object-fit: cover` 收进**定死的框**，所以几张长宽比差很多的原图并排时，渲染尺寸完全一致——这正是它比 `card` 更适合放照片的地方：`card` 里的图按自身比例缩放，1280×1741 和 572×641 并排会一大一小。
-- 副标题行：标题下面**紧挨着的第二个标题**自动降级成小一号的中性灰（上面例子里的 `####`），用来放生卒年 / 作者 / 版本号这类元信息；不写也不影响。
+- **组件只给一层皮肤**：圆角、细框、投影、内边距，加上标题 / 副标题行 / 卡内引用这套文字皮肤。图放哪一侧、图占多宽，全由你在里面写。
+- 卡里的图一律给 8px 圆角 + 一圈强调色描边，**不让照片硬邦邦地贴在卡上**；卡边框始终是中性灰，一排里混用颜色也不会花。
+- 标题下**紧挨着的第二个标题**（上面例子里的 `####`）自动降级成小一号的浅灰副标题行，放生卒年 / 作者 / 版本号这类元信息；`>` 引用在卡内换成「3px 强调色竖线 + 极浅同色底」的金句样式，一页最多一条。
 
 ---
 
-<!-- _header: 主题特色组件 — entry 图文条目（变体） -->
+<!-- _header: 主题特色组件 — imginfo 图文条目（变体） -->
 
 ## 渲染效果
 
 <grid cols="2">
 
-<entry reverse gray>
+<imginfo gray>
 
-![示例](https://placehold.co/400x500/475569/white?text=Reverse)
+<flex>
 
-### reverse 图放右侧
+![h:200px 示例](https://placehold.co/400x500/475569/white?text=Gray)
 
-#### 强调边一并翻到右边
+<flex column>
 
-</entry>
+### gray 换强调色
 
-<entry compact red>
+#### 标题 / 图片描边 / 引用竖线
 
-![示例](https://placehold.co/400x500/dc2626/white?text=Compact)
+强调色只换这三处，卡边框始终中性，一排里混几种颜色也不会花。
+
+> 引用也跟着变色
+
+</flex>
+
+</flex>
+
+</imginfo>
+
+<imginfo compact red>
+
+<flex>
+
+![h:200px 示例](https://placehold.co/400x500/dc2626/white?text=Compact)
+
+<flex column>
 
 ### compact 收紧
 
-#### 内边距与字号同步缩小
+#### 内边距与字号一起收窄
 
-</entry>
+内容偏密的页面用它，同样一屏能塞下更多条目。
+
+> 引用也跟着变红
+
+</flex>
+
+</flex>
+
+</imginfo>
 
 </grid>
 
-- `[reverse]` 把图放到右侧，左侧的强调边一并翻到右边——适合与相邻条目做左右交错。
-- `[compact]` 图框收到 88×110，内边距与字号同步缩小，用于内容偏密的页面。
-- `[green]` `[red]` `[yellow]` `[gray]` 只换强调色（边框 + 标题），与 `card` / `feature` 同色系。
+- 变体只有两组：`[green|red|yellow|gray]` 换强调色、`[compact]` 收紧内边距与字号。
+- `[green]` `[red]` `[yellow]` `[gray]` 只换强调色（标题 + 图片外圈描边 + 引用左侧竖线），**卡片边框始终是中性灰**——所以一排里混用几种颜色也不会花，与 `card` / `feature` 同色系。
+- `[compact]` 收紧内边距与字号，用于内容偏密的页面。**图的大小不跟着收**：它是你写在图片上的 `h:` / `w:`（行内 style），组件管不着，要一起收就自己把那个值改小。
 
 ---
 
-<!-- _header: 主题特色组件 — entry 图文条目（写法） -->
+<!-- _header: 主题特色组件 — imginfo 图文条目（写法） -->
 
 ## Markdown 源码
 
 ```markdown
-<entry>
+<imginfo>
 
-![插图说明](media/xxx.jpg)
+<flex>
+
+![h:240px 插图说明](media/xxx.jpg)
+
+<flex column>
 
 ### 条目标题
 
@@ -1234,8 +1276,69 @@ _class: compact
 
 正文说明……
 
-</entry>
+> 一句话结论（可选）
+
+</flex>
+
+</flex>
+
+</imginfo>
 ```
 
-- **图片上不要写 `w:` / `h:` 尺寸指令**：Marp 把它写成行内 `style`，优先级高于样式表，会把定死的图框撑坏。
-- `<entry>` 标签与内部内容之间**必须空行**（与 `<figure>` 一样），否则里面几行会被当作原始 HTML 原样输出，图片不会渲染。
+- **图的大小自己给**：`h:240px` / `w:200px`，不给就按原图像素渲染，很容易把卡片撑破。同一排的几张要统一高度，否则对不齐——这里没有定死的图框替你兜底。
+- 图放右侧：把 `<flex>` 里两块内容掉个个儿（图写在 `<flex column>` 后面）。上下结构：外面那层写成 `<flex column>`。见下页。
+- `<imginfo>` 标签与内部内容之间**必须空行**（与 `<figure>` 一样），否则里面几行会被当作原始 HTML 原样输出，图片不会渲染。
+
+---
+
+<!-- _header: 主题特色组件 — imginfo 图文条目（排法） -->
+
+## 三种排法，一个组件
+
+<grid cols="2">
+
+<imginfo>
+
+<flex>
+
+![h:200px 示例人像](https://placehold.co/400x500/2563eb/white?text=Left)
+
+<flex column>
+
+### 图在左
+
+#### 外面套一层 `<flex>`
+
+就是左右两栏，图写多大就占多宽。
+
+</flex>
+
+</flex>
+
+</imginfo>
+
+<imginfo gray>
+
+<flex>
+
+<flex column>
+
+### 图在右
+
+#### 两块内容掉个个儿
+
+图写在 `<flex column>` 后面，文字自然就到左边来了。
+
+</flex>
+
+![h:200px 示例人像](https://placehold.co/400x500/475569/white?text=Right)
+
+</flex>
+
+</imginfo>
+
+</grid>
+
+- 上下结构：外面那层写成 `<flex column>`（上页第二张就是），图在上、文在下。
+- 排法**没有开关，也不需要开关**——组件不参与布局，里面写的 `<flex>` / `<grid>` 是什么样，渲染出来就是什么样。
+- 图放哪一侧、占多宽，全看它在 `<flex>` 里的位置和自己的 `w:` / `h:`；同一排的图记得统一高度。

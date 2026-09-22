@@ -8,9 +8,9 @@
 
 :root {
   /* 布局间距：统一控制 :root / section / grid / flex 的元素间隔 */
-  --gap: 24px;
+  --gap: 32px;
   /* 紧凑模式间距：应用于 [compact] / :root.compact / section.compact */
-  --gap-compact: 12px;
+  --gap-compact: 8px;
 
   /* ---- 品牌 logo：与主题绑定，正文 Markdown 里不用再写 <img> ----
      基座默认 none，即不放 logo；皮肤里声明 --logo 后页眉 / 章节页 / 封面 / 致谢页统一生效 */
@@ -26,7 +26,8 @@
   --thanks-bg: url("../../themes/academic/images/航天2.png");
 
   /* 基准字号：所有 rem 单位以此为参照，compact 模式覆盖此值即可全局缩放 */
-  font-size: 24px;
+  font-size: 20px;
+  --marpit-root-font-size: 20px;
   text-align: left;
   font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
   position: relative;
@@ -40,7 +41,6 @@
 /* 覆盖 Marp 生成的 section 默认值（gap / font-size 均由主题控制） */
 section {
   gap: var(--gap);
-  font-size: 1rem;
 }
 
 /* ---- 代码块配色变量（浅色主题，默认） ---- */
@@ -106,20 +106,22 @@ section.code-dark {
   background-size: 100% auto;
   text-align: left;
   color: whitesmoke;
-  font-size: 1.385rem;
+  font-size: 1.5rem;
   text-shadow: none;
   font-weight: bold;
+  --content-height:40px;
+  line-height: var(--content-height);
 }
 /* 页眉logo */
 :root header::after {
   content: '';
-  height: 50px;
-  width: 250px;
+  height: var(--content-height);
+  width: 100%;
   position: absolute;
   right: 60px;
   top: 12px;
   background-image: var(--logo);
-  background-position: right top;
+  background-position: right center;
   background-repeat: no-repeat;
   background-size: auto 100%;
 }
@@ -147,7 +149,6 @@ section::after{
 
 /* 页码 */
 :root::after {
-  font-size: 0.923rem;
   font-weight: bold;
   text-shadow: none;
   color: #fff;
@@ -161,7 +162,6 @@ section::after{
 
 p {
   margin: 0;
-  font-size: 1rem;
 }
 
 a {
@@ -185,7 +185,7 @@ h2 {
 }
 h3 {
   color: #003f88;
-  font-size: 1.077rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 0;
   padding-left: 14px;
@@ -203,13 +203,11 @@ h3::before {
 }
 h4 {
   color: #334155;
-  font-size: 0.923rem;
   font-weight: 700;
   margin: 0;
 }
 h5 {
   color: #475569;
-  font-size: 0.846rem;
   font-weight: 600;
   margin: 0;
   padding-bottom: 4px;
@@ -238,19 +236,19 @@ h6 {
  *   与 card 组件的差异：card 用左边框（border-left）作为视觉锚点；
  *   blockquote 完全不用左边线，靠圆角 + 阴影建立独立视觉语言。
  *
- *   例外：card 内的 blockquote 作为"重点结论"块，使用浅色底 + 左侧强调条，
- *   与卡片左锚边框形成层级呼应（见下方 card blockquote 规则）。
+ *   例外：card 内的 blockquote 作为"重点结论"块，仅用浅色底 + 小圆角区分，
+ *   与卡片左锚边框不重复强调（见下方 card blockquote 规则）。
  */
 
 /* ===== 一层：悬浮卡片（无左边线，大圆角 + 投影） ===== */
 blockquote {
   margin: 0;
-  padding: 20px 26px;
+  padding: 12px 16px;
   background: #eaf2fb;
   border: none;
   color: #183b5e;
-  font-size: 1rem;
   line-height: 1.65;
+  font-size: 1rem;
 }
 
 /* ===== 二层：白卡嵌套 — 细全框 + 微投影 ===== */
@@ -261,7 +259,6 @@ blockquote blockquote {
   border: 1px solid #dce5f2;
   border-radius: 8px;
   color: #334155;
-  font-size: 0.923rem;
   line-height: 1.55;
 }
 
@@ -273,7 +270,6 @@ blockquote blockquote blockquote {
   border: none;
   border-radius: 6px;
   color: #5a657a;
-  font-size: 0.885rem;
   font-style: italic;
   line-height: 1.5;
   box-shadow: none;
@@ -287,7 +283,6 @@ blockquote blockquote blockquote blockquote {
   border: none;
   border-radius: 0;
   color: #7a8699;
-  font-size: 0.846rem;
   font-style: normal;
   line-height: 1.45;
 }
@@ -321,7 +316,8 @@ blockquote blockquote blockquote blockquote strong {
 /* 默认margin auto会居中 */
 ol, ul {
   margin: 0;
-  font-size: 1rem;
+  margin-block-start:0;
+  padding-inline-start:0;
 }
 
 ol li {
@@ -337,7 +333,6 @@ mark {
   background: none;
   color: #c00000;
   font-weight: bold;
-  font-size: 1rem;
   margin: 6px 0;
 }
 mark[center] {
@@ -365,6 +360,7 @@ mark[center] {
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   background-color: rgba(0, 20, 50, 0.35);
+  padding-bottom: var(--logo-home-h);
 }
 /* logo 占位块：作为弹性项参与居中排版。
    高度为 0 时把这一项自带的 flex gap 也抵消掉，让不放 logo 的封面保持原版式 */
@@ -372,11 +368,11 @@ mark[center] {
   content: '';
   flex: none;
   height: var(--logo-home-h);
-  margin-bottom: calc(-1 * max(0px, var(--gap) - var(--logo-home-h)));
   background-image: var(--logo);
   background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
+  margin-bottom: 20px;
 }
 /* 全局渐变遮罩兜底 */
 :root.homePage::after {
@@ -398,14 +394,13 @@ mark[center] {
   margin: 0;
 }
 :root.homePage h2 {
-  font-size: 1.385rem;
+  font-size: 1.5rem;
   color: #ffffff;
   letter-spacing: 2px;
   margin: 0;
 }
 :root.homePage p {
   color: #e2e8f0;
-  font-size: 0.846rem;
   margin: 0;
 }
 
@@ -413,8 +408,11 @@ mark[center] {
 :root.contents {
   text-align: center;
   color: #fff;
-  padding: 0 0 0 40%;
+  --left-right-padding:60px;
+  padding: 0 var(--left-right-padding) 0 calc(45vh + var(--left-right-padding));
   background-color: #003f88;
+  display: flex;
+  flex-direction: column;
 }
 :root.contents::before {
   content: '';
@@ -438,6 +436,9 @@ mark[center] {
   margin-bottom: 40px;
   font-size: 2.308rem;
 }
+:root.contents ul{
+  font-size: 1.2rem;
+}
 /* :root.contents h2::before {
   content: 'CONTENTS';
   position: absolute;
@@ -449,14 +450,14 @@ mark[center] {
   z-index: 1;
 } */
 :root.contents ul{
-  font-size: 0.885rem;
-  padding-left: 120px;
+  padding-left: 0px;
 }
 :root.contents ul li {
   color: #fff;
   line-height: 40px;
   list-style: none;
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 :root.contents ul li strong {
   font-size: 1.923rem;
@@ -615,7 +616,6 @@ mark[center] {
 }
 /* 章节副标题 / 描述 */
 :root.chapterPage h3 {
-  font-size: 1rem;
   color: #64748b;
   font-weight: 400;
   letter-spacing: 1px;
@@ -627,7 +627,6 @@ mark[center] {
 }
 :root.chapterPage p {
   color: #64748b;
-  font-size: 0.923rem;
   letter-spacing: 1px;
   margin: 0;
 }
@@ -746,7 +745,6 @@ section.compact table tbody td {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.846rem;
   color: #334155;
 }
 table thead {
@@ -862,7 +860,6 @@ datatable h4, datatable h5, datatable h6 {
   padding: 14px 20px;
   background: linear-gradient(160deg, var(--dt-header-start) 0%, var(--dt-header-end) 100%);
   color: #fff;
-  font-size: 0.846rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   position: static;
@@ -1149,22 +1146,21 @@ card h1, card h2, card h3, card h4, card h5, card h6 {
   font-weight: 700;
   color: #003f88;
   margin: -14px -22px 0px -22px;
-  padding: 14px 22px 12px 22px;
+  padding: 6px 22px 6px 22px;
   position: relative;
   background: #003f880d;
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid rgba(0, 63, 136, 0.6);
 }
 
-/* 卡片内重点/引用内容：极浅冷蓝底 + 细左强调条，干净克制的总结块 */
+/* 卡片内重点/引用内容：极浅冷蓝底 + 小圆角，无边框的干净总结块 */
 card blockquote {
   margin: 0;
-  padding: 4px 12px;
+  padding: 6px 12px;
   background: #f0f6ff;
   border: none;
-  border-left: 3px solid #003f88;
   color: #16407c;
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 /* 危险/问题卡片：仅关键元素红色，不过度染色 */
@@ -1179,7 +1175,6 @@ card[red] h4, card[red] h5, card[red] h6 {
 }
 card[red] blockquote {
   background: #fdf2f2;
-  border-color: #c00000;
   color: #a00000;
 }
 
@@ -1195,7 +1190,6 @@ card[green] h4, card[green] h5, card[green] h6 {
 }
 card[green] blockquote {
   background: #eff7ef;
-  border-left: 3px solid #006400;
   color: #005000;
 }
 
@@ -1211,7 +1205,6 @@ card[yellow] h4, card[yellow] h5, card[yellow] h6 {
 }
 card[yellow] blockquote {
   background: #fef8ec;
-  border-left: 3px solid #b87a14;
   color: #7a5d10;
 }
 
@@ -1227,7 +1220,6 @@ card[gray] h4, card[gray] h5, card[gray] h6 {
 }
 card[gray] blockquote {
   background: #f3f5f7;
-  border-left: 3px solid #455a64;
   color: #3d4a52;
 }
 
@@ -1250,7 +1242,7 @@ section.compact card h4, section.compact card h5, section.compact card h6 {
 card[compact] table,
 :root.compact card table,
 section.compact card table {
-  font-size: 0.692rem;
+  font-size: 0.8rem;
   margin: 4px 0 2px;
 }
 card[compact] table thead th,
@@ -1335,7 +1327,7 @@ card[gray] table tbody td {
 
 
 /* ================================================================
-   Entry — 图文条目组件（一侧图片，一侧标题与说明）
+   ImgInfo — 图文条目组件（一层皮肤，布局归作者）
    ================================================================ */
 
 /*
@@ -1343,170 +1335,229 @@ card[gray] table tbody td {
  * 人和物通用——人像（照片 + 姓名 + 生平）、书籍（封面 + 书名 + 简介）、
  * 概念（示意图 + 名称 + 解释）、产品（截图 + 名称 + 说明）都装得下。
  *
- * <entry>
+ * 组件**只给一层皮肤**：圆角、细框、柔和投影、内边距，加上标题 / 副标题行 /
+ * 卡内引用这套文字皮肤。**里面怎么排由作者写**——图放哪一侧、图和文字各占
+ * 多宽、图多大，全部来自作者自己套的 <flex> / <grid>：
  *
- * ![插图说明](media/xxx.jpg)
+ *   <imginfo>
  *
- * ### 条目标题
+ *   <flex>
  *
- * #### 副标题行（生卒年 / 作者 / 版本号这类元信息，可选）
+ *   ![h:240px 说明](media/x.jpg)
  *
- * 正文说明……
+ *   <flex column>
  *
- * </entry>
+ *   ### 条目标题
  *
- * 注意：<entry> 标签与内部内容之间必须**空行**，否则里面几行会被当作
+ *   #### 副标题行（生卒年 / 作者 / 版本号这类元信息，可选）
+ *
+ *   正文说明……
+ *
+ *   </flex>
+ *
+ *   </flex>
+ *
+ *   </imginfo>
+ *
+ * 图放右侧就把两层 flex 的顺序倒过来；要「图在上、文字在下」，把外面那层
+ * 写成 <flex column>。不套 flex、直接把图和文字排队写进去也行，那就是
+ * 顺着卡片竖着堆，图的大小由它自己的 h: / w: 给。
+ *
+ * 注意：<imginfo> 标签与内部内容之间必须**空行**，否则里面几行会被当作
  * 原始 HTML 原样输出，图片不会渲染。
- * 图片上也**不要再写 w: / h: 尺寸指令**——Marp 把它写成行内 style，
- * 优先级高于样式表，会把定死的图框撑坏。
  *
- * 图片会被收进一个**定死的框**并 object-fit: cover，所以不同长宽比的
- * 原图并排时尺寸完全一致——这正是它比 card 更适合放照片的地方。
- * 代价是图会被裁：方图放进宽框裁上下，宽图放进窄框裁左右，靠
- * object-position 决定留哪一段。
+ * ---- 视觉语言：刻意与 card 拉开距离 ----
+ * card 是「方角 + 实线全框 + 左侧 3px 粗条」，一眼是个文档盒子；
+ * imginfo 走照片卡的路子：
+ *   · 卡片 10px 大圆角 + 极浅细框 + 两层柔和投影，不跟内容抢注意力
+ *   · 图给 8px 圆角 + 一圈强调色描边，不让照片硬邦邦地贴在卡上
+ *   · 强调色只落在**标题**、**图片外圈描边**和**卡内引用的左侧竖线**上，
+ *     卡边框始终是中性灰，所以一排里混用几种颜色也不会花
  *
  * ⚠ 两个坑，改这个组件前先看：
  *
- * 1. Marp 会给独立成行的图片套一层 <p>，图片是这层 <p> 的子元素。
- *    所以跟图有关的选择器都要写成 entry > p:first-child img，
- *    不能简写成 entry img——那样漏掉的是「壳」而不是图，图片所在的
- *    <p> 会被当成普通文本丢进右侧文字列，图则被 :root img 的
- *    margin:auto 居中，整个布局散掉。
- * 2. :root img { margin: auto } 的特异度是 (0,1,1)，组件里要压掉它
- *    得写到 (0,1,3) 以上（带一个伪类 + 两个元素即可）。这也是下面
- *    选择器写这么长的原因，不是随手堆的。
+ * 1. 图的选择器一律写成 imginfo img，不加 > ：作者可能在中间套任意层
+ *    flex / grid，按路径去匹配（imginfo > p:first-child img 那种）就是在
+ *    替作者假设结构，他换个排法就失配。
+ * 2. :root img { margin: auto }（`:511`）会把卡里的图左右居中——这是想要的，
+ *    图在 flex 行里居中靠的就是它，不要顺手压掉。
  *
  * 变体：
- *   [wide]    横框 16:10，放书影 / 截图 / 横幅图；默认竖框 4:5，放人像
- *   [reverse] 图放右侧（强调条一并翻到右边）
  *   [green|red|yellow|gray] 换强调色，与 card / feature 同色系
  *   [compact] 收紧内边距与字号
  */
 
-entry {
-  --et-ink: #003f88;
-  --et-img-w: 104px;
-  --et-img-h: 130px;
-  display: grid;
-  grid-template-columns: var(--et-img-w) 1fr;
-  grid-template-rows: auto auto 1fr;
-  column-gap: 16px;
-  row-gap: 3px;
-  align-items: start;
-  padding: 14px 18px;
-  border: 1px solid var(--et-ink);
-  border-left-width: 3px;
-  border-radius: 6px;
-  background: #fff;
+imginfo {
+  /* 组件内变量：变体只覆盖这几个值，不往 :root 里堆 */
+  --ii-ink: #003f88;                  /* 标题色 */
+  --ii-ring: rgba(0, 63, 136, 0.22);  /* 图片外圈描边，跟着 ink 走 */
+  --ii-tint: rgba(0, 63, 136, 0.08);  /* 卡内引用的底色，同样跟着 ink 走 */
+  --ii-pad-x: 20px;
+  --ii-pad-y: 16px;
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--ii-pad-y) var(--ii-pad-x);
+  border: 1px solid #e6ebf2;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+  box-shadow:
+    0 1px 2px rgba(15, 34, 62, 0.04),
+    0 8px 20px -12px rgba(15, 34, 62, 0.18);
 }
 
-/* 图框：Marp 套出来的那层 <p> 就是图的容器，占满左列、跨掉所有文字行 */
-entry > p:first-child {
-  grid-column: 1;
-  grid-row: 1 / -1;
-  margin: 0;
-}
-entry > p:first-child img {
-  display: block;
-  width: var(--et-img-w);
-  height: var(--et-img-h);
-  object-fit: cover;
-  object-position: center 12%;
-  border-radius: 4px;
-  margin: 0;
+imginfo img { object-fit: cover }
+
+imginfo ul{
+  padding-inline-start: var(--ii-pad-x);
 }
 
-/* 文字列：标题、副标题行、正文依次往下排 */
-entry > :not(p:first-child) {
-  grid-column: 2;
-  margin: 0;
+imginfo flex {
+  gap: 16px;
 }
-entry p {
-  font-size: 0.846rem;
-  color: #475569;
-  line-height: 1.55;
+
+/*
+ * 直接子元素的纵向节奏，只管「作者没套容器的那些」：套了 flex / grid 的内容，
+ * 间距由那层容器自己的 gap 给——> 只匹配直接子元素，这里的手伸不进去，
+ * 所以不会和容器 gap 叠成两层。
+ *
+ * 间距分两档：换组一律 10px；标题组内部的「标题 + 副标题行」要贴住，由下面
+ * 副标题行那条规则的 2px 压过来（它 (0,0,3) 高过这里 (0,0,1)），不必再写例外。
+ * 标题和 p 的 margin 在本主题的基础排版里本来就是 0（`:163`、`:172`），
+ * 下面只写 margin-top 就够，不用重复重置。
+ */
+imginfo > * + * {
+  margin-top: 10px;
+}
+
+/* 卡里的图只管皮肤：8px 圆角 + 一圈强调色描边（颜色变体在这里有落点）。
+   尺寸不在这条路上定——图多大由作者自己在图片的 w: / h: 上写。 */
+imginfo img {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--ii-ring);
+}
+
+imginfo p {
+  color: #3d4a58;
+  line-height: 1.5;
 }
 
 /*
  * 标题：任意级标题都当条目标题。
- * 字号比 card / feature 的 1.1rem 大一档，取 h2 的 1.308rem——
- * 它们俩的标题下面有一条通栏底纹在撑视觉重量，entry 的标题是裸的，
- * 同样的字号会被右边的副标题行和正文压住，看着不像标题。
+ * 字号取 1.15rem——比 card / feature 的 1.1rem / 1.15rem 高一档，够撑起
+ * 条目感；但不取 h2 的 1.308rem，那样在半栏宽的卡里标题会顶满一行，
+ * 和底下的副标题行、正文挤成一片，反而看不出层级。
  */
-entry h1, entry h2, entry h3,
-entry h4, entry h5, entry h6 {
-  font-size: 1.308rem;
+imginfo h1, imginfo h2, imginfo h3,
+imginfo h4, imginfo h5, imginfo h6 {
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--et-ink);
-  letter-spacing: 0.3px;
-  line-height: 1.25;
+  color: var(--ii-ink);
+  letter-spacing: 0.2px;
+  line-height: 1.3;
   padding: 0;
   background: none;
   border: none;
 }
-/* 覆盖 h3::before 的蓝色竖条，entry 自带左侧强调边，不需要再来一条 */
-entry h3::before {
+/* 覆盖 h3::before 的蓝色竖条，标题色已经由 --ii-ink 给了，不需要再来一条 */
+imginfo h3::before {
   content: none;
 }
 
 /*
- * 副标题行：跟着标题的**第二个标题**降级成小一号的中性灰。
- * 用 var(--et-ink) 之外的颜色，所以必须比上面的标题规则更特异——
+ * 副标题行：跟着标题的**第二个标题**，降级成明显小一号的浅灰元信息。
+ * 用 var(--ii-ink) 之外的颜色，所以必须比上面的标题规则更特异——
  * 这里 (0,0,3) 对 (0,0,2)，靠特异性取胜，跟源码顺序无关。
- * 颜色变体只改 --et-ink 变量、不直接写 color，也就不会插进来抢。
+ * 颜色变体只改 --ii-ink 变量、不直接写 color，也就不会插进来抢。
+ *
+ * 字号取 0.8rem，比正文的 1rem 还小一档多。别把它调到和正文差不多
+ * （0.769rem 就太近了）——那样文字序列会变成「大→小→大」的锯齿，副标题
+ * 夹在标题和正文中间不伦不类。它必须明显更小、更浅、更贴着标题，
+ * 才读得出是「标题的附属行」而不是独立的一行。
+ * margin-top 只加 2px：标题行盒上下的余量本来就比小字大，
+ * 加起来视觉间距已经比组间小得多。
+ *
+ * 用后代选择器而不是 > ：两个标题通常套在 <flex column> 里（见上方用法），
+ * 加 > 就匹配不到，副标题会退回成一个大号粗体标题，把整张卡撑变形。
  */
-entry > :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6) {
-  font-size: 0.769rem;
+imginfo :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 0.8rem;
   font-weight: 400;
   color: #64748b;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.4px;
+  line-height: 1.35;
+  margin-top: 2px;
 }
 
-/* 横框：书影 / 截图 / 横幅图 */
-entry[wide] {
-  --et-img-w: 168px;
-  --et-img-h: 105px;
+/*
+ * 卡内引用（作者写在 <imginfo> 里的 > 行）：一句话结论 / 金句。
+ *
+ * 不能直接用 :root 那套 L1 引用（`:244`）——那是为正文流设计的外框卡片，
+ * 落进 imginfo 会变成一块**直角**的淡蓝实心贴纸：卡本身 10px 大圆角，
+ * 贴纸是直角；贴纸还顶满整条文字栏，把图旁边本就不多的留白吃掉。
+ * 同一个 #eaf2fb 贴在页面白底上还算透气，贴在近乎纯白的卡面上就「实」得
+ * 发脏——这就是它看起来丑的原因，不是颜色不好看，是它不认这张卡的形状。
+ *
+ * 改用 outline 内引用那套手法（`outline blockquote`，`:1612`）：
+ * 左侧强调竖线 + 极浅强调色底 + 只圆右边的角。
+ * 竖线取 --ii-ink，颜色变体因此多一处落点，卡边框照旧中性。
+ * 底色走 --ii-tint 变量、不写死色值，变体只改变量（见下方变体一节）。
+ *
+ * 竖线取 3px 而不是 outline 的 4px：outline 是整页唯一的框，撑得住粗线；
+ * imginfo 是半栏宽的小卡，4px 的饱和竖线比卡自己的 1px 灰边还重，会抢戏。
+ */
+imginfo blockquote {
+  padding: 6px 12px;
+  background: var(--ii-tint);
+  border: none;
+  border-left: 3px solid var(--ii-ink);
+  border-radius: 0 6px 6px 0;
+  color: var(--ii-ink);
+  line-height: 1.5;
 }
 
-/* 图放右侧：强调边一并翻到右边 */
-entry[reverse] {
-  grid-template-columns: 1fr var(--et-img-w);
-  border-left-width: 1px;
-  border-right-width: 3px;
-}
-entry[reverse] > p:first-child {
-  grid-column: 2;
-}
-entry[reverse] > :not(p:first-child) {
-  grid-column: 1;
+/*
+ * 引用里的段落必须显式继承颜色。imginfo p（`:1427`，特异度 (0,0,2)）把
+ * color 直接压在段落上，**继承来的颜色压不过它**——不写这条，引用就是「蓝底灰字」，
+ * 而且灰的是普通正文色 #3d4a58，比原版的浅蓝底还难看。
+ * margin: 0 是不让引用内部的段落再叠一层间距——引用块自己上下的位置
+ * 由上面「纵向节奏」那条规则管，里面就只有它一行字。
+ */
+imginfo blockquote p {
+  margin: 0;
+  color: inherit;
+  line-height: inherit;
 }
 
-/* --- 颜色变体：只改变量，标题与边框一起跟着走 --- */
-entry[green]  { --et-ink: #006400; }
-entry[red]    { --et-ink: #c00000; }
-entry[yellow] { --et-ink: #b87a14; }
-entry[gray]   { --et-ink: #455a64; }
+/* --- 颜色变体：只改变量，标题 / 图片描边 / 引用竖线一起跟着走，卡边框保持中性 --- */
+imginfo[green]  { --ii-ink: #006400; --ii-ring: rgba(0, 100, 0, 0.22);   --ii-tint: rgba(0, 100, 0, 0.06); }
+imginfo[red]    { --ii-ink: #c00000; --ii-ring: rgba(192, 0, 0, 0.22);   --ii-tint: rgba(192, 0, 0, 0.06); }
+imginfo[yellow] { --ii-ink: #b87a14; --ii-ring: rgba(184, 122, 20, 0.26); --ii-tint: rgba(184, 122, 20, 0.08); }
+imginfo[gray]   { --ii-ink: #455a64; --ii-ring: rgba(69, 90, 100, 0.22); --ii-tint: rgba(69, 90, 100, 0.06); }
 
-/* compact */
-entry[compact],
-:root.compact entry,
-section.compact entry {
-  --et-img-w: 88px;
-  --et-img-h: 110px;
-  padding: 8px 14px 6px;
-  column-gap: 12px;
+/* compact：内边距全走组件内变量，所以这里只改变量，不必像 card / feature
+   那样把内边距拆成三份重写。字号没有走变量，还得按三态展开。
+   图的大小不在这里收——那是作者写在图片上的 h: / w:（行内 style，压不过的），
+   组件管不着。 */
+imginfo[compact],
+:root.compact imginfo,
+section.compact imginfo {
+  --ii-pad-x: 14px;
+  --ii-pad-y: 11px;
+  border-radius: 8px;
 }
-entry[compact] h1, entry[compact] h2, entry[compact] h3,
-entry[compact] h4, entry[compact] h5, entry[compact] h6,
-:root.compact entry h1, :root.compact entry h2, :root.compact entry h3,
-:root.compact entry h4, :root.compact entry h5, :root.compact entry h6,
-section.compact entry h1, section.compact entry h2, section.compact entry h3,
-section.compact entry h4, section.compact entry h5, section.compact entry h6 {
-  font-size: 0.923rem;
+
+/* 副标题行在 compact 下必须再压一档：正文缩到 0.769rem 之后，0.8rem 的
+   副标题反而比正文还大，序列就翻成「小→大→小」的锯齿了。 */
+imginfo[compact] :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6),
+:root.compact imginfo :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6),
+section.compact imginfo :is(h1, h2, h3, h4, h5, h6) ~ :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 0.615rem;
 }
-entry[compact] p,
-:root.compact entry p,
-section.compact entry p {
+
+imginfo[compact] p,
+:root.compact imginfo p,
+section.compact imginfo p {
   font-size: 0.769rem;
 }
 
@@ -1547,7 +1598,6 @@ outline h1, outline h2, outline h3, outline h4, outline h5, outline h6 {
   color: #fff;
   padding: 4px 16px;
   border-radius: 4px;
-  font-size: 0.923rem;
   font-weight: 600;
   margin-bottom: 6px;
   position: relative;
@@ -1579,7 +1629,6 @@ outline blockquote {
   border-left: 4px solid #003f88;
   background: rgba(0, 63, 136, 0.08);
   border-radius: 0 4px 4px 0;
-  font-size: 0.846rem;
   color: #003f88;
   font-style: normal;
 }
@@ -1792,14 +1841,6 @@ metric h1, metric h2, metric h3, metric h4, metric h5, metric h6 {
   text-align: center;
   line-height: 1.2;
 }
-metric[compact] h1, metric[compact] h2, metric[compact] h3,
-metric[compact] h4, metric[compact] h5, metric[compact] h6,
-:root.compact metric h1, :root.compact metric h2, :root.compact metric h3,
-:root.compact metric h4, :root.compact metric h5, :root.compact metric h6,
-section.compact metric h1, section.compact metric h2, section.compact metric h3,
-section.compact metric h4, section.compact metric h5, section.compact metric h6 {
-  font-size: 0.923rem;
-}
 /* 去掉 h3 全局左侧蓝色竖条 */
 metric h1::before, metric h2::before, metric h3::before,
 metric h4::before, metric h5::before, metric h6::before {
@@ -1891,7 +1932,7 @@ metric[gray] tag:not([green]):not([red]):not([yellow]):not([gray]) {
  */
 note {
   display: block;
-  font-size: 0.692rem;
+  font-size: 0.8rem;
   color: #94a3b8;
   line-height: 1.5;
   margin: 6px 0;
@@ -1995,13 +2036,13 @@ compare after {
 compare before::before {
   content: "之前";
   position: absolute;
-  top: 13px;
-  left: 0px;
+  top: 10px;
+  left: -1px;
   transform: translateY(-50%);
   background: var(--cp-accent);
   color: #ffffff;
   padding: 3px 14px;
-  border-radius: 3px 0 4px 0;
+  border-radius: 3px 0 6px 0;
   font-size: 0.615rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -2012,13 +2053,13 @@ compare before::before {
 compare after::before {
   content: "之后";
   position: absolute;
-  top: 13px;
-  left: 0;
+  top: 10px;
+  left: -1px;
   transform: translateY(-50%);
   background: var(--cp-accent);
   color: #ffffff;
   padding: 3px 14px;
-  border-radius: 3px 0 4px 0;
+  border-radius: 3px 0 6px 0;
   font-size: 0.615rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -2071,7 +2112,6 @@ compare after > blockquote {
   border: none;
   background: transparent;
   color: inherit;
-  font-size: 0.923rem;
   font-weight: 500;
   font-style: normal;
   opacity: 0.7;
@@ -2088,7 +2128,6 @@ compare after :is(ul, ol) {
 }
 compare before li,
 compare after li {
-  font-size: 0.923rem;
   line-height: 1.5;
   margin: 2px 0;
 }
@@ -2191,7 +2230,7 @@ compare after li::marker {
 /* ---- 普通段落 ---- */
 compare before > p,
 compare after > p {
-  font-size: 1.077rem;
+  font-size: 1.15rem;
   margin: 2px 0;
 }
 /* ---- 卡片内 summary：替代加粗汇总行，顶部虚线分隔 ---- */
@@ -2204,7 +2243,7 @@ compare after > summary {
   padding-bottom: 0;
   border-top: 1px dashed rgba(0,0,0,0.1);
   background: transparent;
-  font-size: 1.077rem;
+  font-size: 1.15rem;
   font-weight: 700;
   text-align: left;
 }
@@ -2448,7 +2487,7 @@ timeline > :is(ul, ol) > li > ul > li > ul {
   list-style: circle;
 }
 timeline > :is(ul, ol) > li > ul > li > ul > li {
-  font-size: 0.692rem;
+  font-size: 0.8rem;
   color: #64748b;
   font-weight: normal;
   line-height: 1.4;
@@ -2726,7 +2765,6 @@ dlist > ul > li > p:first-of-type {
   --lw-letter-spacing: 2px;    /* 字间距，label-width 公式中按字符数累加 */
   padding: 3px var(--lw-padding-h);
   border-radius: 4px;
-  font-size: 0.846rem;
   font-weight: 600;
   text-align: center;
   margin: 0;
@@ -3053,7 +3091,6 @@ section.compact tree {
   --tree-marker-w: 16px;
 
   line-height: var(--tree-line);
-  font-size: 0.923rem;
 }
 
 
@@ -3070,7 +3107,8 @@ section.compact tree {
  *
  * </flow>
  *
- * 变体：flow[vertical] 竖向排列 / now="N" 当前节点
+ * 变体：flow[vertical] 竖向排列 / now="N" 当前节点 / flow[solid] 全部胶囊实心
+ *      / flow[compact] 紧凑 / flow[center] 节点内容居中
  */
 
 flow {
@@ -3101,7 +3139,6 @@ flow > :is(ol, ul) > li {
   color: #003f88;
   border: 2px solid #003f88;
   border-radius: 10px;
-  font-size: 0.923rem;
   font-weight: 600;
   position: relative;
 }
@@ -3150,6 +3187,41 @@ flow[now="8"] > :is(ol, ul) > li:nth-child(8) ol > li {
   color: #d0d8ea;
 }
 
+/* ---- flow solid：整条流程全部实心（蓝底白字） ----
+   与 now="N" 同一套配色，区别是把它铺到每一个胶囊上，用于「整排同权、
+   不标当前步」的场景：白底蓝边的胶囊在浅色页面上偏轻，整排放实心后
+   这条流程线会明显更重、更靠前。两者同时写时以 solid 为准。 */
+flow[solid] > :is(ol, ul) > li {
+  background: #003f88;
+  border-color: #003f88;
+  color: #fff;
+}
+
+/* 实心胶囊内的嵌套列表：与 now 一致，降为浅蓝灰 */
+flow[solid] > :is(ol, ul) > li ul > li,
+flow[solid] > :is(ol, ul) > li ol > li {
+  color: #d0d8ea;
+}
+
+/* 实心胶囊也是深蓝面，行内元素照 summary 的处理走：
+   code 与 mark 的默认色（#1f2328 / #c00000）在 #003f88 上对比度只有 1.6:1，
+   标签底色又正好等于胶囊底色，不换就会糊成一片 */
+flow[solid] > :is(ol, ul) > li mark {
+  color: #FFD255;
+}
+flow[solid] > :is(ol, ul) > li a {
+  color: #a8c8ff;
+}
+flow[solid] > :is(ol, ul) > li tag {
+  background: #ffffff;
+  color: #0d4695;
+}
+flow[solid] > :is(ol, ul) > li :not(pre, marp-pre) > code,
+flow[solid] > :is(ol, ul) > li > code {
+  background: rgba(255, 255, 255, 0.18);
+  color: inherit !important;
+}
+
 /* 胶囊内引用块：独立于标题的轻量风格 */
 flow blockquote{
   padding: 4px 12px;
@@ -3192,7 +3264,19 @@ flow > :is(ol, ul) > li:not(:last-child)::after {
   height: 24px;
   background: url("../../themes/academic/images/右箭头.svg") center/contain no-repeat;
   transform: translate(8px, -50%);
-  opacity: 0.65;
+}
+
+/* ---- flow center：节点内容居中 ----
+   胶囊本身是等宽的（flex: 1），居中只作用在胶囊内部：文字、标签、引用块
+   先收成内容宽度，再水平居中。嵌套列表是例外——整块居中，但条目内部保持
+   左对齐，否则多行文字会因为长度不一而参差不齐。 */
+flow[center] > :is(ol, ul) > li {
+  align-items: center;
+  text-align: center;
+}
+flow[center] > :is(ol, ul) > li :is(ul, ol) {
+  align-self: stretch;
+  text-align: left;
 }
 
 /* 竖向变体 */
@@ -3243,7 +3327,7 @@ flow[compact] > :is(ol, ul) > li blockquote,
 :root.compact flow > :is(ol, ul) > li blockquote,
 section.compact flow > :is(ol, ul) > li blockquote {
   padding: 4px 10px;
-  font-size: 0.692rem;
+  font-size: 0.8rem;
 }
 
 /* 胶囊内嵌套列表紧凑 */
@@ -3253,7 +3337,7 @@ flow[compact] > :is(ol, ul) > li ol,
 :root.compact flow > :is(ol, ul) > li ol,
 section.compact flow > :is(ol, ul) > li ul,
 section.compact flow > :is(ol, ul) > li ol {
-  font-size: 0.692rem;
+  font-size: 0.8rem;
   padding-inline-start: 18px;
 }
 flow[compact] > :is(ol, ul) > li ul > li,
@@ -3345,7 +3429,7 @@ feature::before {
 /* 标题：不分层级，统一为特性名 */
 feature h1, feature h2, feature h3,
 feature h4, feature h5, feature h6 {
-  font-size: 1.077rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--ft-ink);
   letter-spacing: 0.5px;
@@ -3358,7 +3442,6 @@ feature h3::before {
   content: none;
 }
 feature p {
-  font-size: 0.846rem;
   color: #475569;
   line-height: 1.55;
 }
@@ -3380,14 +3463,6 @@ feature[compact],
 section.compact feature {
   padding: 12px 15px 14px;
   gap: 5px;
-}
-feature[compact] h1, feature[compact] h2, feature[compact] h3,
-feature[compact] h4, feature[compact] h5, feature[compact] h6,
-:root.compact feature h1, :root.compact feature h2, :root.compact feature h3,
-:root.compact feature h4, :root.compact feature h5, :root.compact feature h6,
-section.compact feature h1, section.compact feature h2, section.compact feature h3,
-section.compact feature h4, section.compact feature h5, section.compact feature h6 {
-  font-size: 0.923rem;
 }
 feature[compact] p,
 :root.compact feature p,
@@ -3466,7 +3541,6 @@ funnel > :is(ul, ol) > li > * {
   margin: 0;
 }
 funnel > :is(ul, ol) > li > p:first-of-type {
-  font-size: 0.923rem;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -3533,11 +3607,6 @@ funnel[compact] > :is(ul, ol) > li,
 :root.compact funnel > :is(ul, ol) > li,
 section.compact funnel > :is(ul, ol) > li {
   padding: 7px 16px;
-}
-funnel[compact] > :is(ul, ol) > li > p:first-of-type,
-:root.compact funnel > :is(ul, ol) > li > p:first-of-type,
-section.compact funnel > :is(ul, ol) > li > p:first-of-type {
-  font-size: 0.846rem;
 }
 funnel[compact] > :is(ul, ol) > li > p:not(:first-of-type),
 funnel[compact] > :is(ul, ol) > li > :is(ul, ol),
@@ -3656,7 +3725,7 @@ section.compact figure p {
    用法：
      <flex center>
 
-     <iconitem icon="话筒">汇报人：×××</iconitem>
+     <iconitem icon="话筒">汇报人：XXX</iconitem>
 
      <iconitem icon="人员">指导教师：××× 教授</iconitem>
 

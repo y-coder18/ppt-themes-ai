@@ -1,5 +1,5 @@
 {
-  "markdown.marp.enableHtml": true,
+  "markdown.marp.html": "all",
   "markdown.marp.themes": [
     "./themes/academic/academic_template.css",
     "./themes/academic/academic_CUST.css",
