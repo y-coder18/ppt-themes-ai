@@ -17,7 +17,12 @@ const browser = await chromium.launch({ channel: 'chromium' });
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
 
 await page.goto(pathToFileURL(path.resolve(deckPath)).href);
-await page.waitForLoadState('networkidle');
+// 不用 networkidle：file:// 页面带上主题的 CSS 背景图后，Chromium 的网络空闲判定一直不成立，
+// 会白白等到超时。改为等 load 之后所有 <img> 解码完成——测量排版只关心参与布局的 <img>，
+// CSS 背景图不影响尺寸。
+await page
+  .waitForFunction(() => [...document.images].every((im) => im.complete), null, { timeout: 15000 })
+  .catch(() => {});
 
 /* ---------------- 1. 版面溢出 ---------------- */
 const slides = await page.evaluate(() => {
