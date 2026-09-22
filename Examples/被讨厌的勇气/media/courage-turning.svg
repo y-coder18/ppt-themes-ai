@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 130" width="1216" height="130" role="img" aria-label="左边三个灰色的问句都朝外指向过去与别人，三条虚线收束到中心一个蓝点，再从蓝点放出一支粗蓝箭头，指向右边的「我要做什么」">
+  <!-- 这本书改变了我什么：三个问句，一个转向。
+       左边三句全是朝外问的——问过去、问别人的看法、问别人喜不喜欢我，
+       所以是灰的、虚的、指向一个收束点；它们收成一点之后，
+       右边放出来的是一支实心蓝箭头，问的是自己下一步要做什么。
+       三句的基线分别落在三条线的起点高度上，读数时一眼能对上。 -->
+
+  <defs>
+    <marker id="ctArr" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" refX="12" refY="6.5" orient="auto">
+      <path d="M0,0 L12,6.5 L0,13 Z" fill="#003f88"/>
+    </marker>
+  </defs>
+
+  <!-- 左：三个朝外的问句（灰），起点对齐版面左缘 -->
+  <g fill="#64748b" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif" font-size="20">
+    <text x="0" y="39">为什么是我？</text>
+    <text x="0" y="72">他会怎么看我？</text>
+    <text x="0" y="105">别人喜不喜欢我？</text>
+  </g>
+
+  <!-- 三句各自的去向：收束到中心那一点。
+       外侧两条提前一点收住，否则三根虚线在收束点前叠成一团糊 -->
+  <g stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round">
+    <line x1="180" y1="32" x2="580" y2="65"/>
+    <line x1="180" y1="65" x2="604" y2="65"/>
+    <line x1="180" y1="98" x2="580" y2="65"/>
+  </g>
+
+  <!-- 中：收束点 -->
+  <circle cx="620" cy="65" r="7" fill="#003f88"/>
+
+  <!-- 右：收束之后唯一放出来的方向 -->
+  <line x1="646" y1="65" x2="1176" y2="65" stroke="#003f88" stroke-width="5"
+        stroke-linecap="round" marker-end="url(#ctArr)"/>
+  <text x="736" y="40" fill="#003f88" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif"
+        font-size="21" font-weight="700">我要做什么？</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 104" width="340" height="104" role="img" aria-label="中间一条竖直虚线，左边一个实心方块，右边一个等大的空心圆">
+  <!-- 职场：我的课题是把方案想清楚、讲明白；同事是否采纳是他们的课题。
+       左边画方块不画圆——我这边交出去的是「方案」，是件东西；
+       右边仍是空心圆，因为要不要采纳是个人的决定。
+       这是三张里唯一形状不对称的一张，正好对上「事情」和「人」的分界。 -->
+
+  <line x1="170" y1="6" x2="170" y2="98" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <rect x="56" y="26" width="60" height="60" rx="6" fill="#006400"/>
+  <circle cx="252" cy="56" r="30" fill="none" stroke="#006400" stroke-width="3.5"/>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 130" width="1216" height="130" role="img" aria-label="左边一条灰线代表读完这本书，到一个岔口分成上下两支，上支是绿色标注的我接受的，下支是黄色标注的我保留的，每支各带三个圆点">
+  <!-- 我的立场：接受什么，保留什么。
+       入口那条灰线是「读完这本书」——书本身没有分类，分出来的是我。
+       上支绿、下支黄，颜色和下面两张卡片一一对应；
+       每支三个点，对应卡片里的三条。
+       两个标签直接压在各自的支路上，颜色与支路同色，
+       底下卡片一眼就能接上。 -->
+
+  <!-- 入口：读完这本书 -->
+  <line x1="0" y1="65" x2="150" y2="65" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="162" cy="65" r="6" fill="#64748b"/>
+
+  <!-- 上支：我接受的 -->
+  <path d="M 168,65 C 205,65 215,32 252,32" fill="none" stroke="#006400" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="264" y="39" fill="#006400" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif"
+        font-size="20" font-weight="700">我接受的</text>
+  <line x1="380" y1="32" x2="1120" y2="32" stroke="#006400" stroke-width="2.5" stroke-linecap="round"/>
+  <g fill="#006400">
+    <circle cx="520" cy="32" r="8"/>
+    <circle cx="720" cy="32" r="8"/>
+    <circle cx="920" cy="32" r="8"/>
+  </g>
+
+  <!-- 下支：我保留的 -->
+  <path d="M 168,65 C 205,65 215,98 252,98" fill="none" stroke="#b87a14" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="264" y="105" fill="#b87a14" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif"
+        font-size="20" font-weight="700">我保留的</text>
+  <line x1="380" y1="98" x2="1120" y2="98" stroke="#b87a14" stroke-width="2.5" stroke-linecap="round"/>
+  <g fill="#b87a14">
+    <circle cx="520" cy="98" r="8"/>
+    <circle cx="720" cy="98" r="8"/>
+    <circle cx="920" cy="98" r="8"/>
+  </g>
+</svg>
