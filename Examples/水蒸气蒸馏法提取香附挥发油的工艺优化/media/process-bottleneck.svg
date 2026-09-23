@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="200" viewBox="0 0 1220 200">
+  <defs>
+    <marker id="fl" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#0b4a9e"/>
+    </marker>
+    <marker id="dn" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,8 L4,0 L8,8 z" fill="#c00000"/>
+    </marker>
+  </defs>
+  <rect width="1220" height="200" fill="#ffffff"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+    <!-- 工序 01：粉碎过筛 -->
+    <rect x="30" y="14" width="250" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="58" cy="42" r="13" fill="#003f88"/>
+    <text x="58" y="46.5" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">01</text>
+    <text x="82" y="48" font-size="15" font-weight="bold" fill="#003f88">粉碎过筛</text>
+    <text x="52" y="76" font-size="13" fill="#475569">药材粉碎至 24 目</text>
+    <line x1="280" y1="54" x2="325" y2="54" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="155" y1="94" x2="155" y2="108" stroke="#c00000" stroke-width="1.8" marker-end="url(#dn)"/>
+    <rect x="30" y="112" width="250" height="80" rx="6" fill="#fdf2f2" stroke="#c00000" stroke-width="1.4"/>
+    <rect x="44" y="122" width="48" height="20" rx="3" fill="#c00000"/>
+    <text x="68" y="136.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle">瓶颈</text>
+    <text x="52" y="162" font-size="13" fill="#a00000">粒度凭经验确定</text>
+    <text x="52" y="182" font-size="13" fill="#a00000">传质阻力偏大，得率受限</text>
+
+    <!-- 工序 02：加水浸润 -->
+    <rect x="333" y="14" width="250" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="361" cy="42" r="13" fill="#003f88"/>
+    <text x="361" y="46.5" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">02</text>
+    <text x="385" y="48" font-size="15" font-weight="bold" fill="#003f88">加水浸润</text>
+    <text x="355" y="76" font-size="13" fill="#475569">液料比 8 mL·g⁻¹</text>
+    <line x1="583" y1="54" x2="628" y2="54" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="458" y1="94" x2="458" y2="108" stroke="#c00000" stroke-width="1.8" marker-end="url(#dn)"/>
+    <rect x="333" y="112" width="250" height="80" rx="6" fill="#fdf2f2" stroke="#c00000" stroke-width="1.4"/>
+    <rect x="347" y="122" width="48" height="20" rx="3" fill="#c00000"/>
+    <text x="371" y="136.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle">瓶颈</text>
+    <text x="355" y="162" font-size="13" fill="#a00000">液料比长期沿用经验值</text>
+    <text x="355" y="182" font-size="13" fill="#a00000">未考察适宜取值区间</text>
+
+    <!-- 工序 03：水蒸气蒸馏 -->
+    <rect x="636" y="14" width="250" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="664" cy="42" r="13" fill="#003f88"/>
+    <text x="664" y="46.5" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">03</text>
+    <text x="688" y="48" font-size="15" font-weight="bold" fill="#003f88">水蒸气蒸馏</text>
+    <text x="658" y="76" font-size="13" fill="#475569">单批蒸馏 6 h</text>
+    <line x1="886" y1="54" x2="931" y2="54" stroke="#0b4a9e" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="761" y1="94" x2="761" y2="108" stroke="#c00000" stroke-width="1.8" marker-end="url(#dn)"/>
+    <rect x="636" y="112" width="250" height="80" rx="6" fill="#fdf2f2" stroke="#c00000" stroke-width="1.4"/>
+    <rect x="650" y="122" width="48" height="20" rx="3" fill="#c00000"/>
+    <text x="674" y="136.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle">瓶颈</text>
+    <text x="658" y="162" font-size="13" fill="#a00000">单批周期偏长</text>
+    <text x="658" y="182" font-size="13" fill="#a00000">设备周转率与能耗受限</text>
+
+    <!-- 工序 04：冷凝收集 -->
+    <rect x="939" y="14" width="250" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="967" cy="42" r="13" fill="#003f88"/>
+    <text x="967" y="46.5" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">04</text>
+    <text x="991" y="48" font-size="15" font-weight="bold" fill="#003f88">冷凝收集</text>
+    <text x="961" y="76" font-size="13" fill="#475569">挥发油得率 1.06%</text>
+    <line x1="1064" y1="94" x2="1064" y2="108" stroke="#c00000" stroke-width="1.8" marker-end="url(#dn)"/>
+    <rect x="939" y="112" width="250" height="80" rx="6" fill="#fdf2f2" stroke="#c00000" stroke-width="1.4"/>
+    <rect x="953" y="122" width="48" height="20" rx="3" fill="#c00000"/>
+    <text x="977" y="136.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle">瓶颈</text>
+    <text x="961" y="162" font-size="13" fill="#a00000">得率刚过药典法定下限</text>
+    <text x="961" y="182" font-size="13" fill="#a00000">药材资源利用率不高</text>
+
+    <!-- 收束线：四段瓶颈同属现行工艺链 -->
+    <line x1="30" y1="196" x2="1190" y2="196" stroke="#e2e8f0" stroke-width="1"/>
+
+  </g>
+</svg>

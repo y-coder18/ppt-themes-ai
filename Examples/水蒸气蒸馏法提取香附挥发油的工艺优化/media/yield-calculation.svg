@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="200" viewBox="0 0 1220 200">
+  <rect width="1220" height="200" fill="#ffffff"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+    <!-- 左：测定管读数示意 -->
+    <rect x="20" y="16" width="540" height="168" rx="8" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <text x="42" y="44" font-size="14" font-weight="bold" fill="#003f88">测定管读数示意</text>
+
+    <!-- 挥发油测定管 -->
+    <rect x="60" y="66" width="58" height="106" rx="3" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+    <rect x="62" y="68" width="54" height="26" fill="#f0d79a"/>
+    <rect x="62" y="94" width="54" height="76" fill="#eaf4fb"/>
+    <text x="89" y="85" font-size="11" fill="#7a5d10" text-anchor="middle">油层</text>
+    <text x="89" y="132" font-size="11" fill="#475569" text-anchor="middle">水层</text>
+    <!-- 管壁分度刻线 -->
+    <line x1="60" y1="100" x2="74" y2="100" stroke="#475569" stroke-width="1.2"/>
+    <line x1="60" y1="118" x2="74" y2="118" stroke="#475569" stroke-width="1.2"/>
+    <line x1="60" y1="136" x2="74" y2="136" stroke="#475569" stroke-width="1.2"/>
+    <line x1="60" y1="154" x2="74" y2="154" stroke="#475569" stroke-width="1.2"/>
+
+    <text x="146" y="80" font-size="12.5" font-weight="bold" fill="#003f88">读取油层体积 V /mL</text>
+    <text x="146" y="108" font-size="11.5" fill="#475569">冷却至室温、静置分层后读数</text>
+    <text x="146" y="130" font-size="11.5" fill="#475569">分度值 0.02 mL，保留至 0.01 mL</text>
+    <text x="146" y="152" font-size="11.5" fill="#475569">同批实验由同一人读数，减少误差</text>
+
+    <!-- 右：得率计算 -->
+    <rect x="600" y="16" width="600" height="168" rx="8" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <text x="622" y="44" font-size="14" font-weight="bold" fill="#003f88">得率计算</text>
+    <rect x="622" y="58" width="556" height="50" rx="6" fill="#0b4a9e"/>
+    <text x="900" y="91" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">得率 /% = V ÷ m × 100</text>
+
+    <text x="622" y="134" font-size="12.5" fill="#475569">V：挥发油体积 /mL</text>
+    <text x="880" y="134" font-size="12.5" fill="#475569">m：香附粉质量 /g</text>
+    <text x="622" y="166" font-size="12.5" fill="#003f88">示例：V = 1.06 mL、m = 100.00 g，得率 = 1.06%（本底测定）</text>
+
+  </g>
+</svg>

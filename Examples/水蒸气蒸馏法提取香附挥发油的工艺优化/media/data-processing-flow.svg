@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="172" viewBox="0 0 1220 172">
+  <defs>
+    <marker id="fl" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#0b4a9e"/>
+    </marker>
+  </defs>
+  <rect width="1220" height="172" fill="#ffffff"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+    <!-- 01 -->
+    <rect x="10" y="34" width="175" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="32" cy="52" r="11" fill="#003f88"/>
+    <text x="32" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">01</text>
+    <text x="50" y="57" font-size="13" font-weight="bold" fill="#003f88">原始记录</text>
+    <text x="26" y="88" font-size="11" fill="#475569">每组 n = 3</text>
+    <line x1="189" y1="74" x2="206" y2="74" stroke="#0b4a9e" stroke-width="1.8" marker-end="url(#fl)"/>
+
+    <!-- 02 -->
+    <rect x="214" y="34" width="175" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="236" cy="52" r="11" fill="#003f88"/>
+    <text x="236" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">02</text>
+    <text x="254" y="57" font-size="13" font-weight="bold" fill="#003f88">平均值 ± 标准差</text>
+    <text x="230" y="88" font-size="11" fill="#475569">结果表示形式</text>
+    <line x1="393" y1="74" x2="410" y2="74" stroke="#0b4a9e" stroke-width="1.8" marker-end="url(#fl)"/>
+
+    <!-- 03 -->
+    <rect x="418" y="34" width="175" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="440" cy="52" r="11" fill="#003f88"/>
+    <text x="440" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">03</text>
+    <text x="458" y="57" font-size="13" font-weight="bold" fill="#003f88">单因素 ANOVA</text>
+    <text x="434" y="88" font-size="11" fill="#475569">P &lt; 0.05 为显著</text>
+    <line x1="597" y1="74" x2="614" y2="74" stroke="#0b4a9e" stroke-width="1.8" marker-end="url(#fl)"/>
+
+    <!-- 04 -->
+    <rect x="622" y="34" width="175" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="644" cy="52" r="11" fill="#003f88"/>
+    <text x="644" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">04</text>
+    <text x="662" y="57" font-size="13" font-weight="bold" fill="#003f88">二次多项式拟合</text>
+    <text x="638" y="88" font-size="11" fill="#475569">最小二乘，17 组</text>
+    <line x1="801" y1="74" x2="818" y2="74" stroke="#0b4a9e" stroke-width="1.8" marker-end="url(#fl)"/>
+
+    <!-- 05 -->
+    <rect x="826" y="34" width="175" height="80" rx="6" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <circle cx="848" cy="52" r="11" fill="#003f88"/>
+    <text x="848" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">05</text>
+    <text x="866" y="57" font-size="13" font-weight="bold" fill="#003f88">方差与失拟检验</text>
+    <text x="842" y="88" font-size="11" fill="#475569">R²、R²adj、CV</text>
+    <line x1="1005" y1="74" x2="1022" y2="74" stroke="#0b4a9e" stroke-width="1.8" marker-end="url(#fl)"/>
+
+    <!-- 06 -->
+    <rect x="1030" y="34" width="175" height="80" rx="6" fill="#eef8f1" stroke="#c3ddc9" stroke-width="1.4"/>
+    <circle cx="1052" cy="52" r="11" fill="#006400"/>
+    <text x="1052" y="56" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">06</text>
+    <text x="1070" y="57" font-size="13" font-weight="bold" fill="#006400">夹角余弦相似度</text>
+    <text x="1046" y="88" font-size="11" fill="#3f5a45">GC-MS 成分对比</text>
+
+    <text x="610" y="152" font-size="12" fill="#64748b" text-anchor="middle">单因素以 P &lt; 0.05 判定差异显著；模型以失拟项 P &gt; 0.05、R² 高且 CV 小者为优</text>
+
+  </g>
+</svg>

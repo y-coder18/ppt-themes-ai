@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="170" viewBox="0 0 1220 170">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#006400"/>
+    </marker>
+  </defs>
+  <rect width="1220" height="170" fill="#ffffff"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+    <!-- 时间轴 -->
+    <line x1="60" y1="46" x2="1156" y2="46" stroke="#c3ddc9" stroke-width="1.6" marker-end="url(#ar)"/>
+    <circle cx="240" cy="46" r="7" fill="#006400"/>
+    <circle cx="610" cy="46" r="7" fill="#006400"/>
+    <circle cx="980" cy="46" r="7" fill="#006400"/>
+    <text x="240" y="30" font-size="13" font-weight="bold" fill="#006400" text-anchor="middle">近期 · 质控与指标</text>
+    <text x="610" y="30" font-size="13" font-weight="bold" fill="#006400" text-anchor="middle">中期 · 放大与验证</text>
+    <text x="980" y="30" font-size="13" font-weight="bold" fill="#006400" text-anchor="middle">远期 · 精制与稳定</text>
+
+    <!-- 远期一栏 -->
+    <rect x="800" y="72" width="380" height="86" rx="6" fill="#f2f9f4" stroke="#c3ddc9" stroke-width="1.4"/>
+    <line x1="800" y1="78" x2="800" y2="152" stroke="#006400" stroke-width="4"/>
+    <text x="824" y="102" font-size="13" font-weight="bold" fill="#006400">引入精制手段</text>
+    <text x="824" y="126" font-size="11.5" fill="#3f5a45">以分子蒸馏、膜分离进一步提升挥发油</text>
+    <text x="824" y="146" font-size="11.5" fill="#3f5a45">品质与储存稳定性</text>
+
+    <!-- 中期一栏 -->
+    <rect x="420" y="72" width="380" height="86" rx="6" fill="#f2f9f4" stroke="#c3ddc9" stroke-width="1.4"/>
+    <line x1="420" y1="78" x2="420" y2="152" stroke="#006400" stroke-width="4"/>
+    <text x="444" y="102" font-size="13" font-weight="bold" fill="#006400">中试放大与成本核算</text>
+    <text x="444" y="126" font-size="11.5" fill="#3f5a45">开展 10～50 L 规模放大，考察传热传质</text>
+    <text x="444" y="146" font-size="11.5" fill="#3f5a45">条件变化对得率的影响与能耗成本</text>
+
+    <!-- 近期一栏 -->
+    <rect x="40" y="72" width="380" height="86" rx="6" fill="#f2f9f4" stroke="#c3ddc9" stroke-width="1.4"/>
+    <line x1="40" y1="78" x2="40" y2="152" stroke="#006400" stroke-width="4"/>
+    <text x="64" y="102" font-size="13" font-weight="bold" fill="#006400">建立指标成分定量方法</text>
+    <text x="64" y="126" font-size="11.5" fill="#3f5a45">以 HPLC 或 GC 测定 α-香附酮等成分含量，</text>
+    <text x="64" y="146" font-size="11.5" fill="#3f5a45">实现「得率 + 含量」双指标工艺优化</text>
+
+  </g>
+</svg>

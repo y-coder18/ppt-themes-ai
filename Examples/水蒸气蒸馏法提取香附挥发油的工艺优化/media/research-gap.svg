@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="180" viewBox="0 0 1220 180">
+  <defs>
+    <marker id="rd" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#c00000"/>
+    </marker>
+  </defs>
+  <rect width="1220" height="180" fill="#ffffff"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+    <!-- 左：已有研究基础 -->
+    <rect x="20" y="16" width="680" height="148" rx="8" fill="#f7fafd" stroke="#c4d6f0" stroke-width="1.4"/>
+    <text x="42" y="44" font-size="14" font-weight="bold" fill="#003f88">已有研究基础</text>
+    <rect x="42" y="72" width="7" height="7" fill="#0b4a9e" transform="rotate(45 45.5 75.5)"/>
+    <text x="62" y="80" font-size="13" fill="#475569">化学成分：已分离鉴定 100 余种，α-香附酮为质量评价的指标性成分</text>
+    <rect x="42" y="104" width="7" height="7" fill="#0b4a9e" transform="rotate(45 45.5 107.5)"/>
+    <text x="62" y="112" font-size="13" fill="#475569">药理作用：抗抑郁、抗炎镇痛、雌激素样作用等机制研究较为明确</text>
+    <rect x="42" y="136" width="7" height="7" fill="#0b4a9e" transform="rotate(45 45.5 139.5)"/>
+    <text x="62" y="144" font-size="13" fill="#475569">提取工艺：超临界 CO₂、微波、超声等新型方法横向比较报道较多</text>
+
+    <!-- 引出研究空白 -->
+    <line x1="706" y1="90" x2="732" y2="90" stroke="#c00000" stroke-width="2" marker-end="url(#rd)"/>
+
+    <!-- 右：研究空白 -->
+    <rect x="740" y="16" width="460" height="148" rx="8" fill="#fdf2f2" stroke="#c00000" stroke-width="1.4"/>
+    <text x="762" y="44" font-size="14" font-weight="bold" fill="#c00000">本课题针对的研究空白</text>
+    <text x="762" y="84" font-size="12.5" fill="#a00000">① 水蒸气蒸馏法自身的多因素交互作用</text>
+    <text x="778" y="104" font-size="12.5" fill="#a00000">缺乏系统研究，多为单一参数考察</text>
+    <text x="762" y="136" font-size="12.5" fill="#a00000">② NaCl 用量与液料比、蒸馏时间的</text>
+    <text x="778" y="156" font-size="12.5" fill="#a00000">协同效应尚未见定量报道</text>
+
+  </g>
+</svg>
