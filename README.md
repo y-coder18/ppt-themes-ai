@@ -324,3 +324,15 @@ npx marp themes/academic/academic组件体系.md --theme-set themes/academic/aca
 - [Marp 官网](https://marp.app/) — 官方文档：安装、指令、主题、语法
 - [Marp CLI](https://github.com/marp-team/marp-cli) — 命令行工具
 - [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) — VS Code 插件
+
+---
+
+## 赞赏支持
+
+这个项目如果帮到了你，欢迎请我喝杯咖啡 ☕
+
+| 微信 | 支付宝 |
+|---|---|
+| <img src="assets/微信收款码.png" width="180"> | <img src="assets/支付宝收款码.jpg" width="180"> |
+
+提 Issue、发 PR、点个 Star 同样是支持，感谢。
