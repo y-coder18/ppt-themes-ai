@@ -98,14 +98,27 @@
 /* ---- 线条封面：标题靠左，蓝带左侧叠线条主视觉、右下角叠云朵（贴右边缘裁切） ----
    用法：
      <!-- _class: homePageCUST -->
-     # 标题
+     # 标题（1~2 行都行，见下）
      ## 副标题（一行）
      <flex center>
      <iconitem icon="话筒">汇报人：XXX</iconitem>
+     <iconitem icon="人员">指导教师：××× 教授</iconitem>
      </flex>
+   标题 636px 盒宽约合 12 个全角字，超了就折行，最长只能两行：
+   标题行数变了整组高度跟着变，居中由 justify-content 自动处理（见下），
+   但三行会让整组（约 269px）顶出蓝带（259px），所以不能超过两行。
+   信息行只放这一个 <flex>——本页的 flex 被绝对定位钉在 y=582，
+   放第二个会跟第一个叠在一起。条目数量不限，间距由上面的 gap 控制
+   （三条时约 1046px，仍在 1280px 内）
    ------------------------------------------------------------------ */
 :root.homePageCUST {
   text-align: left;
+  /* 蓝带里的三行（标题 / 分隔线 / 副标题）整组垂直居中，用 uncover 的 center。
+     不能让它们各自绝对定位钉死：整组高度随标题行数变，钉死后两行标题会把
+     副标题顶到蓝带下沿（上留 43px、下只剩 8px）。改成流式 + 整组居中后，
+     一行两行都自动落在蓝带（227–486，中线 356.5）中间
+     注意别改成 flex-start——那样整组会贴到页面顶部 */
+  justify-content: center;
   /* 四层背景，先写的在上层：云朵 / 线条主视觉 / 蓝带下缘的三角指示 / 通栏深蓝带 */
   background-image:
     var(--home-cloud),
@@ -115,14 +128,17 @@
   background-position: 1101px 291px, 45px 230px, 608px 486px, 0 227px;
   background-size: auto 195px, auto 260px, 30px 15px, 100% 259px;
 }
-/* 标题：白字左对齐，宽度自适应文字 */
+/* 标题：白字左对齐，宽度自适应文字。
+   竖直位置不再自己钉，交给整组居中（见上面 justify-content）；
+   margin-left 对应绝对定位时的 left: 518px，字号行高都是设计图的值 */
 :root.homePageCUST h1 {
-  position: absolute;
-  left: 518px;
-  top: 266px;
+  /* relative 只为给下面的 ::after（分隔线）当包含块。
+     少了它，分隔线会认 section 做包含块，top: calc(100% + 29px) 就跑到页面外去 */
+  position: relative;
+  align-self: flex-start;
   width: fit-content;
   max-width: 636px;
-  margin: 0;
+  margin: 0 0 0 518px;
   padding: 0;
   background: none;
   color: #fff;
@@ -141,13 +157,16 @@
   height: 3px;
   background: #fff;
 }
-/* 副标题 */
+/* 副标题：跟在标题下方 46px（基座原先照设计图排 69px，后来收紧，
+   让副标题贴近分隔线）。分隔线钉在标题盒底 +29px、3px 高，
+   于是线到字的盒距 14px、字形到字形 19.8px。
+   margin-bottom 5px 不是留白，是把整组往上顶 2.5px 用的：
+   justify-content: center 是在整页（高 720，中线 360）里居中，而蓝带是 227–486
+   （中线 356.5），高了 3.5px。实测字形范围比蓝带中线低 2.6px，加这一项正好抵掉
+   标题最多两行——17 字 × 53px 已到 636px 盒宽上限，三行整组约 269px 会略微顶出蓝带 */
 :root.homePageCUST h2 {
-  position: absolute;
-  left: 518px;
-  top: 396px;
   width: 636px;
-  margin: 0;
+  margin: 46px 0 5px 518px;
   padding: 0;
   color: #fff;
   font-size: 1.15rem;
