@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 148" width="340" height="148" role="img" aria-label="一个右侧留着缺口的圆环，缺口处一支箭头向右伸出去，表示对话不封口">
+  <!-- 留有余地：一个留了缺口的圆。
+       缺口开在右边，不是随便开的——右边是「还要往下读」的方向，
+       所以缺口处再补一支往外去的箭，表示这里随时可以接着问。
+       圆不闭合，也就是卡片里说的那个「破绽」。 -->
+
+  <defs>
+    <marker id="drArr" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <path d="M0,0 L11,6 L0,12 Z" fill="#b87a14"/>
+    </marker>
+  </defs>
+
+  <path d="M 190,41 A 52,52 0 1 0 190,107" fill="none"
+        stroke="#b87a14" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="205" y1="74" x2="300" y2="74" stroke="#b87a14" stroke-width="3.5"
+        stroke-linecap="round" marker-end="url(#drArr)"/>
+</svg>

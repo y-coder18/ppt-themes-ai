@@ -10,7 +10,7 @@
     "build": "npm run build:all",
     "build:git": "marp Examples/Git从入门到精通/Git从入门到精通.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o Examples/Git从入门到精通/Git从入门到精通.html",
     "check:git": "node scripts/check-slides.mjs Examples/Git从入门到精通/Git从入门到精通.html Examples/Git从入门到精通/media",
-    "dev:report": "marp Examples/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
+    "dev:report": "marp Examples/被讨厌的勇气/被讨厌的勇气.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --preview --allow-local-files",
     "build:report": "marp Examples/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o Examples/2026年9月研究生月报/2026年9月研究生月报.html",
     "build:report:pptx": "marp Examples/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files --pptx-editable -o Examples/2026年9月研究生月报/2026年9月研究生月报.pptx",
     "check:report": "node scripts/check-slides.mjs Examples/2026年9月研究生月报/2026年9月研究生月报.html Examples/2026年9月研究生月报/media",

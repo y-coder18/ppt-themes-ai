@@ -10,7 +10,7 @@
 :root {
   --logo: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学_纯白logo.png");
   /* 封面 / 致谢页的 logo 高度，0px 表示该页不放 logo */
-  --logo-home-h: 120px;
+  --logo-home-h: 80px;
   --logo-thanks-h: 80px;
 
   --home-bg: url("../../themes/academic/定制皮肤/CUST_长沙理工大学/长沙理工大学.jpg");
@@ -32,6 +32,21 @@
   --line-tri: conic-gradient(from 315deg at 50% 100%, #003f88 0 90deg, transparent 90deg);
 }
 
+:root.homePage {
+  background-color: rgba(0, 20, 50, 0.5);
+}
+
+:root.contents::before {
+  background-image: linear-gradient(to bottom, rgb(0 63 136 / 0%), rgba(0, 20, 45, 0.62)), var(--contents-bg);
+  background-color: rgb(0 20 50 / 10%);
+  background-blend-mode: overlay;
+}
+
+:root.thanksPage {
+  background-color: rgba(0, 20, 50, 0.35);
+  background-image: linear-gradient(to bottom, rgb(0 63 136 / 0%), rgb(0 0 0 / 62%)), var(--thanks-bg);
+  background-blend-mode: normal, overlay;
+}
 
 /* ================================================================
    线条页公共骨架 — homePageCUST（封面）/ thanksPageCUST（致谢页）
@@ -86,7 +101,7 @@
      # 标题
      ## 副标题（一行）
      <flex center>
-     <iconitem icon="话筒">汇报人：×××</iconitem>
+     <iconitem icon="话筒">汇报人：XXX</iconitem>
      </flex>
    ------------------------------------------------------------------ */
 :root.homePageCUST {
@@ -162,7 +177,7 @@
      # 标题
      ## 副标题（一行）
      <flex center>
-     <iconitem icon="话筒">汇报人：×××</iconitem>
+     <iconitem icon="话筒">汇报人：XXX</iconitem>
      </flex>
    ================================================================ */
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 104" width="340" height="104" role="img" aria-label="中间一条竖直虚线，左右各一个等大的圆，左边实心、右边空心">
+  <!-- 友情：我的课题是表达真诚，对方是否回应不是我能决定的。
+       两个圆等大，只有实心和空心的分别——对等的关系里，
+       边界两边站的是两个人，不是大人和小孩，也不是人和事。 -->
+
+  <line x1="170" y1="6" x2="170" y2="98" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <circle cx="88"  cy="56" r="30" fill="#b87a14"/>
+  <circle cx="252" cy="56" r="30" fill="none" stroke="#b87a14" stroke-width="3.5"/>
+</svg>
