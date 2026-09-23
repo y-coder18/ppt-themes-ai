@@ -1390,7 +1390,6 @@ card[gray] table tbody td {
 imginfo {
   /* 组件内变量：变体只覆盖这几个值，不往 :root 里堆 */
   --ii-ink: #003f88;                  /* 标题色 */
-  --ii-ring: rgba(0, 63, 136, 0.22);  /* 图片外圈描边，跟着 ink 走 */
   --ii-tint: rgba(0, 63, 136, 0.08);  /* 卡内引用的底色，同样跟着 ink 走 */
   --ii-pad-x: 20px;
   --ii-pad-y: 16px;
@@ -1398,12 +1397,9 @@ imginfo {
   display: flex;
   flex-direction: column;
   padding: var(--ii-pad-y) var(--ii-pad-x);
-  border: 1px solid #e6ebf2;
+  border: 1px solid #dbdbdb;
   border-radius: 10px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-  box-shadow:
-    0 1px 2px rgba(15, 34, 62, 0.04),
-    0 8px 20px -12px rgba(15, 34, 62, 0.18);
 }
 
 imginfo img { object-fit: cover }
@@ -1434,7 +1430,6 @@ imginfo > * + * {
    尺寸不在这条路上定——图多大由作者自己在图片的 w: / h: 上写。 */
 imginfo img {
   border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--ii-ring);
 }
 
 imginfo p {
@@ -1530,10 +1525,10 @@ imginfo blockquote p {
 }
 
 /* --- 颜色变体：只改变量，标题 / 图片描边 / 引用竖线一起跟着走，卡边框保持中性 --- */
-imginfo[green]  { --ii-ink: #006400; --ii-ring: rgba(0, 100, 0, 0.22);   --ii-tint: rgba(0, 100, 0, 0.06); }
-imginfo[red]    { --ii-ink: #c00000; --ii-ring: rgba(192, 0, 0, 0.22);   --ii-tint: rgba(192, 0, 0, 0.06); }
-imginfo[yellow] { --ii-ink: #b87a14; --ii-ring: rgba(184, 122, 20, 0.26); --ii-tint: rgba(184, 122, 20, 0.08); }
-imginfo[gray]   { --ii-ink: #455a64; --ii-ring: rgba(69, 90, 100, 0.22); --ii-tint: rgba(69, 90, 100, 0.06); }
+imginfo[green]  { --ii-ink: #006400; --ii-tint: rgba(0, 100, 0, 0.06); }
+imginfo[red]    { --ii-ink: #c00000; --ii-tint: rgba(192, 0, 0, 0.06); }
+imginfo[yellow] { --ii-ink: #b87a14; --ii-tint: rgba(184, 122, 20, 0.08); }
+imginfo[gray]   { --ii-ink: #455a64; --ii-tint: rgba(69, 90, 100, 0.06); }
 
 /* compact：内边距全走组件内变量，所以这里只改变量，不必像 card / feature
    那样把内边距拆成三份重写。字号没有走变量，还得按三态展开。
