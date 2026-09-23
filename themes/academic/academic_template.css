@@ -409,7 +409,8 @@ mark[center] {
   text-align: center;
   color: #fff;
   --left-right-padding:60px;
-  padding: 0 var(--left-right-padding) 0 calc(45vh + var(--left-right-padding));
+  --left-left-padding: 500px;
+  padding: 0 var(--left-right-padding) 0 var(--left-left-padding);
   background-color: #003f88;
   display: flex;
   flex-direction: column;
@@ -2368,7 +2369,7 @@ timeline {
 timeline::before {
   content: '';
   position: absolute;
-  left: 0px;
+  left: 3px;
   top: 10px;
   bottom: 10px;
   width: 3px;
