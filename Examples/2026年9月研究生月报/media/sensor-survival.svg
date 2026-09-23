@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 222" width="1220" height="222" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+  <!-- ============ 断面 1 · 边跨跨中 ============ -->
+  <text x="161" y="30" font-size="17" font-weight="bold" fill="#003f88" text-anchor="middle">断面 1</text>
+  <text x="161" y="50" font-size="13" fill="#64748b" text-anchor="middle">边跨跨中</text>
+
+  <rect x="60" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="86" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="112" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="138" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="164" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="190" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="216" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="242" y="72" width="20" height="20" fill="#003f88"/>
+
+  <rect x="60" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="86" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="112" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="138" y="102" width="20" height="20" fill="#7fa3cc"/>
+
+  <!-- ============ 断面 2 · 主跨 L/4 ============ -->
+  <text x="460" y="30" font-size="17" font-weight="bold" fill="#003f88" text-anchor="middle">断面 2</text>
+  <text x="460" y="50" font-size="13" fill="#64748b" text-anchor="middle">主跨 L/4</text>
+
+  <rect x="359" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="385" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="411" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="437" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="463" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="489" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="515" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="541" y="72" width="20" height="20" fill="#003f88"/>
+
+  <rect x="359" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="385" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="411" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="437" y="102" width="20" height="20" fill="#7fa3cc"/>
+
+  <!-- ============ 断面 3 · 主跨跨中（2 个应变测点异常） ============ -->
+  <text x="759" y="30" font-size="17" font-weight="bold" fill="#003f88" text-anchor="middle">断面 3</text>
+  <text x="759" y="50" font-size="13" fill="#64748b" text-anchor="middle">主跨跨中</text>
+
+  <rect x="658" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="684" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="710" y="72" width="20" height="20" fill="#c00000"/>
+  <rect x="736" y="72" width="20" height="20" fill="#c00000"/>
+  <rect x="762" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="788" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="814" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="840" y="72" width="20" height="20" fill="#003f88"/>
+
+  <rect x="658" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="684" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="710" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="736" y="102" width="20" height="20" fill="#7fa3cc"/>
+
+  <!-- ============ 断面 4 · 主跨 3L/4（2 个应变测点异常） ============ -->
+  <text x="1058" y="30" font-size="17" font-weight="bold" fill="#003f88" text-anchor="middle">断面 4</text>
+  <text x="1058" y="50" font-size="13" fill="#64748b" text-anchor="middle">主跨 3L/4</text>
+
+  <rect x="957" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="983" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="1009" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="1035" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="1061" y="72" width="20" height="20" fill="#003f88"/>
+  <rect x="1087" y="72" width="20" height="20" fill="#c00000"/>
+  <rect x="1113" y="72" width="20" height="20" fill="#c00000"/>
+  <rect x="1139" y="72" width="20" height="20" fill="#003f88"/>
+
+  <rect x="957" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="983" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="1009" y="102" width="20" height="20" fill="#7fa3cc"/>
+  <rect x="1035" y="102" width="20" height="20" fill="#7fa3cc"/>
+
+  <!-- 每断面测点构成 -->
+  <text x="161" y="146" font-size="12" fill="#94a3b8" text-anchor="middle">8 应变 + 4 温度</text>
+  <text x="460" y="146" font-size="12" fill="#94a3b8" text-anchor="middle">8 应变 + 4 温度</text>
+  <text x="759" y="146" font-size="12" fill="#94a3b8" text-anchor="middle">8 应变 + 4 温度</text>
+  <text x="1058" y="146" font-size="12" fill="#94a3b8" text-anchor="middle">8 应变 + 4 温度</text>
+
+  <!-- 分隔线 -->
+  <line x1="60" y1="170" x2="1160" y2="170" stroke="#dce4f0" stroke-width="1.5"/>
+
+  <!-- 图例 -->
+  <rect x="60" y="186" width="14" height="14" fill="#003f88"/>
+  <text x="82" y="198" font-size="15" fill="#334155">应变测点 32 个</text>
+  <rect x="250" y="186" width="14" height="14" fill="#7fa3cc"/>
+  <text x="272" y="198" font-size="15" fill="#334155">温度测点 16 个</text>
+  <rect x="440" y="186" width="14" height="14" fill="#c00000"/>
+  <text x="462" y="198" font-size="15" fill="#334155">数据异常 4 个</text>
+  <text x="630" y="198" font-size="15" font-weight="bold" fill="#003f88">测点存活率 44 / 48 = 91.7%</text>
+
+</svg>

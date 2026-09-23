@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 310" width="1220" height="310" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+
+  <!-- 坐标轴 -->
+  <line x1="80" y1="50" x2="80" y2="248" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="80" y1="248" x2="880" y2="248" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="80" y="36" font-size="15" fill="#334155">应变 / με</text>
+
+  <!-- 损伤位置标记（画在曲线之下） -->
+  <line x1="660" y1="50" x2="660" y2="248" stroke="#c00000" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- 温度效应曲线（拟合值，虚线） -->
+  <path d="M80 154 L90 144 L100 133 L110 123 L120 113 L130 105 L140 97 L150 90 L160 85 L170 81 L180 79 L190 79 L200 80 L210 83 L220 87 L230 92 L240 99 L250 107 L260 116 L270 126 L280 136 L290 146 L300 156 L310 166 L320 175 L330 184 L340 192 L350 198 L360 203 L370 207 L380 209 L390 209 L400 208 L410 206 L420 202 L430 196 L440 190 L450 182 L460 173 L470 164 L480 154 L490 145 L500 135 L510 126 L520 117 L530 109 L540 102 L550 96 L560 92 L570 89 L580 87 L590 87 L600 89 L610 92 L620 97 L630 103 L640 110 L650 118 L660 127 L670 137 L680 147 L690 157 L700 167 L710 177 L720 186 L730 194 L740 202 L750 208 L760 212 L770 215 L780 217 L790 217 L800 215 L810 212 L820 207 L830 201 L840 193 L850 185 L860 175 L870 165 L880 154"
+        fill="none" stroke="#b87a14" stroke-width="2" stroke-dasharray="7 5" stroke-linejoin="round"/>
+
+  <!-- 实测应变曲线 -->
+  <path d="M80 148 L90 137 L100 125 L110 115 L120 105 L130 96 L140 88 L150 82 L160 77 L170 74 L180 73 L190 74 L200 76 L210 80 L220 85 L230 92 L240 100 L250 109 L260 119 L270 130 L280 141 L290 152 L300 163 L310 173 L320 182 L330 191 L340 198 L350 204 L360 209 L370 212 L380 213 L390 213 L400 210 L410 207 L420 201 L430 195 L440 187 L450 178 L460 169 L470 158 L480 148 L490 138 L500 127 L510 118 L520 109 L530 101 L540 95 L550 89 L560 86 L570 83 L580 83 L590 84 L600 87 L610 91 L620 97 L630 103 L640 108 L650 111 L660 115 L670 123 L680 137 L690 154 L700 171 L710 185 L720 195 L730 204 L740 211 L750 216 L760 220 L770 222 L780 223 L790 222 L800 219 L810 214 L820 208 L830 200 L840 191 L850 181 L860 171 L870 159 L880 148"
+        fill="none" stroke="#003f88" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- 损伤引起的突变点 -->
+  <circle cx="660" cy="115" r="5.5" fill="#c00000" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- 横轴刻度 -->
+  <text x="80" y="274" font-size="13" fill="#94a3b8" text-anchor="middle">0</text>
+  <text x="280" y="274" font-size="13" fill="#94a3b8" text-anchor="middle">6 h</text>
+  <text x="480" y="274" font-size="13" fill="#94a3b8" text-anchor="middle">12 h</text>
+  <text x="680" y="274" font-size="13" fill="#94a3b8" text-anchor="middle">18 h</text>
+  <text x="880" y="274" font-size="13" fill="#94a3b8" text-anchor="middle">24 h</text>
+
+  <!-- 图例 -->
+  <line x1="80" y1="298" x2="112" y2="298" stroke="#003f88" stroke-width="2.5"/>
+  <text x="122" y="302" font-size="14" fill="#334155">实测应变</text>
+  <line x1="230" y1="298" x2="262" y2="298" stroke="#b87a14" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="272" y="302" font-size="14" fill="#334155">温度效应（拟合值）</text>
+  <line x1="470" y1="298" x2="502" y2="298" stroke="#c00000" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="512" y="302" font-size="14" fill="#334155">损伤位置</text>
+
+  <text x="880" y="302" font-size="14" fill="#94a3b8" text-anchor="end">时间（24 h 连续监测）</text>
+
+  <!-- 右侧结论面板 -->
+  <rect x="910" y="34" width="280" height="214" rx="8" fill="#f6f9fd" stroke="#dce4f0" stroke-width="1.5"/>
+
+  <text x="934" y="76" font-size="16" font-weight="bold" fill="#003f88">温度效应占比 &gt; 60%</text>
+  <text x="934" y="96" font-size="13" fill="#64748b">实测应变由温度效应主导</text>
+  <line x1="934" y1="116" x2="1166" y2="116" stroke="#dce4f0" stroke-width="1.5"/>
+
+  <text x="934" y="148" font-size="16" font-weight="bold" fill="#c00000">损伤响应占比 &lt; 5%</text>
+  <text x="934" y="168" font-size="13" fill="#64748b">损伤引起的应变变化极微弱</text>
+  <line x1="934" y1="188" x2="1166" y2="188" stroke="#dce4f0" stroke-width="1.5"/>
+
+  <text x="934" y="220" font-size="16" font-weight="bold" fill="#b87a14">信噪比过低</text>
+  <text x="934" y="240" font-size="13" fill="#64748b">损伤信号被温度漂移掩盖</text>
+
+</svg>
