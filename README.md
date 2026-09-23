@@ -6,6 +6,19 @@
 
 ---
 
+## 效果预览
+
+两份真实文稿的连续页面，全部由 AI 生成 Markdown + Academic 主题渲染（点击图片查看原图）：
+
+| 研究生工作月报 | 被讨厌的勇气 |
+|---|---|
+| <a href="assets/效果图.png"><img src="assets/效果图.png" width="100%" alt="研究生工作月报"></a> | <a href="assets/效果图2.png"><img src="assets/效果图2.png" width="100%" alt="被讨厌的勇气"></a> |
+
+> 左：`Examples/2026年9月研究生月报/`——月报 / 汇报场景，含封面、目录、5 个章节页与致谢页。
+> 右：`Examples/被讨厌的勇气/`——读书分享场景，6 个章节的完整论述结构。
+
+---
+
 ## 这个项目解决什么问题？
 
 传统 AI 做 PPT 的两大痛点，正是本项目的出发点：
@@ -53,6 +66,7 @@
 │   └── 被讨厌的勇气/
 ├── scripts/check-slides.mjs                # 排版自检脚本
 ├── PPT/                                    # 你自己的文稿（独立 git 仓库，被根仓库忽略）
+├── assets/                                 # README 用到的图片素材
 ├── .vscode/settings.json                   # 已配置 Marp 插件自动加载主题
 ├── package.json                            # 已内置 marp-cli、playwright 与常用命令
 ├── CLAUDE.md                               # 项目记忆（给 AI 的排版约定）
