@@ -296,6 +296,15 @@ node scripts/check-slides.mjs <deck.html> [svg 目录] [标题关键字 ...]
 
 `[svg 目录]` 位置传该文稿的 `media/` 即可开启 SVG 检查；再往后可以传标题关键字，额外打印指定页的纵向预算（每个顶层元素各占多高），用来定位哪里吃掉了高度。
 
+溢出和压线它能算，但「这张图看着别扭」「卡片里的 tag 错开了一行」这类问题只能肉眼判断。用 `scripts/shot-page.mjs` 把指定页截成 PNG：
+
+```bash
+npm run shot -- <deck.html> <页号|关键字> [输出.png]
+```
+
+页号是 1-based（`21`），也可以传关键字（`"文献调研与路线选型"`），取第一个命中的页；
+两者都找不到时会列出全部页面帮你定位。输出默认是 `shot.<页号或关键字>.png`。
+
 > 自检需要 `npx playwright install chromium` 下载过一次浏览器（见「快速开始」第 2 步）。
 
 ---

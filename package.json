@@ -14,6 +14,7 @@
     "build:report": "marp Examples/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files -o Examples/2026年9月研究生月报/2026年9月研究生月报.html",
     "build:report:pptx": "marp Examples/2026年9月研究生月报/2026年9月研究生月报.md --theme-set themes/academic/academic_template.css themes/academic/academic_CUST.css --html --allow-local-files --pptx-editable -o Examples/2026年9月研究生月报/2026年9月研究生月报.pptx",
     "check:report": "node scripts/check-slides.mjs Examples/2026年9月研究生月报/2026年9月研究生月报.html Examples/2026年9月研究生月报/media",
+    "shot": "node scripts/shot-page.mjs",
     "marp": "marp"
   },
   "keywords": [],
