@@ -307,7 +307,7 @@ _class: contentPage
 
 12+ 个语义化 HTML 组件，像搭积木一样组合出丰富的幻灯片布局。
 
-`<card>` `<grid>` `<flex>` `<timeline>` `<tree>` `<metric>` `<compare>` `<outline>` `<tag>` `<summary>` `<mark>`
+`<card>` `<grid>` `<flex>` `<timeline>` `<metric>` `<compare>` `<outline>` `<tag>` `<summary>` `<mark>`
 
 </outline>
 
@@ -494,7 +494,7 @@ flex 默认水平排列，两张卡片等宽
 
 #### 右侧卡片
 
-图片和 tree/timeline 组件自动不拉伸
+图片和 timeline 组件自动不拉伸
 
 </card>
 
@@ -801,36 +801,6 @@ _class: contentPage
 `<compare>` 由 `<before>` / `<arrow>` / `<after>` 三部分组成，适合展示改进成果
 
 </summary>
-
----
-
-<!--
-_header: 组件生态 — tree 树形结构
-_class: contentPage
--->
-
-## tree 树形结构
-
-使用嵌套列表语法，自动渲染为带连线层级的树形图。
-
-<tree>
-
-- Marp PPT 项目
-  - 主题层
-    - Academic 主题 CSS
-    - 页面布局样式
-    - 代码高亮配色
-  - 组件层
-    - 布局组件：grid / flex
-    - 内容组件：card / outline / metric
-    - 流程组件：timeline / compare / tree
-    - 内联组件：tag / summary / mark
-  - 工具层
-    - AI 辅助生成
-    - 构建脚本
-    - 一键多格式输出
-
-</tree>
 
 ---
 
