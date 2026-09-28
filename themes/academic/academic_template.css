@@ -1755,7 +1755,7 @@ tag[gray] {
    ================================================================ */
 
 summary {
-  background: linear-gradient(180deg, #0f4b9e 0%, #0a408c 100%);
+  background: #0d4798;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -2003,6 +2003,9 @@ compare after {
   --cp-text: #1a3a6b;
   --cp-accent: #0d4695;
   --cp-title: #0a3978;
+  /* 副标题(引用)色：--cp-text 按 70% 预混到卡片底色上得到的不透明色。
+     可编辑 PPT 导出会丢掉 opacity，变淡只能靠颜色本身，不能靠透明 */
+  --cp-text-soft: #5d7497;
 
   flex: 1;
   align-self: stretch;
@@ -2027,6 +2030,7 @@ compare before {
   --cp-text: #5a2828;
   --cp-accent: #c0392b;
   --cp-title: #6b2020;
+  --cp-text-soft: #8c6767;
 }
 /* ---- after 默认蓝色（新/改进） ---- */
 compare after {
@@ -2117,10 +2121,9 @@ compare after > blockquote {
   padding: 0;
   border: none;
   background: transparent;
-  color: inherit;
+  color: var(--cp-text-soft);
   font-weight: 500;
   font-style: normal;
-  opacity: 0.7;
 }
 compare before > blockquote p,
 compare after > blockquote p {
@@ -2295,6 +2298,7 @@ compare before[green], compare after[green] {
   --cp-text: #1a4a2e;
   --cp-accent: #1a5c2a;
   --cp-title: #0b4d2a;
+  --cp-text-soft: #5c7f6b;
 }
 compare before[red], compare after[red] {
   --cp-bg-start: #fffafa;
@@ -2304,6 +2308,7 @@ compare before[red], compare after[red] {
   --cp-text: #5a2828;
   --cp-accent: #c0392b;
   --cp-title: #6b2020;
+  --cp-text-soft: #8c6767;
 }
 compare before[yellow], compare after[yellow] {
   --cp-bg-start: #fffdf7;
@@ -2313,6 +2318,7 @@ compare before[yellow], compare after[yellow] {
   --cp-text: #5a4a1a;
   --cp-accent: #b87a14;
   --cp-title: #8a6a1a;
+  --cp-text-soft: #8c805c;
 }
 compare before[gray], compare after[gray] {
   --cp-bg-start: #fafbfc;
@@ -2322,6 +2328,7 @@ compare before[gray], compare after[gray] {
   --cp-text: #3d4a52;
   --cp-accent: #607d8b;
   --cp-title: #455a64;
+  --cp-text-soft: #767f85;
 }
 compare before[blue], compare after[blue] {
   --cp-bg-start: #fafcff;
@@ -2331,6 +2338,7 @@ compare before[blue], compare after[blue] {
   --cp-text: #1a3a6b;
   --cp-accent: #0d4695;
   --cp-title: #0a3978;
+  --cp-text-soft: #5d7497;
 }
 
 /* ---- 纵向变体：before 在上、after 在下，箭头朝下 ---- */
@@ -3158,6 +3166,9 @@ section.compact flow[vertical] > :is(ol, ul) {
 
 feature {
   --ft-ink: #003f88;
+  /* 序号水印色：把 --ft-ink 按 12% 预混到卡片底色(#ffffff)上得到的不透明色。
+     可编辑 PPT 导出会丢掉 opacity，水印不能靠透明变淡，只能直接给淡色 */
+  --ft-ink-soft: #e0e8f1;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -3185,8 +3196,7 @@ feature::before {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -1px;
-  color: var(--ft-ink);
-  opacity: 0.12;
+  color: var(--ft-ink-soft);
   pointer-events: none;
 }
 /* 标题：不分层级，统一为特性名 */
@@ -3215,10 +3225,22 @@ feature:not([num])::before {
 }
 
 /* --- 颜色变体 --- */
-feature[green]  { --ft-ink: #006400; }
-feature[red]    { --ft-ink: #c00000; }
-feature[yellow] { --ft-ink: #b87a14; }
-feature[gray]   { --ft-ink: #455a64; }
+feature[green]  {
+  --ft-ink: #006400;
+  --ft-ink-soft: #e0ece0;
+}
+feature[red]    {
+  --ft-ink: #c00000;
+  --ft-ink-soft: #f7e0e0;
+}
+feature[yellow] {
+  --ft-ink: #b87a14;
+  --ft-ink-soft: #f6efe3;
+}
+feature[gray]   {
+  --ft-ink: #455a64;
+  --ft-ink-soft: #e9ebec;
+}
 
 /* compact */
 feature[compact],
