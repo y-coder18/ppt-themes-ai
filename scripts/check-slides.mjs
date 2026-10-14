@@ -160,12 +160,18 @@ if (svgDir) {
         }
       }
 
+      // <defs> / <clipPath> / <marker> 里的图形是「模板」，不会就地绘制——被 <use>
+      // 引用的会画在引用处，拿模板自身的坐标去探测只会误报。MathJax 排出来的公式
+      // 就是这种结构：字形轮廓全在 <defs> 里，再由 <use> 摆到公式的位置上。
+      const painted = (el) => !el.closest('defs, clipPath, mask, marker, symbol, pattern');
+
       // 连线 / 曲线是否穿过文字。先排掉被「后绘制的遮挡物」盖住的那一段：
       // 文字标签常用白色矩形压住底下的线，实心圆也常盖住穿过的连线，这类不算问题。
       const order = new Map();
       [...svg.querySelectorAll('*')].forEach((el, i) => order.set(el, i));
       const masks = [...svg.querySelectorAll('rect, circle, ellipse')]
         .filter((el) => {
+          if (!painted(el)) return false;
           const f = getComputedStyle(el).fill;
           return f && f !== 'none' && !f.startsWith('rgba(0, 0, 0, 0)');
         })
@@ -191,6 +197,7 @@ if (svgDir) {
         struck.add(`${label} 穿过「${t.t}」`);
       };
       [...svg.querySelectorAll('line')].forEach((l) => {
+        if (!painted(l)) return;
         const x1 = +l.getAttribute('x1'),
           y1 = +l.getAttribute('y1'),
           x2 = +l.getAttribute('x2'),
@@ -200,7 +207,7 @@ if (svgDir) {
           probe(x1 + ((x2 - x1) * k) / n, y1 + ((y2 - y1) * k) / n, order.get(l), 'line');
       });
       [...svg.querySelectorAll('path')].forEach((pa) => {
-        if (pa.closest('marker')) return;
+        if (!painted(pa)) return;
         const L = pa.getTotalLength(),
           n = Math.ceil(L / 3);
         for (let k = 0; k <= n; k++) {
